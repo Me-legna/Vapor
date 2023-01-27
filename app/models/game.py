@@ -15,6 +15,9 @@ system_availability = db.Table(
     db.Column("systems", db.Integer, db.ForeignKey(add_prefix_for_prod('systems.id')), primary_key=True)
 )
 
+if environment == "production":
+    game_genres.schema = SCHEMA
+    system_availability.schema = SCHEMA
 
 class Genre(db.Model):
     __tablename__ = 'genres'
