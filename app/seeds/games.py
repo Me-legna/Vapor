@@ -87,8 +87,8 @@ def seed_games():
 
     db.session.add_all([arcade, moba, shooter])
     db.session.add_all([mac, windows, vapor_os])
+    db.session.add_all([game_1, game_2,game_3,game_4])
     db.session.add_all([game_1_image1, game_1_image2, game_2_image1, game_3_image1, game_4_image1])
-    # db.session.add_all([game_1, game_2,game_3,game_4])
 
     arcade.games.append(game_1)
     moba.games.extend([game_2, game_3])
@@ -109,11 +109,15 @@ def seed_games():
 # it will reset the primary keys for you as well.
 def undo_games():
     if environment == "production":
+        db.session.execute(f"TRUNCATE table {SCHEMA}.game_genres RESTART IDENTITY CASCADE;")
+        db.session.execute(f"TRUNCATE table {SCHEMA}.systems_availability RESTART IDENTITY CASCADE;")
         db.session.execute(f"TRUNCATE table {SCHEMA}.game_images RESTART IDENTITY CASCADE;")
         db.session.execute(f"TRUNCATE table {SCHEMA}.games RESTART IDENTITY CASCADE;")
         db.session.execute(f"TRUNCATE table {SCHEMA}.systems RESTART IDENTITY CASCADE;")
         db.session.execute(f"TRUNCATE table {SCHEMA}.genres RESTART IDENTITY CASCADE;")
     else:
+        db.session.execute("DELETE FROM game_genres")
+        db.session.execute("DELETE FROM system_availability")
         db.session.execute("DELETE FROM game_images")
         db.session.execute("DELETE FROM games")
         db.session.execute("DELETE FROM systems")
