@@ -90,13 +90,24 @@ def seed_games():
     db.session.add_all([game_1, game_2,game_3,game_4])
     db.session.add_all([game_1_image1, game_1_image2, game_2_image1, game_3_image1, game_4_image1])
 
-    arcade.games.append(game_1)
-    moba.games.extend([game_2, game_3])
-    shooter.games.append(game_4)
+    game_1.genres.append(arcade)
+    game_2.genres.append(moba)
+    game_3.genres.append(moba)
+    game_4.genres.append(shooter)
 
-    mac.games.extend([game_1, game_4])
-    windows.games.extend([game_1, game_2, game_3, game_4])
-    vapor_os.games.extend([game_1, game_2, game_4])
+    game_1.systems.extend(mac, windows, vapor_os)
+    game_2.systems.extend(windows, vapor_os)
+    game_3.systems.append(windows)
+    game_4.systems.extend(mac, windows, vapor_os)
+
+    # arcade.games.append(game_1)
+    # moba.games.extend([game_2, game_3])
+    # shooter.games.append(game_4)
+
+    # mac.games.extend([game_1, game_4])
+    # windows.games.extend([game_1, game_2, game_3, game_4])
+    # vapor_os.games.extend([game_1, game_2, game_4])
+
 
     db.session.commit()
 
