@@ -88,7 +88,7 @@ class Game(db.Model):
     release_date = db.Column(db.Date, nullable=False) # default=datetime.now().strftime("%m/%d/Y")
     price = db.Column(db.Float, nullable=False)
     description = db.Column(db.Text, nullable=False)
-    rating = db.Column(db.Enum('E', 'T', 'M'), nullable=False)
+    rating = db.Column(db.Enum('E', 'T', 'M'), name='esrb_ratings', nullable=False)
 
     developer = db.relationship('User', back_populates='games_developed',foreign_keys=[developer_id])
     genres = db.relationship('Genre', back_populates='games', secondary=game_genres)
