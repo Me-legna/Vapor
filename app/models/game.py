@@ -5,18 +5,19 @@ game_genres = db.Table(
     "game_genres",
     db.Model.metadata,
     db.Column("games", db.Integer, db.ForeignKey(add_prefix_for_prod('games.id')), primary_key=True),
-    db.Column("genres", db.Integer, db.ForeignKey(add_prefix_for_prod('genres.id')), primary_key=True),
-    extend_existing=True
+    db.Column("genres", db.Integer, db.ForeignKey(add_prefix_for_prod('genres.id')), primary_key=True)
 )
 
 system_availability = db.Table(
     "system_availability",
     db.Model.metadata,
     db.Column("games", db.Integer, db.ForeignKey(add_prefix_for_prod('games.id')), primary_key=True),
-    db.Column("systems", db.Integer, db.ForeignKey(add_prefix_for_prod('systems.id')), primary_key=True),
-    extend_existing=True
+    db.Column("systems", db.Integer, db.ForeignKey(add_prefix_for_prod('systems.id')), primary_key=True)
 )
 
+if environment == "production":
+    game_genres.schema = SCHEMA
+    system_availability.schema = SCHEMA
 
 class Genre(db.Model):
     __tablename__ = 'genres'
