@@ -95,10 +95,10 @@ def seed_games():
     game_3.genres.append(moba)
     game_4.genres.append(shooter)
 
-    game_1.systems.extend(mac, windows, vapor_os)
-    game_2.systems.extend(windows, vapor_os)
+    game_1.systems.extend([mac, windows, vapor_os])
+    game_2.systems.extend([windows, vapor_os])
     game_3.systems.append(windows)
-    game_4.systems.extend(mac, windows, vapor_os)
+    game_4.systems.extend([mac, windows, vapor_os])
 
     # arcade.games.append(game_1)
     # moba.games.extend([game_2, game_3])
