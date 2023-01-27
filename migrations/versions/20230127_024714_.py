@@ -1,9 +1,8 @@
-""" genres, systems, users, games, game_genres, game_images, library, system_availability
-tables and relationships
+"""empty message
 
-Revision ID: 177cfee852de
+Revision ID: 6a7a2f379d2e
 Revises:
-Create Date: 2023-01-27 02:34:08.544952
+Create Date: 2023-01-27 02:47:14.037856
 
 """
 from alembic import op
@@ -14,7 +13,7 @@ environment = os.getenv("FLASK_ENV")
 SCHEMA = os.environ.get("SCHEMA")
 
 # revision identifiers, used by Alembic.
-revision = '177cfee852de'
+revision = '6a7a2f379d2e'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -50,7 +49,7 @@ def upgrade():
     sa.Column('release_date', sa.Date(), nullable=False),
     sa.Column('price', sa.Float(), nullable=False),
     sa.Column('description', sa.Text(), nullable=False),
-    sa.Column('rating', sa.Enum('E', 'T', 'M'), nullable=False),
+    sa.Column('esrb_ratings', sa.Enum('E', 'T', 'M'), nullable=False),
     sa.ForeignKeyConstraint(['developer_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
