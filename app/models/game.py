@@ -5,14 +5,16 @@ game_genres = db.Table(
     "game_genres",
     db.Model.metadata,
     db.Column("games", db.Integer, db.ForeignKey(add_prefix_for_prod('games.id')), primary_key=True),
-    db.Column("genres", db.Integer, db.ForeignKey(add_prefix_for_prod('genres.id')), primary_key=True)
+    db.Column("genres", db.Integer, db.ForeignKey(add_prefix_for_prod('genres.id')), primary_key=True),
+    extend_existing=True
 )
 
 system_availability = db.Table(
     "system_availability",
     db.Model.metadata,
     db.Column("games", db.Integer, db.ForeignKey(add_prefix_for_prod('games.id')), primary_key=True),
-    db.Column("systems", db.Integer, db.ForeignKey(add_prefix_for_prod('systems.id')), primary_key=True)
+    db.Column("systems", db.Integer, db.ForeignKey(add_prefix_for_prod('systems.id')), primary_key=True),
+    extend_existing=True
 )
 
 
