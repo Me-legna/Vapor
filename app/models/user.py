@@ -25,7 +25,7 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
 
-    games_owned = db.relationship('Game', secondary=library)
+    games_owned = db.relationship('Game', secondary=library, cascade='all, delete')
     games_developed = db.relationship('Game', back_populates='developer')
 
     @property

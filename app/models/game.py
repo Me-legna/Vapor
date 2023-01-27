@@ -44,7 +44,7 @@ class System(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String, nullable=False)
 
-    games = db.relationship('Game', back_populates='systems', cascade='all, delete-orphan')
+    games = db.relationship('Game',  back_populates='systems', secondary=system_availability)
 
     def to_dict(self):
         return {
@@ -65,7 +65,7 @@ class GameImage(db.Model):
     url = db.Column(db.String, nullable=False)
     is_preview = db.Column(db.Boolean, default=False)
 
-    game = db.relationship('Game', back_populates='media')
+    game = db.relationship('Game', back_populates='media',foreign_keys=[game_id])
 
     def to_dict(self):
         return {
@@ -85,23 +85,24 @@ class Game(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(50), nullable=False)
     developer_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")), nullable=False)
-    _release_date = db.Column(db.Date, nullable=False) # default=datetime.now().strftime("%m/%d/Y")
+    release_date = db.Column(db.Date, nullable=False) # default=datetime.now().strftime("%m/%d/Y")
     price = db.Column(db.Float, nullable=False)
     description = db.Column(db.Text, nullable=False)
     rating = db.Column(db.Enum('E', 'T', 'M'), nullable=False)
 
-    developer = db.relationship('User', back_populates='games_developed')
+    developer = db.relationship('User', back_populates='games_developed',foreign_keys=[developer_id])
     genres = db.relationship('Genre', back_populates='games', secondary=game_genres)
     systems = db.relationship('System', back_populates='games', secondary=system_availability)
-    media = db.relationship('GameImage', back_populates='game')
+    media = db.relationship('GameImage', back_populates='game', cascade='all, delete')
 
     @property
-    def release_date(self):
-        return self._release_date("%m/%d/%Y")
+    def formatted_release_date(self):
+        return self.release_date("%m/%d/%Y")
 
-    @release_date.setter
-    def release_date(self, date):
-        self._release_date = date.strftime("%m/%d/%Y")
+    # @release_date.setter
+    # def release_date(self, date):
+    #     print(date)
+    #     self._release_date = date.strftime("%m/%d/%Y")
 
     def to_dict(self):
         return {
