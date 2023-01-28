@@ -73,7 +73,6 @@ class GameImage(db.Model):
     def to_dict(self):
         return {
             'id': self.id,
-            'game_id': self.game_id,
             'url': self.url,
             'is_preview': self.is_preview
         }
@@ -100,7 +99,7 @@ class Game(db.Model):
 
     @property
     def formatted_release_date(self):
-        return self.release_date("%m/%d/%Y")
+        return self.release_date.strftime("%m/%d/%Y")
 
     # @release_date.setter
     # def release_date(self, date):
@@ -112,7 +111,7 @@ class Game(db.Model):
             'id': self.id,
             'title': self.title,
             'developer_id': self.developer_id,
-            '_release_date': self._release_date,
+            'release_date': self.formatted_release_date,
             'price': self.price,
             'description': self.description,
             'rating': self.rating,
