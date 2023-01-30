@@ -48,3 +48,10 @@ class User(db.Model, UserMixin):
             'games_owned': [game.to_dict() for game in self.games_owned],
             'games_developed': [game.to_dict() for game in self.games_developed]
         }
+
+    def dev_to_dict(self):
+        return {
+            'id': self.id,
+            'developer_alias': self.developer_alias,
+            'games_developed': [game.to_dict() for game in self.games_developed]
+        }

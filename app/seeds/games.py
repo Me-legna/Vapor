@@ -36,7 +36,7 @@ def seed_games():
         )
     game_2 = Game(
         title='Smite',
-        developer_id=1,
+        developer_id=4,
         release_date=date(2021, 11, 7),
         price=59.99,
         description='This game is straight savage!',
@@ -44,7 +44,7 @@ def seed_games():
         )
     game_3 = Game(
         title='League of Legends',
-        developer_id=2,
+        developer_id=1,
         release_date=date(2022, 12, 7),
         price=59.99,
         description='This game is straight savage!',
@@ -52,7 +52,7 @@ def seed_games():
         )
     game_4 = Game(
         title='Call of Duty',
-        developer_id=2,
+        developer_id=4,
         release_date=date(2023, 1, 20),
         price=59.99,
         description='This game is straight savage!',
