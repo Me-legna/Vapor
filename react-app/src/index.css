@@ -1,1 +1,18 @@
 /* TODO Add site wide styles */
+body{
+    margin: 0px
+}
+.flex{
+    display: flex;
+}
+.center{
+    justify-content: center;
+    align-items: center;
+}
+.just-center{
+    justify-content: center;
+}
+
+.align-center{
+    justify-content: center;
+}
