@@ -153,4 +153,4 @@ def delete_game(game_id):
     db.session.delete(game)
     db.session.commit()
 
-    return jsonify({'message': "Successfully deleted", 'statusCode': 200}), 200
+    return jsonify({'message': "Successfully deleted", 'statusCode': 200}), 200 
