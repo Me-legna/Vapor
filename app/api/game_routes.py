@@ -97,8 +97,10 @@ def create_game():
 
         game_dict = game.to_dict()
         systems = [system.name for system in game.systems]
+        genres = [genre.name for genre in game.genres]
         developer = game.developer.developer_alias
         game_dict['systems'] = systems
+        game_dict['genres'] = genres
         game_dict['developer'] = developer
 
         return game_dict
@@ -142,8 +144,10 @@ def update_game(game_id):
         db.session.commit()
         game_dict = game.to_dict()
         systems = [system.name for system in game.systems]
+        genres = [genre.name for genre in game.genres]
         developer = game.developer.developer_alias
         game_dict['systems'] = systems
+        game_dict['genres'] = genres
         game_dict['developer'] = developer
 
         return game_dict
@@ -170,3 +174,13 @@ def delete_game(game_id):
     db.session.commit()
 
     return jsonify({'message': "Successfully deleted", 'statusCode': 200}), 200
+
+
+@game_routes.route('/genres')
+def get_all_genres():
+    """
+    Get all genres available
+    """
+    genres = Genre.query.all()
+
+    return jsonify({'Genres': [genre.name for genre in genres]})
