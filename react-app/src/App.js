@@ -29,7 +29,7 @@ function App() {
   }
 
   return (
-    <BrowserRouter>
+    <>
       <NavBar />
       <Switch>
         <Route path='/login' exact={true}>
@@ -54,7 +54,7 @@ function App() {
           <SingleGame />
         </Route>
       </Switch>
-    </BrowserRouter>
+    </>
   );
 }
 
