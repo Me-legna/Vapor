@@ -9,7 +9,7 @@ import UsersList from './components/UsersList';
 import User from './components/User';
 import { authenticate } from './store/session';
 import './index.css'
-import AllGames from './components/AllGames/AllGames';
+import AllGames from './components/StoreHomePage/AllGames';
 import SingleGame from './components/SingleGame';
 
 function App() {
