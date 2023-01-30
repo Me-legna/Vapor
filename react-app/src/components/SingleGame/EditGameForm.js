@@ -11,18 +11,17 @@ function EditGameForm() {
     const [price, setPrice] = useState(game.price)
     const [description, setDescription] = useState(game.description)
     const [rating, setRating] = useState(game.rating)
+
     const systems = ['Windows', 'MacOS', 'VaporOS + Linux']
     const [selectedSystems, setSelectedSystems] = useState(game.systems)
-    const [numSelectedSystems, setNumSelectedSystems] = useState(game.systems.length)
+
     const [genres, setGenres] = useState([])
     const [selectedGenres, setSelectedGenres] = useState(game.genres)
-    const [numSelectedGenres, setNumSelectedGenres] = useState(game.genres.length)
+
     const [errors, setErrors] = useState([]);
     const dispatch = useDispatch()
     const { closeModal } = useModal()
     console.log('game', game)
-    console.log('numSelectedGenres', numSelectedGenres)
-    console.log('numSelectedSystems', numSelectedSystems)
 
 
     //send updated game info and check for response errors
@@ -68,11 +67,9 @@ function EditGameForm() {
     function systemSelected(e, syst) {
         if (e.target.checked) {
             selectedSystems.push(syst)
-            setNumSelectedSystems(numSelectedSystems + 1)
 
         } else {
             setSelectedSystems(selectedSystems.filter(system => system !== syst))
-            setNumSelectedSystems(numSelectedSystems - 1)
         }
     }
 
@@ -80,11 +77,9 @@ function EditGameForm() {
     function genreSelected(e, gen) {
         if (e.target.checked) {
             selectedGenres.push(gen)
-            setNumSelectedGenres(numSelectedGenres + 1)
 
         } else {
             setSelectedGenres(selectedGenres.filter(genre => genre !== gen))
-            setNumSelectedGenres(numSelectedGenres - 1)
         }
     }
 
