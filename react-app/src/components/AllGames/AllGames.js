@@ -20,8 +20,8 @@ function AllGames() {
             <div className='games-list-container'>
 
                 {allGamesArr.map(game => (
-                    <div className='indiv-game' key={game.title}>
-                        <NavLink to={`/games/${game.id}`}>
+                    <NavLink className='indiv-game-nav' key={game.title} to={`/games/${game.id}`}>
+                        <div className='indiv-game' >
                             <div className='game-list-image-container'>
                                 <img className='game-list-image' src={game.media.find(image => image.is_preview === true).url} alt='game-img'></img>
                             </div>
@@ -55,8 +55,8 @@ function AllGames() {
                             <div>
                                 {game.price > 0 ? `$${game.price}` : 'Free'}
                             </div>
-                        </NavLink>
-                    </div>
+                        </div>
+                    </NavLink>
                 ))}
             </div>
         </>
