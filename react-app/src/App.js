@@ -9,6 +9,8 @@ import UsersList from './components/UsersList';
 import User from './components/User';
 import { authenticate } from './store/session';
 import './index.css'
+import AllGames from './components/StoreHomePage/AllGames';
+import SingleGame from './components/SingleGame';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -27,7 +29,7 @@ function App() {
   }
 
   return (
-    <BrowserRouter>
+    <>
       <NavBar />
       <Switch>
         <Route path='/login' exact={true}>
@@ -45,8 +47,14 @@ function App() {
         <Route path='/' exact={true} >
           <h1>My Home Page</h1>
         </Route>
+        <Route path='/store'>
+          <AllGames/>
+        </Route>
+        <Route path='/games/:gameId'>
+          <SingleGame />
+        </Route>
       </Switch>
-    </BrowserRouter>
+    </>
   );
 }
 

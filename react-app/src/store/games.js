@@ -13,19 +13,19 @@ const loadAllGames = (games) => ({
     payload: games
 })
 const loadOneGame = (game) => ({
-    type: LOAD_ALL,
+    type: LOAD_ONE,
     payload: game
 })
 const createGame = (game) => ({
-    type: LOAD_ALL,
+    type: CREATE,
     payload: game
 })
 const updateGame = (game) => ({
-    type: LOAD_ALL,
+    type: UPDATE,
     payload: game
 })
 const deleteGame = (gameId) => ({
-    type: LOAD_ALL,
+    type: DELETE,
     payload: gameId
 })
 
