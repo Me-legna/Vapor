@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
+import { Provider as ReduxProvider } from 'react-redux';
 import './index.css';
 import App from './App';
 import configureStore from './store';
@@ -9,16 +9,23 @@ import { BrowserRouter } from 'react-router-dom';
 
 const store = configureStore();
 
-ReactDOM.render(
-  <React.StrictMode>
+function Root() {
+  return (
     <ModalProvider>
-      <BrowserRouter>
-        <Provider store={store}>
+      <ReduxProvider store={store}>
+        <BrowserRouter>
           <App />
           <Modal />
-        </Provider>
-      </BrowserRouter>
+        </BrowserRouter>
+      </ReduxProvider>
     </ModalProvider>
+  );
+}
+
+
+ReactDOM.render(
+  <React.StrictMode>
+    <Root />
   </React.StrictMode>,
   document.getElementById('root')
 );
