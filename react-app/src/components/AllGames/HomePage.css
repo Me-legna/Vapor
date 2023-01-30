@@ -1,0 +1,15 @@
+.game-list-image {
+    width: 100%;
+    height: 100%
+}
+
+.game-list-image-container {
+    width: 20%;
+}
+
+.games-list-container {}
+
+.indiv-game {
+    height: 69px;
+    display: flex;
+}

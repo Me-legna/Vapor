@@ -15,8 +15,22 @@ def get_all_games():
     Get all games available
     """
     games = Game.query.all()
+    games_list = []
+    for game in games:
+        game_dict = game.to_dict()
 
-    return jsonify({'Games': [game.to_dict() for game in games]})
+        systems = [system.name for system in game.systems]
+        genres = [genre.name for genre in game.genres]
+        developer = game.developer.developer_alias
+
+        game_dict['systems'] = systems
+        game_dict['genres'] = genres
+        game_dict['developer'] = developer
+
+        games_list.append(game_dict)
+
+
+    return jsonify({'Games': games_list})
 
 
 @game_routes.route('/<int:game_id>')
@@ -32,8 +46,10 @@ def get_single_game(game_id):
 
     game_dict = game.to_dict()
     systems = [system.name for system in game.systems]
+    genres = [genre.name for genre in game.genres]
     developer = game.developer.developer_alias
     game_dict['systems'] = systems
+    game_dict['genres'] = genres
     game_dict['developer'] = developer
 
     return jsonify(game_dict)
@@ -153,4 +169,4 @@ def delete_game(game_id):
     db.session.delete(game)
     db.session.commit()
 
-    return jsonify({'message': "Successfully deleted", 'statusCode': 200}), 200 
+    return jsonify({'message': "Successfully deleted", 'statusCode': 200}), 200
