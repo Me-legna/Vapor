@@ -84,6 +84,7 @@ def create_game():
             release_date=release_date,
             price=form.data['price'],
             description=form.data['description'],
+            about=form.data['about'],
             rating=form.data['rating'],
             systems=systems,
             genres=genres
@@ -140,6 +141,7 @@ def update_game(game_id):
         game.title=form.data['title']
         game.price=form.data['price']
         game.description=form.data['description']
+        game.about=form.data['about']
         game.rating=form.data['rating']
         game.systems=systems
         game.genres=genres
