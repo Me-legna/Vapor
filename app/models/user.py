@@ -12,6 +12,8 @@ library = db.Table(
         add_prefix_for_prod('users.id')), primary_key=True)
 )
 
+if environment == "production":
+    library.schema = SCHEMA
 
 class User(db.Model, UserMixin):
     __tablename__ = 'users'
