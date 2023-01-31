@@ -2,6 +2,9 @@ import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import { load_one_game } from '../../store/games'
+import OpenModalButton from '../OpenModalButton'
+import DeleteGameForm from './DeleteGameForm'
+import EditGameForm from './EditGameForm'
 import GameBody from './GameBody'
 import GameMedia from './GameMedia'
 import GameReviews from './GameReviews'
@@ -29,14 +32,15 @@ function SingleGame() {
                 <div style={{ width: "10%" }}>
                     {user && user.id === game.developer_id && (
                         <div>
-                            <button>
-                                <i className="fa-solid fa-pen-to-square"></i>
-                            </button>
+                            <OpenModalButton
+                                modalComponent={<EditGameForm />}
+                                faIcon={<i className="fa-solid fa-pen-to-square"></i>}
+                            />
                             &nbsp;
-
-                            <button>
-                                <i className="fa-solid fa-trash-can"></i>
-                            </button>
+                            <OpenModalButton
+                                modalComponent={<DeleteGameForm />}
+                                faIcon={<i className="fa-solid fa-trash-can"></i>}
+                            />
                         </div>
                     )}
                 </div>
