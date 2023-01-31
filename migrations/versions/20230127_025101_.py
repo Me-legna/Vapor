@@ -44,11 +44,12 @@ def upgrade():
     )
     op.create_table('games',
     sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('title', sa.String(length=50), nullable=False),
+    sa.Column('title', sa.String(length=200), nullable=False),
     sa.Column('developer_id', sa.Integer(), nullable=False),
     sa.Column('release_date', sa.Date(), nullable=False),
     sa.Column('price', sa.Float(), nullable=False),
-    sa.Column('description', sa.Text(), nullable=False),
+    sa.Column('description', sa.Text(length=300), nullable=False),
+    sa.Column('about', sa.Text(), nullable=False),
     sa.Column('rating', sa.Enum('E', 'T', 'M', name='esrb_ratings'), nullable=False),
     sa.ForeignKeyConstraint(['developer_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')

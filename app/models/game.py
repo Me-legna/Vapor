@@ -85,11 +85,12 @@ class Game(db.Model):
         __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(50), nullable=False)
+    title = db.Column(db.String(200), nullable=False)
     developer_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")), nullable=False)
     release_date = db.Column(db.Date, nullable=False) # default=datetime.now().strftime("%m/%d/Y")
     price = db.Column(db.Float, nullable=False)
-    description = db.Column(db.Text, nullable=False)
+    description = db.Column(db.Text(300), nullable=False)
+    about = db.Column(db.Text(), nullable=False)
     rating = db.Column(db.Enum('E', 'T', 'M', name='esrb_ratings', create_type=False), nullable=False)
 
     developer = db.relationship('User', back_populates='games_developed',foreign_keys=[developer_id])
@@ -114,6 +115,7 @@ class Game(db.Model):
             'release_date': self.formatted_release_date,
             'price': self.price,
             'description': self.description,
+            'about': self.about,
             'rating': self.rating,
             'media': [media.to_dict() for media in self.media],
         }

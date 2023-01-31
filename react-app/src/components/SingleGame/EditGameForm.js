@@ -10,6 +10,7 @@ function EditGameForm() {
     const [title, setTitle] = useState(game.title)
     const [price, setPrice] = useState(game.price)
     const [description, setDescription] = useState(game.description)
+    const [about, setAbout] = useState(game.about)
     const [rating, setRating] = useState(game.rating)
 
     const systems = ['Windows', 'MacOS', 'VaporOS + Linux']
@@ -45,6 +46,7 @@ function EditGameForm() {
             title,
             price,
             description,
+            about,
             rating,
             systems: selectedSystems,
             genres: selectedGenres
@@ -211,6 +213,16 @@ function EditGameForm() {
                             <option value="T">Teen</option>
                             <option value="M">Mature</option>
                         </select>
+                    </label>
+                    <br />
+                    <label className="modal-label">
+                        About This Game:
+                        <br />
+                        <textarea
+                            value={about}
+                            onChange={(e) => setAbout(e.target.value)}
+                            required
+                        />
                     </label>
                     <fieldset>
                         Systems:

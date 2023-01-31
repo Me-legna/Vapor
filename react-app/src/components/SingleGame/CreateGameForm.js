@@ -14,6 +14,7 @@ function CreateGameForm() {
     const [inputDate, setInputDate] = useState(today)
     const [price, setPrice] = useState(0)
     const [description, setDescription] = useState('')
+    const [about, setAbout] = useState('')
     const [rating, setRating] = useState('')
 
 
@@ -55,6 +56,7 @@ function CreateGameForm() {
             release_date: releaseDate,
             price,
             description,
+            about,
             rating,
             systems: selectedSystems,
             genres: selectedGenres,
@@ -169,7 +171,7 @@ function CreateGameForm() {
                             type="date"
                             min="1997-06-30"
                             max={today}
-                            placeholder="Title"
+                            placeholder="Release Date"
                             value={inputDate}
                             onChange={(e) => setInputDate(e.target.value)}
                             required
@@ -216,6 +218,16 @@ function CreateGameForm() {
                             <option value="T">Teen</option>
                             <option value="M">Mature</option>
                         </select>
+                    </label>
+                    <br />
+                    <label className="modal-label">
+                        About This Game:
+                        <br />
+                        <textarea
+                            value={about}
+                            onChange={(e) => setAbout(e.target.value)}
+                            required
+                        />
                     </label>
                     <fieldset>
                         Systems:

@@ -32,6 +32,7 @@ def seed_games():
         release_date=date(2022, 11, 7),
         price=59.99,
         description='This game is straight savage!',
+        about='This game is straight savage!',
         rating='E'
         )
     game_2 = Game(
@@ -40,6 +41,7 @@ def seed_games():
         release_date=date(2021, 11, 7),
         price=59.99,
         description='This game is straight savage!',
+        about='This game is straight savage!',
         rating='T'
         )
     game_3 = Game(
@@ -48,6 +50,7 @@ def seed_games():
         release_date=date(2022, 12, 7),
         price=59.99,
         description='This game is straight savage!',
+        about='This game is straight savage!',
         rating='T'
         )
     game_4 = Game(
@@ -56,6 +59,7 @@ def seed_games():
         release_date=date(2023, 1, 20),
         price=59.99,
         description='This game is straight savage!',
+        about='This game is straight savage!',
         rating='M'
     )
 
