@@ -57,7 +57,8 @@ function CreateGameForm() {
             description,
             rating,
             systems: selectedSystems,
-            genres: selectedGenres
+            genres: selectedGenres,
+            previewUrl
         }
 
         await dispatch(create_game(newGame))

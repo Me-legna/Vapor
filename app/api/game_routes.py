@@ -2,7 +2,7 @@ from datetime import date
 from platform import release
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
-from app.models import Game, System, Genre, db
+from app.models import Game, GameImage, System, Genre, db
 from app.forms import GameForm
 from .auth_routes import validation_errors_to_error_messages
 
@@ -78,7 +78,6 @@ def create_game():
     form = GameForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
-        # form.populate_object(game)
         game = Game(
             title=form.data['title'],
             developer_id=current_user.id,
@@ -89,10 +88,14 @@ def create_game():
             systems=systems,
             genres=genres
         )
+        image = GameImage(
+            url = request.json['previewUrl'],
+            is_preview = True,
+            game=game
+        )
 
         db.session.add(game)
-        # game.systems.extend(form.data['systems'])
-        # game.genres.extend(form.data['genres'])
+
         db.session.commit()
 
         game_dict = game.to_dict()
