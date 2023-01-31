@@ -9,8 +9,15 @@ const NavBar = () => {
          <div id='navbar-components'>
             <div className='flex center'>
                <div>
-                  <NavLink to='/' exact={true} activeClassName='active'>
+                  <NavLink to='/store' exact={true} activeClassName='active'>
                      Home
+                  </NavLink>
+               </div>
+               &nbsp;
+               &nbsp;
+               <div>
+                  <NavLink to='/games/new' exact={true} activeClassName='active'>
+                     Add Game
                   </NavLink>
                </div>
                <div>

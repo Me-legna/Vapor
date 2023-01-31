@@ -1,28 +1,35 @@
 import { useEffect } from "react"
 import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
+import { useHistory } from "react-router-dom"
 import { useModal } from "../../context/Modal"
-import { update_game } from "../../store/games"
+import { create_game } from "../../store/games"
 
 
-function EditGameForm() {
-    const game = useSelector(state => state.games.singleGame)
-    const [title, setTitle] = useState(game.title)
-    const [price, setPrice] = useState(game.price)
-    const [description, setDescription] = useState(game.description)
-    const [rating, setRating] = useState(game.rating)
+function CreateGameForm() {
+    const user = useSelector(state => state.session.user)
+    const today = new Date().toISOString().split('T')[0]
+    const [previewUrl, setPreviewUrl] = useState('https://www.brawlhalla.com/c/uploads/2022/05/BHxSF-Trailer-Thumb.png')
+    const [title, setTitle] = useState('')
+    const [inputDate, setInputDate] = useState(today)
+    const [price, setPrice] = useState(0)
+    const [description, setDescription] = useState('')
+    const [rating, setRating] = useState('')
+
 
     const systems = ['Windows', 'MacOS', 'VaporOS + Linux']
-    const [selectedSystems, setSelectedSystems] = useState(game.systems)
+    const [selectedSystems, setSelectedSystems] = useState([])
 
     const [genres, setGenres] = useState([])
-    const [selectedGenres, setSelectedGenres] = useState(game.genres)
+    const [selectedGenres, setSelectedGenres] = useState([])
 
     const [errors, setErrors] = useState([]);
     const dispatch = useDispatch()
+    const history = useHistory()
     const { closeModal } = useModal()
-    console.log('game', game)
-
+    console.log('selectedSystems', selectedSystems)
+    console.log('selectedGenres', selectedGenres)
+    console.log('rating', rating)
 
 
     //on load, grab list of available genres
@@ -41,8 +48,11 @@ function EditGameForm() {
         e.preventDefault();
         setErrors([]);
 
-        const updatedGame = {
+        const releaseDate = inputDate.split('-').map(str => +str)
+
+        const newGame = {
             title,
+            release_date: releaseDate,
             price,
             description,
             rating,
@@ -50,13 +60,15 @@ function EditGameForm() {
             genres: selectedGenres
         }
 
-        await dispatch(update_game(game.id, updatedGame))
+        await dispatch(create_game(newGame))
+            .then(game => history.push(`/games/${game.id}`))
             .then(closeModal)
             .catch(async errs => {
 
                 if (errs) setErrors(errs);
             })
     }
+
 
     //helper function to change selected systems if checkbox is checked
     const systemSelected = (e, syst) => {
@@ -80,80 +92,44 @@ function EditGameForm() {
 
     //helper component to render checkboxes for each system
     const systemComponents = systems.map(system => (
-        selectedSystems.includes(system)
-            ?
-            <>
-                <label key={system}>
-                    {system}
-                    <input
-                        type="checkbox"
-                        id={system}
-                        name={system}
-                        value={system}
-                        onChange={(e) => systemSelected(e, system)}
-                        style={{ cursor: 'pointer' }}
-                        checked
-                    />
-                </label>
-                <br />
-            </>
-            :
-            <>
-                <label key={system}>
-                    {system}
-                    <input
-                        type="checkbox"
-                        id={system}
-                        name={system}
-                        value={system}
-                        onChange={(e) => systemSelected(e, system)}
-                        style={{ cursor: 'pointer' }}
-                    />
-                </label>
-                <br />
-            </>
+        <>
+            <label key={system}>
+                {system}
+                <input
+                    type="checkbox"
+                    id={system}
+                    name={system}
+                    value={system}
+                    onChange={(e) => systemSelected(e, system)}
+                    style={{ cursor: 'pointer' }}
+                />
+            </label>
+            <br />
+        </>
     ))
 
     //helper component to render checkboxes for each genre
     const genreComponents = genres.map(genre => (
-        selectedGenres.includes(genre)
-            ?
-            <>
-                <label key={genre}>
-                    {genre}
-                    <input
-                        type="checkbox"
-                        id={genre}
-                        name={genre}
-                        value={genre}
-                        onChange={(e) => genreSelected(e, genre)}
-                        style={{ cursor: 'pointer' }}
-                        checked
-                    />
-                </label>
-                <br />
-            </>
-            :
-            <>
-                <label key={genre}>
-                    {genre}
-                    <input
-                        type="checkbox"
-                        id={genre}
-                        name={genre}
-                        value={genre}
-                        onChange={(e) => genreSelected(e, genre)}
-                        style={{ cursor: 'pointer' }}
-                    />
-                </label>
-                <br />
-            </>
+        <>
+            <label key={genre}>
+                {genre}
+                <input
+                    type="checkbox"
+                    id={genre}
+                    name={genre}
+                    value={genre}
+                    onChange={(e) => genreSelected(e, genre)}
+                    style={{ cursor: 'pointer' }}
+                />
+            </label>
+            <br />
+        </>
     ))
 
     return (
         <>
             <div className="modal-header">
-                <h1>Edit Game Details</h1>
+                <h1>Add Your Game</h1>
             </div>
             <div className="modal-body-container">
                 <form onSubmit={handleSubmit} className='spot-form flex-column'>
@@ -163,6 +139,17 @@ function EditGameForm() {
                         ))}
                     </ul>
                     <label className="modal-label">
+                        <input
+                            className="modal-top-input"
+                            type="url"
+                            placeholder="Preview Image Url"
+                            value={previewUrl}
+                            onChange={(e) => setPreviewUrl(e.target.value)}
+                            required
+                        />
+                    </label>
+                    <label className="modal-label">
+                        Title:
                         <input
                             className="modal-top-input"
                             type="text"
@@ -175,6 +162,20 @@ function EditGameForm() {
                         />
                     </label>
                     <label className="modal-label">
+                        Release Date:
+                        <input
+                            className="modal-top-input"
+                            type="date"
+                            min="1997-06-30"
+                            max={today}
+                            placeholder="Title"
+                            value={inputDate}
+                            onChange={(e) => setInputDate(e.target.value)}
+                            required
+                        />
+                    </label>
+                    <label className="modal-label">
+                        Price:
                         <input
                             className="modal-bottom-input"
                             type="number"
@@ -187,6 +188,7 @@ function EditGameForm() {
                         />
                     </label>
                     <label className="modal-label">
+                        Description:
                         <input
                             className="modal-input"
                             type="text"
@@ -199,6 +201,7 @@ function EditGameForm() {
                         />
                     </label>
                     <label className="modal-label">
+                        ESRB Rating:
                         <select
                             className="modal-input"
                             type="select"
@@ -207,6 +210,7 @@ function EditGameForm() {
                             onChange={(e) => setRating(e.target.value)}
                             required
                         >
+                            <option value="">Select a Rating</option>
                             <option value="E">Everyone</option>
                             <option value="T">Teen</option>
                             <option value="M">Mature</option>
@@ -219,7 +223,7 @@ function EditGameForm() {
                     </fieldset>
                     <fieldset>
                         Genres:
-                        <br/>
+                        <br />
                         {genreComponents}
                     </fieldset>
                     <button
@@ -227,13 +231,14 @@ function EditGameForm() {
                         disabled={
                             errors.length ||
                             !selectedSystems.length ||
-                            !selectedGenres.length
+                            !selectedGenres.length ||
+                            !rating
                         }
-                    >Update Game Details</button>
+                    >Add Game</button>
                 </form>
             </div>
         </>
     )
 }
 
-export default EditGameForm
+export default CreateGameForm
