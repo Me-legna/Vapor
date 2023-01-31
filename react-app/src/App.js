@@ -11,6 +11,7 @@ import { authenticate } from './store/session';
 import './index.css'
 import AllGames from './components/StoreHomePage/AllGames';
 import SingleGame from './components/SingleGame';
+import CreateGameForm from './components/SingleGame/CreateGameForm';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -49,6 +50,9 @@ function App() {
         </Route>
         <Route path='/store'>
           <AllGames/>
+        </Route>
+        <Route path='/games/new' exact={true}>
+          <CreateGameForm/>
         </Route>
         <Route path='/games/:gameId'>
           <SingleGame />
