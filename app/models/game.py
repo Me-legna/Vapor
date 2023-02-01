@@ -100,7 +100,7 @@ class Game(db.Model):
 
     @property
     def formatted_release_date(self):
-        return self.release_date.strftime("%m/%d/%Y")
+        return self.release_date.strftime("%b %d, %Y")
 
     # @release_date.setter
     # def release_date(self, date):
