@@ -189,3 +189,15 @@ def get_all_genres():
     genres = Genre.query.all()
 
     return jsonify({'Genres': [genre.name for genre in genres]})
+
+
+@game_routes.route('/genres/')
+def get_genre():
+    """
+    Get a genre's details
+    """
+    genre_name = request.json['genreName']
+
+    genre = Genre.query.filter(Genre.name == genre_name).one()
+
+    return jsonify({'Genre': genre.to_dict()})
