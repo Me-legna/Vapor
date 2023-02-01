@@ -13,17 +13,22 @@ import './SingleGame.css'
 function SingleGame() {
     const user = useSelector(state => state.session.user)
     const game = useSelector(state => state.games.singleGame)
+    const [loaded, setLoaded] = useState(false)
     const dispatch = useDispatch()
     const { gameId } = useParams()
 
     useEffect(() => {
-        dispatch(load_one_game(gameId))
-
-    }, [dispatch, gameId])
+        if (!Object.keys(game).length){
+            if(gameId){
+                dispatch(load_one_game(gameId))
+            }
+        }
+        setLoaded(true)
+    }, [dispatch, game, gameId])
 
     // if(!loaded) return null
 
-    return (
+    return loaded && (
         // <h1>SingleGame</h1>
         <>
             <header>
