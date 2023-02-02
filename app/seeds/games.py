@@ -1,10 +1,9 @@
 from datetime import date
-from platform import release
 from app.models import db, Genre, System, Game, GameImage, environment, SCHEMA
 
 
 
-# Adds a demo user, you can add other users here if you want
+# Adds Games, Genres, and Systems
 def seed_games():
     arcade = Genre(
         name='arcade'
@@ -116,7 +115,7 @@ def seed_games():
     db.session.commit()
 
 
-# Uses a raw SQL query to TRUNCATE or DELETE the users table. SQLAlchemy doesn't
+# Uses a raw SQL query to TRUNCATE or DELETE the tables created. SQLAlchemy doesn't
 # have a built in function to do this. With postgres in production TRUNCATE
 # removes all the data from the table, and RESET IDENTITY resets the auto
 # incrementing primary key, CASCADE deletes any dependent entities.  With

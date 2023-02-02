@@ -29,6 +29,8 @@ class User(db.Model, UserMixin):
 
     games_owned = db.relationship('Game', secondary=library, cascade='all, delete')
     games_developed = db.relationship('Game', back_populates='developer')
+    cart = db.relationship('Cart', back_populates='owner')
+
 
     @property
     def password(self):
@@ -48,7 +50,8 @@ class User(db.Model, UserMixin):
             'developer_alias': self.developer_alias,
             'email': self.email,
             'games_owned': [game.to_dict() for game in self.games_owned],
-            'games_developed': [game.to_dict() for game in self.games_developed]
+            'games_developed': [game.to_dict() for game in self.games_developed],
+            'cart': self.cart.to_dict()
         }
 
     def dev_to_dict(self):

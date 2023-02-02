@@ -92,6 +92,7 @@ class Game(db.Model):
     description = db.Column(db.Text, nullable=False)
     about = db.Column(db.Text, nullable=False)
     rating = db.Column(db.Enum('E', 'T', 'M', name='esrb_ratings', create_type=False), nullable=False)
+    # discount_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("discounts.id")), nullable=True)
 
     developer = db.relationship('User', back_populates='games_developed',foreign_keys=[developer_id])
     genres = db.relationship('Genre', back_populates='games', secondary=game_genres)
@@ -118,4 +119,14 @@ class Game(db.Model):
             'about': self.about,
             'rating': self.rating,
             'media': [media.to_dict() for media in self.media],
+        }
+
+    def to_cart_dict(self):
+        preview_image = GameImage.query.filter(GameImage.is_preview == True).one()
+        return {
+            'id': self.id,
+            'title': self.title,
+            'price': self.price,
+            'preview': preview_image.to_dict(),
+            'systems': [system.name for system in self.systems]
         }
