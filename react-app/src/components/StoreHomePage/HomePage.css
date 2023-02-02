@@ -7,14 +7,24 @@
     width: 20%;
 }
 
-.games-list-container {}
+.games-list-container {
+    background-image: url('../../images/vapor-background.png');
+}
 
 .indiv-game {
-    height: 69px;
+    /* height: 69px;
     display: flex;
-    background-color: #202d39;
     margin-bottom: 5px;
-    padding-left: 10%;
+    padding-left: 10%; */
+
+    background-color: #202d39;
+    height: 40%;
+    width: 60%;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin:0px auto 5px auto ;
 }
 
 .indiv-game-nav {
