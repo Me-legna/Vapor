@@ -6,7 +6,7 @@ import { delete_game } from "../../store/games";
 
 function DeleteGameForm() {
     const game = useSelector(state => state.games.singleGame)
-    const [checked, setChecked] = useState()
+    const [checked, setChecked] = useState(false)
     const [errors, setErrors] = useState([]);
     const dispatch = useDispatch()
     const history = useHistory()
@@ -17,16 +17,9 @@ function DeleteGameForm() {
         setErrors([]);
 
         await dispatch(delete_game(game.id))
-            .then(() => {
-                history.push('/store')
-                closeModal()
-            })
-            .catch(
-                async (errs) => {
+        closeModal()
+        history.push('/store')
 
-                    if (errs) setErrors(errs);
-                }
-            );
 
     };
 

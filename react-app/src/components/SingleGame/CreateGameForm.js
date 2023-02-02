@@ -94,9 +94,9 @@ function CreateGameForm() {
     }
 
     //helper component to render checkboxes for each system
-    const systemComponents = systems.map(system => (
-        <>
-            <label key={system}>
+    const systemComponents = systems.map((system, idx) => (
+        <div  key={system + idx}>
+            <label key={system + idx}>
                 {system}
                 <input
                     type="checkbox"
@@ -108,13 +108,13 @@ function CreateGameForm() {
                 />
             </label>
             <br />
-        </>
+        </div>
     ))
 
     //helper component to render checkboxes for each genre
-    const genreComponents = genres.map(genre => (
-        <>
-            <label key={genre}>
+    const genreComponents = genres.map((genre, idx) => (
+        <div key={genre + idx}>
+            <label>
                 {genre}
                 <input
                     type="checkbox"
@@ -126,7 +126,7 @@ function CreateGameForm() {
                 />
             </label>
             <br />
-        </>
+        </div>
     ))
 
     return (
@@ -135,13 +135,14 @@ function CreateGameForm() {
                 <h1>Add Your Game</h1>
             </div>
             <div className="modal-body-container">
-                <form onSubmit={handleSubmit} className='spot-form flex-column'>
+                <form onSubmit={handleSubmit} style={{ display:'flex',flexDirection:'column'}} className='spot-form flex-column'>
                     <ul>
                         {errors.map((error, idx) => (
                             <li key={idx}>{error}</li>
                         ))}
                     </ul>
                     <label className="modal-label">
+                        Preview Image Url:
                         <input
                             className="modal-top-input"
                             type="url"
@@ -229,20 +230,36 @@ function CreateGameForm() {
                             required
                         />
                     </label>
-                    <fieldset>
+                    <label className="modal-label">
+                        Systems:
+                        <fieldset>
+                            {systemComponents}
+                        </fieldset>
+                    </label>
+                    <label className="modal-label">
+                        Genres:
+                        <fieldset>
+                            {genreComponents}
+                        </fieldset>
+                    </label>
+
+                    {/* <fieldset>
                         Systems:
                         <br />
                         {systemComponents}
-                    </fieldset>
-                    <fieldset>
+                    </fieldset> */}
+                    {/* <fieldset>
                         Genres:
                         <br />
                         {genreComponents}
-                    </fieldset>
+                    </fieldset> */}
                     <button
                         type="submit"
                         disabled={
                             errors.length ||
+                            !title.length ||
+                            !description.length ||
+                            !about.length ||
                             !selectedSystems.length ||
                             !selectedGenres.length ||
                             !rating
