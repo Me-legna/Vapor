@@ -122,11 +122,10 @@ class Game(db.Model):
         }
 
     def to_cart_dict(self):
-        preview_image = GameImage.query.filter(GameImage.is_preview == True).one()
         return {
             'id': self.id,
             'title': self.title,
             'price': self.price,
-            'preview': preview_image.to_dict(),
+            'preview': [media.url for media in self.media if media.is_preview == True][0],
             'systems': [system.name for system in self.systems]
         }
