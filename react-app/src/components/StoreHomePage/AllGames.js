@@ -34,7 +34,7 @@ function AllGames() {
                             <img className='game-list-image' src={game.media.find(image => image.is_preview === true).url} alt='game-img'></img>
                         </div>
                         <div>
-                            <div>
+                            <div style={{marginLeft:'10px'}}>
                                 {game.title}
                             </div>
                             <div>
@@ -52,7 +52,7 @@ function AllGames() {
                                                 <></>
                                 ))} */}
                             </div>
-                            <div>
+                            <div style={{ padding:'5px 10px 5px 10px', fontSize:'15px',color:'grey'}}>
                                 {game.genres.map((genre, idx) => (
                                     idx === 0
                                         ? genre
@@ -60,7 +60,7 @@ function AllGames() {
                                 ))}
                             </div>
                         </div>
-                        <div>
+                        <div style={{ marginLeft: "40%", marginTop: "10px", color:'rgb(187 232 25)'}}>
                             {game.price > 0 ? `$${game.price}` : 'Free'}
                         </div>
                     </div>
