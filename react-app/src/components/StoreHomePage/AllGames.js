@@ -38,7 +38,7 @@ function AllGames() {
                                 {game.title}
                             </div>
                             <div>
-                                {game.systems.map(system => (
+                                {/* {game.systems.map(system => (
                                     system === 'Windows'
                                         ?
                                         <i key={`${system.id}`} className="fa-brands fa-windows"></i>
@@ -50,7 +50,7 @@ function AllGames() {
                                                 <i key={`${system.id}`} className="fa-solid fa-smog"></i>
                                                 :
                                                 <></>
-                                ))}
+                                ))} */}
                             </div>
                             <div>
                                 {game.genres.map((genre, idx) => (

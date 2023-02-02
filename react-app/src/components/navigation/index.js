@@ -2,6 +2,7 @@ import './Navigation.css'
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import LogoutButton from '../auth/LogoutButton';
+import vaporLogo from '../../images/vapor-logo.png'
 
 const NavBar = () => {
    return (
@@ -10,7 +11,7 @@ const NavBar = () => {
             <div className='flex center'>
                <div>
                   <NavLink to='/store' exact={true} activeClassName='active'>
-                     Home
+                     <img src={vaporLogo} alt='vapor-logo'></img>
                   </NavLink>
                </div>
                &nbsp;

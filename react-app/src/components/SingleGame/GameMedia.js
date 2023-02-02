@@ -40,12 +40,10 @@ function GameMedia() {
                             <th>REVIEWS:</th>
                             <td>Positive?</td>
                         </tr>
-                        &nbsp;
                         <tr>
                             <th>RELEASE DATE:</th>
                             <td>{singleGame.release_date}</td>
                         </tr>
-                        &nbsp;
                         <tr>
                             <th>DEVELOPER:</th>
                             <td>{singleGame.developer ? singleGame.developer : 'Anonymous Studios'}</td>

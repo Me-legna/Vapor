@@ -37,7 +37,7 @@ function GameBody() {
                 <div>
                     <h2>SYSTEM AVAILABILITY</h2>
                     <div>
-                        {singleGame.systems.map((system, idx) => (
+                        {singleGame.systems?.map((system, idx) => (
                             <div key={system + idx}>{system}</div>
                         ))}
                     </div>

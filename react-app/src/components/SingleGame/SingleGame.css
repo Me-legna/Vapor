@@ -44,3 +44,91 @@ th {
     text-align: start;
     padding-right: 10px;
 }
+
+.modal-body-container {
+    background-image: url('../../images/vapor-background.png');
+    padding-top: 5px;
+}
+
+.modal-header h1 {
+    background-image: url('../../images/vapor-background.png');
+    margin-bottom: 0px;
+    margin-top:0px;
+    color: white;
+    font-weight: 100;
+    padding:20px
+}
+
+.modal-top-input {
+    background-color: #434953;
+    color: white;
+    border: 1px solid black;
+    padding: 5px;
+    border-radius: 5px;
+    padding: 8px;
+    overflow: auto;
+    height: 20px;
+    width: 150px;
+    margin: 8px;
+}
+
+.modal-bottom-input {
+    background-color: #434953;
+    color: white;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 8px;
+    overflow: auto;
+    height: 20px;
+    width: 50px;
+    margin: 8px;
+}
+
+.modal-input {
+    background-color: #434953;
+    color: white;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 8px;
+    overflow: auto;
+    height: 20px;
+    width: 200px;
+    margin: 8px;
+}
+
+textarea {
+    background-color: #434953;
+    color: white;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 8px;
+    overflow: auto;
+    height: 20px;
+    width: 200px;
+}
+
+.modal-label {
+    color: white;
+    font-size: 15px;
+    font-weight: 600px;
+    margin: 8px;
+}
+
+fieldset {
+    border: solid 1px black;
+    border-radius: 5px;
+    width: 15%;
+    background-color: #434953;
+    color: white;
+
+}
+
+button {
+    background-color: #708E03;
+    color: white;
+    width: 10%;
+    padding: 10px;
+    margin:10px;
+    border: none;
+    border-radius: 5px;
+}
