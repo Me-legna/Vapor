@@ -16,3 +16,7 @@ body{
 .align-center{
     justify-content: center;
 }
+
+*{
+    font-family:'open-sans', sans-serif
+}

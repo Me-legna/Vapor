@@ -23,15 +23,33 @@
 }
 
 .media-comp-container {
+    background-image: url('../../images/vapor-background.png');
     display: flex;
     justify-content: center;
 }
 
-.media-left-container {
-    margin-right: 16px;
+.game-body-left {
+    background-image: url('../../images/vapor-background.png');
+    color: white;
+
 }
 
-.media-right-container {}
+.game-body-left h2 {
+    margin-top: 0px;
+    color: white;
+    margin-top: 0px;
+    margin-left: 10px;
+}
+
+.media-left-container {
+    margin-right: 16px;
+
+}
+
+.media-right-container {
+    color: white;
+
+}
 
 .description-p {
     max-height: 111px;
@@ -45,6 +63,10 @@ th {
     padding-right: 10px;
 }
 
+td {
+    color: #252525;
+}
+
 .modal-body-container {
     background-image: url('../../images/vapor-background.png');
     padding-top: 5px;
@@ -53,10 +75,10 @@ th {
 .modal-header h1 {
     background-image: url('../../images/vapor-background.png');
     margin-bottom: 0px;
-    margin-top:0px;
+    margin-top: 0px;
     color: white;
     font-weight: 100;
-    padding:20px
+    padding: 20px
 }
 
 .modal-top-input {
@@ -128,7 +150,7 @@ button {
     color: white;
     width: 10%;
     padding: 10px;
-    margin:10px;
+    margin: 10px;
     border: none;
     border-radius: 5px;
 }
