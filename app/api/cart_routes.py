@@ -16,7 +16,7 @@ def get_cart():
     """
     cart = Cart.query.filter(Cart.user_id==current_user.id).one()
 
-    return jsonify({'Cart': cart.to_dict()})
+    return jsonify(cart.to_dict())
 
 
 @cart_routes.route('/', methods=['POST'])
@@ -35,7 +35,7 @@ def add_to_cart():
         cart.total += game.price
         db.session.commit()
 
-    return jsonify({'cart': cart.to_dict()})
+    return jsonify(cart.to_dict())
 
 @cart_routes.route('/', methods=['PUT'])
 @login_required
@@ -53,7 +53,7 @@ def remove_from_cart():
         cart.total -= game.price
         db.session.commit()
 
-    return jsonify({'cart': cart.to_dict()})
+    return jsonify(cart.to_dict())
 
 @cart_routes.route('/', methods=['DELETE'])
 @login_required
@@ -73,6 +73,6 @@ def reset_cart():
 
         cart.total = 0
         db.session.commit()
-        return jsonify({'cart': cart.to_dict()})
+        return jsonify(cart.to_dict())
     else:
         return jsonify({'message': 'Order feature incoming'})
