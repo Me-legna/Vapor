@@ -37,7 +37,7 @@ export const loadCart = () => async (dispatch) => {
         if (data.errors) {
             return;
         }
-        dispatch(loadCart(data.Games))
+        dispatch(load(data))
     }
 }
 
@@ -53,7 +53,7 @@ export const addToCart = (item_id) => async (dispatch) => {
         const data = await response.json();
         dispatch(add(data))
         return data;
-        
+
     } else if (response.status < 500) {
         const data = await response.json();
         if (data.errors) {

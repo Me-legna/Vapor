@@ -145,7 +145,7 @@ fieldset {
 
 }
 
-button {
+.submit-button {
     background-color: #708E03;
     color: white;
     width: 10%;

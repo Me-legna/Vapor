@@ -6,6 +6,7 @@ import { signUp } from '../../store/session';
 const SignUpForm = () => {
   const [errors, setErrors] = useState([]);
   const [username, setUsername] = useState('');
+  const [developerAlias, setDeveloperAlias] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
@@ -24,6 +25,10 @@ const SignUpForm = () => {
 
   const updateUsername = (e) => {
     setUsername(e.target.value);
+  };
+
+  const updateDeveloperAlias = (e) => {
+    setDeveloperAlias(e.target.value);
   };
 
   const updateEmail = (e) => {
@@ -56,6 +61,15 @@ const SignUpForm = () => {
           name='username'
           onChange={updateUsername}
           value={username}
+        ></input>
+      </div>
+      <div>
+        <label>Developer Alias</label>
+        <input
+          type='text'
+          name='developerAlias'
+          onChange={updateDeveloperAlias}
+          value={developerAlias}
         ></input>
       </div>
       <div>
