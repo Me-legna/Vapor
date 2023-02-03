@@ -143,6 +143,7 @@ function CreateGameForm() {
                     </ul>
                     <label className="modal-label">
                         Preview Image Url:
+                        <br />
                         <input
                             className="modal-top-input"
                             type="url"
@@ -154,6 +155,7 @@ function CreateGameForm() {
                     </label>
                     <label className="modal-label">
                         Title:
+                        <br />
                         <input
                             className="modal-top-input"
                             type="text"
@@ -167,6 +169,7 @@ function CreateGameForm() {
                     </label>
                     <label className="modal-label">
                         Release Date:
+                        <br />
                         <input
                             className="modal-top-input"
                             type="date"
@@ -180,6 +183,7 @@ function CreateGameForm() {
                     </label>
                     <label className="modal-label">
                         Price:
+                        <br />
                         <input
                             className="modal-bottom-input"
                             type="number"
@@ -193,6 +197,7 @@ function CreateGameForm() {
                     </label>
                     <label className="modal-label">
                         Description:
+                        <br />
                         <input
                             className="modal-input"
                             type="text"
@@ -206,6 +211,7 @@ function CreateGameForm() {
                     </label>
                     <label className="modal-label">
                         ESRB Rating:
+                        <br />
                         <select
                             className="modal-input"
                             type="select"
@@ -254,6 +260,7 @@ function CreateGameForm() {
                         {genreComponents}
                     </fieldset> */}
                     <button
+                        className="submit-button"
                         type="submit"
                         disabled={
                             errors.length ||

@@ -29,7 +29,7 @@ class User(db.Model, UserMixin):
 
     games_owned = db.relationship('Game', secondary=library, cascade='all, delete')
     games_developed = db.relationship('Game', back_populates='developer')
-    cart = db.relationship('Cart', back_populates='owner')
+    cart = db.relationship('Cart', uselist=False, back_populates='owner')
 
 
     @property

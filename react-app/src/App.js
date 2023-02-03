@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import LoginForm from './components/auth/LoginForm';
 import SignUpForm from './components/auth/SignUpForm';
@@ -12,6 +12,7 @@ import './index.css'
 import AllGames from './components/StoreHomePage/AllGames';
 import SingleGame from './components/SingleGame';
 import CreateGameForm from './components/SingleGame/CreateGameForm';
+import Cart from './components/Cart';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -19,7 +20,7 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    (async() => {
+    (async () => {
       await dispatch(authenticate());
       setLoaded(true);
     })();
@@ -40,22 +41,25 @@ function App() {
           <SignUpForm />
         </Route>
         <ProtectedRoute path='/users' exact={true} >
-          <UsersList/>
+          <UsersList />
         </ProtectedRoute>
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
         </ProtectedRoute>
-        <Route path='/' exact={true} >
-          <h1>My Home Page</h1>
+        <Route path='/store' exact={true}>
+          <AllGames />
         </Route>
-        <Route path='/store'>
-          <AllGames/>
-        </Route>
-        <Route path='/games/new' exact={true}>
-          <CreateGameForm/>
-        </Route>
+        <ProtectedRoute path='/games/new' exact={true}>
+          <CreateGameForm />
+        </ProtectedRoute>
         <Route path='/games/:gameId'>
           <SingleGame />
+        </Route>
+        <ProtectedRoute path='/cart' exact={true}>
+          <Cart />
+        </ProtectedRoute>
+        <Route path='/'>
+          <Redirect to='/store' />
         </Route>
       </Switch>
     </>

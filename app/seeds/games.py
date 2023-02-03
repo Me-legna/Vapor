@@ -1,5 +1,5 @@
 from datetime import date
-from app.models import db, Genre, System, Game, GameImage, environment, SCHEMA
+from app.models import db, Genre, System, Game, GameImage, User, environment, SCHEMA
 
 
 
@@ -38,7 +38,7 @@ def seed_games():
         title='Smite',
         developer_id=4,
         release_date=date(2021, 11, 7),
-        price=59.99,
+        price=0,
         description='This game is straight savage!',
         about='This game is straight savage!',
         rating='T'
@@ -47,7 +47,7 @@ def seed_games():
         title='League of Legends',
         developer_id=1,
         release_date=date(2022, 12, 7),
-        price=59.99,
+        price=0,
         description='This game is straight savage!',
         about='This game is straight savage!',
         rating='T'
@@ -103,14 +103,11 @@ def seed_games():
     game_3.systems.append(windows)
     game_4.systems.extend([mac, windows, vapor_os])
 
-    # arcade.games.append(game_1)
-    # moba.games.extend([game_2, game_3])
-    # shooter.games.append(game_4)
+    demo = User.query.get(1)
+    melegna = User.query.get(4)
 
-    # mac.games.extend([game_1, game_4])
-    # windows.games.extend([game_1, game_2, game_3, game_4])
-    # vapor_os.games.extend([game_1, game_2, game_4])
-
+    demo.games_owned.extend([game_1, game_3])
+    melegna.games_owned.extend([game_2, game_4])
 
     db.session.commit()
 
