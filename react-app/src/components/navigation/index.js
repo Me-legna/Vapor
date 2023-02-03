@@ -42,6 +42,8 @@ const NavBar = () => {
                <NavLink to='/login' exact={true} activeClassName='active'>
                   Login
                </NavLink>
+               <br/>
+               <LogoutButton />
             </div>
          </div>
       </section>

@@ -41,7 +41,7 @@ function SingleGame() {
                                 modalComponent={<EditGameForm />}
                                 faIcon={<i className="fa-solid fa-pen-to-square"></i>}
                             />
-                            &nbsp;
+                            <br/>
                             <OpenModalButton
                                 modalComponent={<DeleteGameForm />}
                                 faIcon={<i className="fa-solid fa-trash-can"></i>}

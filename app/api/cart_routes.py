@@ -1,7 +1,7 @@
 from crypt import methods
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
-from app.models import Cart, Game, db
+from app.models import Cart, Game, User, db
 from app.forms import GameForm
 from .auth_routes import validation_errors_to_error_messages
 
@@ -23,7 +23,8 @@ def get_cart():
 @login_required
 def add_to_cart():
     """
-    Add item to cart of current user
+    Add free item to library of current user
+    Add non-free item to cart of current user
     """
     item_id = request.json['item_id']
 
@@ -31,9 +32,13 @@ def add_to_cart():
     cart = Cart.query.filter(Cart.user_id==current_user.id).one()
 
     if game not in cart.items:
-        cart.items.append(game)
-        cart.total += game.price
-        db.session.commit()
+        if game.price == 0:
+            current_user.games_owned.append(game)
+            db.session.commit()
+        else:
+            cart.items.append(game)
+            cart.total += game.price
+            db.session.commit()
 
     return jsonify(cart.to_dict())
 
