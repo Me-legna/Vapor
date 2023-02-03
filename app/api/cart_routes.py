@@ -80,4 +80,11 @@ def reset_cart():
         db.session.commit()
         return jsonify(cart.to_dict())
     else:
-        return jsonify({'message': 'Order feature incoming'})
+        for item in cart.items:
+            cart.items.remove(item)
+            current_user.games_owned.append(item)
+
+        cart.total = 0
+        db.session.commit()
+        return jsonify(cart.to_dict())
+        # return jsonify({'message': 'Order feature incoming'})

@@ -37,7 +37,7 @@ export const loadCart = () => async (dispatch) => {
         if (data.errors) {
             return;
         }
-        dispatch(load(data.Games))
+        dispatch(load(data))
     }
 }
 

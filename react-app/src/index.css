@@ -20,3 +20,13 @@ body{
 *{
     font-family:'open-sans', sans-serif
 }
+.clickable{
+    cursor: pointer;
+    transition: color 50ms linear, border-bottom 50ms linear;
+}
+
+.clickable:hover {
+    color: blue;
+    border-bottom: 2px solid;
+    /* background-color: #7289DA; */
+}

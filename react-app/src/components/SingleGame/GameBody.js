@@ -18,7 +18,7 @@ function GameBody() {
     const { setModalContent } = useModal()
 
     useEffect(()=> {
-
+        
     },[inLibrary, inCart])
 
     async function addGame(e, gameId) {

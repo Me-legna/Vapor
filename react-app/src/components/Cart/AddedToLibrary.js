@@ -1,7 +1,13 @@
+import { useSelector } from "react-redux"
 
-function AddedToLibrary(){
+function AddedToLibrary() {
+    const singleGame = useSelector(state => state.games.singleGame)
     return (
-        <h1>AddedToLibrary</h1>
+        <div>
+            <h1>{singleGame.title}</h1>
+            <p>{singleGame.title} has been added to your account. It is now available in your Vapor Library.</p>
+        </div>
+
     )
 }
 
