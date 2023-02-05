@@ -129,6 +129,14 @@ function CreateGameForm() {
         </div>
     ))
 
+    const disabled = errors.length ||
+        !title.length ||
+        !description.length ||
+        !about.length ||
+        !selectedSystems.length ||
+        !selectedGenres.length ||
+        !rating ? true : false
+
     return (
         <>
             <div className="modal-header">
@@ -260,17 +268,9 @@ function CreateGameForm() {
                         {genreComponents}
                     </fieldset> */}
                     <button
-                        className="submit-button"
+                        className={disabled ? "submit-button disabled" : "submit-button"}
                         type="submit"
-                        disabled={
-                            errors.length ||
-                            !title.length ||
-                            !description.length ||
-                            !about.length ||
-                            !selectedSystems.length ||
-                            !selectedGenres.length ||
-                            !rating
-                        }
+                        disabled={disabled}
                     >Add Game</button>
                 </form>
             </div>

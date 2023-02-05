@@ -111,7 +111,7 @@ td {
     color: white;
     border: 1px solid black;
     border-radius: 5px;
-    padding: 8px;
+    /* padding: 8px; */
     overflow: auto;
     height: 20px;
     width: 200px;
@@ -127,6 +127,7 @@ textarea {
     overflow: auto;
     height: 20px;
     width: 200px;
+    resize: none;
 }
 
 .modal-label {
@@ -153,4 +154,10 @@ fieldset {
     margin: 10px;
     border: none;
     border-radius: 5px;
+    cursor: pointer;
+}
+
+.disabled {
+    opacity: 50%;
+    cursor:default
 }
