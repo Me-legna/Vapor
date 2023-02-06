@@ -9,7 +9,7 @@ function GameMedia() {
     const [selectedMedia, setSelectedMedia] = useState()
 
     useEffect(() => {
-        setSelectedMedia(singleGame.media?.[0].url)
+        setSelectedMedia(singleGame.media?.[0]?.url)
     }, [singleGame])
 
     const addDefaultSrc = (e) => {
@@ -27,11 +27,11 @@ function GameMedia() {
                     {singleGame.media?.map((media, idx) => (
                         <img
                             className="small-media"
-                            key={media.id}
-                            src={media.url}
+                            key={media?.id}
+                            src={media?.url}
                             onError={addDefaultSrc}
                             alt={`${singleGame.title} #${idx + 1}`}
-                            onClick={() => setSelectedMedia(media.url)}
+                            onClick={() => setSelectedMedia(media?.url)}
                         />
                     ))}
                 </div>
