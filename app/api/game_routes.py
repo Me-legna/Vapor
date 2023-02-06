@@ -96,7 +96,7 @@ def create_game():
         )
 
         db.session.add(game)
-        current_user.games_owned.append(game)
+        # current_user.games_owned.append(game)
 
         db.session.commit()
 
