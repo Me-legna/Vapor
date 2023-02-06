@@ -28,9 +28,9 @@ function CreateGameForm() {
     const dispatch = useDispatch()
     const history = useHistory()
     const { closeModal } = useModal()
-    console.log('selectedSystems', selectedSystems)
-    console.log('selectedGenres', selectedGenres)
-    console.log('rating', rating)
+    // console.log('selectedSystems', selectedSystems)
+    // console.log('selectedGenres', selectedGenres)
+    // console.log('rating', rating)
 
 
     //on load, grab list of available genres

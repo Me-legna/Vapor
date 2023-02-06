@@ -11,7 +11,7 @@ function AllGames() {
     const allGamesArr = Object.values(allGamesObj)
     const dispatch = useDispatch()
     const history = useHistory()
-    console.log(allGamesArr)
+    // console.log(allGamesArr)
 
     useEffect(() => {
         dispatch(load_all_games())
@@ -34,7 +34,7 @@ function AllGames() {
                 {allGamesArr.map(game => (
                     // <NavLink className='indiv-game-nav' key={game.title} to={`/games/${game.id}`}>
                     <div key={game.id} className='indiv-game clickable' onClick={() => handleClick(game.id)}>
-                        {console.log('game', game)}
+                        {/* {console.log('game', game)} */}
                         <div className='game-list-image-container'>
                             <img className='game-list-image' src={game.media.find(image => image.is_preview === true).url} onError={addDefaultSrc} alt='game-img'></img>
                         </div>

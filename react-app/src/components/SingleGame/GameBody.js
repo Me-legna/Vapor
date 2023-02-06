@@ -17,8 +17,8 @@ function GameBody() {
     const history = useHistory()
     const { setModalContent } = useModal()
 
-    console.log('inLibrary', inLibrary)
-    console.log('inCart', inCart)
+    // console.log('inLibrary', inLibrary)
+    // console.log('inCart', inCart)
 
 
     useEffect(()=> {
@@ -33,11 +33,11 @@ function GameBody() {
         if(user){
             await dispatch(addToCart(gameId))
             await dispatch(authenticate())
-            if(singleGame.price === 0){
-                setModalContent(<AddedToLibrary />)
-            }else{
+            // if(singleGame.price === 0){
+            //     setModalContent(<AddedToLibrary />)
+            // }else{
                 history.push('/cart')
-            }
+            // }
         }else{
             history.push('/login')
         }
@@ -68,7 +68,8 @@ function GameBody() {
                                     <div className="purchase_btn_price">${singleGame.price}</div>
                                     <button className="btn_addtocart clickable" onClick={(e) => addGame(e, singleGame.id)}>
                                         {singleGame.price === 0
-                                            ? "Add to Library"
+                                            ? "Add to Cart"
+                                            // ? "Add to Library" Add this back in later
                                             : inCart
                                                 ? "In Cart"
                                                 : "Add to Cart"

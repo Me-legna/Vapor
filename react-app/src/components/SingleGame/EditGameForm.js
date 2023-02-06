@@ -24,7 +24,7 @@ function EditGameForm() {
     const [errors, setErrors] = useState([]);
     const dispatch = useDispatch()
     const { closeModal } = useModal()
-    console.log('game', game)
+    // console.log('game', game)
 
 
 
