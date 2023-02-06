@@ -29,7 +29,7 @@ function GameMedia() {
                             className="small-media"
                             key={media.id}
                             src={media.url}
-                            onError={addDefaultSrc} 
+                            onError={addDefaultSrc}
                             alt={`${singleGame.title} #${idx + 1}`}
                             onClick={() => setSelectedMedia(media.url)}
                         />
@@ -44,8 +44,10 @@ function GameMedia() {
                 <table>
                     <tbody>
                         <tr>
-                            <th>REVIEWS:</th>
-                            <td>Positive?</td>
+                            <th>RATING:</th>
+                            <td>{singleGame.rating}</td>
+                            {/* <th>REVIEWS:</th>
+                            <td>Positive?</td> */}
                         </tr>
                         <tr>
                             <th>RELEASE DATE:</th>

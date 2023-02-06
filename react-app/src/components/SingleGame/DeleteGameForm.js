@@ -16,9 +16,9 @@ function DeleteGameForm() {
         e.preventDefault();
         setErrors([]);
 
-        await dispatch(delete_game(game.id))
-        closeModal()
+        dispatch(delete_game(game.id))
         history.push('/store')
+        closeModal()
 
 
     };
