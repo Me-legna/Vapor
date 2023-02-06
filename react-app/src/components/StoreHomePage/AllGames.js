@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { NavLink, useHistory } from 'react-router-dom'
 import { load_all_games, load_one_game } from '../../store/games'
@@ -27,7 +27,7 @@ function AllGames() {
         e.target.src = logo
     }
 
-    return allGamesArr.length && (
+    return !!allGamesArr.length && (
         <div className='games-list-container'>
             <div>
 
@@ -44,25 +44,25 @@ function AllGames() {
                                     {game.title}
                                 </div>
                                 <div className='system-icon-container'>
-                                    {game.systems.map(system => (
+                                    {game.systems.map((system, idx) => (
                                         system === 'Windows'
                                             ?
-                                            <i key={`${system.id}`} className="system-icon fa-brands fa-windows"></i>
+                                            <i key={`${idx}`} className="system-icon fa-brands fa-windows"></i>
                                             : system === 'MacOS'
                                                 ?
-                                                <i key={`${system.id}`} className="system-icon fa-brands fa-apple"></i>
+                                                <i key={`${idx}`} className="system-icon fa-brands fa-apple"></i>
                                                 : system === 'VaporOS + Linux'
                                                     ?
-                                                    <img key={`${system.id}`} src={logo} alt='logo' className="system-icon logo"></img>
+                                                    <img key={`${idx}`} src={logo} alt='logo' className="system-icon logo"></img>
                                                     :
-                                                    <></>
+                                                    <React.Fragment key={`${idx}`}></React.Fragment>
                                     ))}
                                 </div>
                                 <div style={{ padding: '5px 10px 5px 10px', fontSize: '15px', color: 'grey' }}>
                                     {game.genres.map((genre, idx) => (
                                         idx === 0
-                                            ? genre
-                                            : `, ${genre}`
+                                            ? <React.Fragment key={`${idx}`}>{genre}</React.Fragment>
+                                            : <React.Fragment key={`${idx}`}>{`, ${genre}`}</React.Fragment>
                                     ))}
                                 </div>
                             </div>
