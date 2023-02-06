@@ -62,9 +62,9 @@ const LoginForm = () => {
           onChange={updatePassword}
         />
         <br />
-        <button type='submit'>Login</button>
+        <button className='clickable' type='submit'>Login</button>
         <br />
-        <button className='signup-button'
+        <button className='signup-button clickable'
           onClick={() => (history.push('/join'))}>Join Vapor</button>
       </div>
     </form>

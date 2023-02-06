@@ -25,7 +25,7 @@ function Checkout() {
                 <div className="purchase_actions">
                     <div>Is this a purchase for yourself or is it a gift? Only one available option until future features are implemented.</div>
                     <div>
-                        <button disabled={cart.items.length === 0} onClick={checkout}>Purchase for myself</button>
+                        <button disabled={cart.items.length === 0} className={cart.items.length ? 'clickable' : ''} onClick={checkout}>Purchase for myself</button>
                         {/* <button>Purchase as a gift</button> */}
                     </div>
                 </div>

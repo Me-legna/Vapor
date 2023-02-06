@@ -31,7 +31,7 @@ function SingleGame() {
 
     return loaded && (
         // <h1>SingleGame</h1>
-        <>
+        <section>
             <header>
                 <p>AllGames {`> ${game.title ? `${game.genres[0]} > ${game.title}` : ''}`}</p>
                 <h1>{game.title}</h1>
@@ -60,7 +60,7 @@ function SingleGame() {
             {/* <section>
                 <GameReviews/>
             </section> */}
-        </>
+        </section>
 
     )
 }

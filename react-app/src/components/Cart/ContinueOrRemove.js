@@ -15,7 +15,7 @@ function ContinueOrRemove(){
     return (
         <div>
             <div>
-                <button onClick={() => history.push('/store')}>Continue Shopping</button>
+                <button className="clickable" onClick={() => history.push('/store')}>Continue Shopping</button>
             </div>
             <div>
                 <p onClick={removeAll} className="clickable">Remove all items</p>

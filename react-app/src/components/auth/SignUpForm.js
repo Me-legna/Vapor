@@ -109,7 +109,7 @@ const SignUpForm = () => {
           required={true}
         ></input>
       </div>
-      <button type='submit'>Sign Up</button>
+      <button className='clickable' type='submit'>Sign Up</button>
       <br />
       <NavLink to='/login'>
         Already have an account?

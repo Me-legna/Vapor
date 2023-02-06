@@ -66,7 +66,7 @@ function GameBody() {
                             <div className="purchase_action_container">
                                 <div className="purchase_button_container">
                                     <div className="purchase_btn_price">${singleGame.price}</div>
-                                    <button className="btn_addtocart" onClick={(e) => addGame(e, singleGame.id)}>
+                                    <button className="btn_addtocart clickable" onClick={(e) => addGame(e, singleGame.id)}>
                                         {singleGame.price === 0
                                             ? "Add to Library"
                                             : inCart
