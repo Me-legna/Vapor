@@ -21,7 +21,7 @@ function DemoLogin() {
   };
 
   return (
-    <button className='demo-user' onClick={handleSubmit}>
+    <button className='cart-add-button clickable' onClick={handleSubmit}>
       {/* <div>Wield the Power of Mjolnir?</div> */}
       <div>Demo</div>
     </button>

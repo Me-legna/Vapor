@@ -50,11 +50,11 @@ const SignUpForm = () => {
   }
 
   return (
-    <form onSubmit={onSignUp}>
+    <form style={{ padding: '0px 70px' }} onSubmit={onSignUp}>
       <br />
       <div>
         {errors.map((error, ind) => (
-          <div key={ind}>{error}</div>
+          <div style={{ color: 'red' }} key={ind}>{error}</div>
         ))}
       </div>
       <br />
@@ -62,6 +62,7 @@ const SignUpForm = () => {
         <label>User Name</label>
         <br />
         <input
+          className='modal-bottom-input'
           type='text'
           name='username'
           onChange={updateUsername}
@@ -72,6 +73,7 @@ const SignUpForm = () => {
         <label>Developer Alias</label>
         <br />
         <input
+          className='modal-bottom-input'
           type='text'
           name='developerAlias'
           onChange={updateDeveloperAlias}
@@ -82,6 +84,7 @@ const SignUpForm = () => {
         <label>Email</label>
         <br />
         <input
+          className='modal-bottom-input'
           type='email'
           name='email'
           onChange={updateEmail}
@@ -92,6 +95,7 @@ const SignUpForm = () => {
         <label>Password</label>
         <br />
         <input
+          className='modal-bottom-input'
           type='password'
           name='password'
           onChange={updatePassword}
@@ -102,6 +106,7 @@ const SignUpForm = () => {
         <label>Repeat Password</label>
         <br />
         <input
+          className='modal-bottom-input'
           type='password'
           name='repeat_password'
           onChange={updateRepeatPassword}
@@ -109,9 +114,9 @@ const SignUpForm = () => {
           required={true}
         ></input>
       </div>
-      <button type='submit'>Sign Up</button>
+      <button className='signup-button clickable' type='submit'>Sign Up</button>
       <br />
-      <NavLink to='/login'>
+      <NavLink style={{ color: 'blue', marginLeft: '7%'}} to='/login'>
         Already have an account?
       </NavLink>
     </form>

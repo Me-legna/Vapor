@@ -32,11 +32,11 @@ const LoginForm = () => {
   }
 
   return (
-    <form onSubmit={onLogin}>
+    <form style={{ padding:'0px 70px' }}onSubmit={onLogin}>
       <br />
       <div>
         {errors.map((error, ind) => (
-          <div key={ind}>{error}</div>
+          <div style={{color:'red'}} key={ind}>{error}</div>
         ))}
       </div>
       <br />
@@ -44,6 +44,7 @@ const LoginForm = () => {
         <label htmlFor='email'>Email</label>
         <br />
         <input
+          className='modal-bottom-input'
           name='email'
           type='text'
           placeholder='Email'
@@ -55,6 +56,7 @@ const LoginForm = () => {
         <label htmlFor='password'>Password</label>
         <br />
         <input
+          className='modal-bottom-input'
           name='password'
           type='password'
           placeholder='Password'
@@ -62,9 +64,9 @@ const LoginForm = () => {
           onChange={updatePassword}
         />
         <br />
-        <button type='submit'>Login</button>
+        <button className='signup-page-button clickable' type='submit'>Login</button>
         <br />
-        <button className='signup-button'
+        <button className='signup-button clickable'
           onClick={() => (history.push('/join'))}>Join Vapor</button>
       </div>
     </form>

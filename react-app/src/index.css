@@ -22,11 +22,15 @@ body{
 }
 .clickable{
     cursor: pointer;
-    transition: color 50ms linear, border-bottom 50ms linear;
+    /* transition: color 50ms linear, border-bottom 50ms linear; */
 }
 
 .clickable:hover {
-    color: blue;
-    border-bottom: 2px solid;
+    /* color: blue;
+    border-bottom: 2px solid; */
     /* background-color: #7289DA; */
 }
+
+/* #root{
+    background-image: url('./images/vapor-background.png');
+} */

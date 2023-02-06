@@ -66,7 +66,7 @@ function GameBody() {
                             <div className="purchase_action_container">
                                 <div className="purchase_button_container">
                                     <div className="purchase_btn_price">${singleGame.price}</div>
-                                    <button className="btn_addtocart" onClick={(e) => addGame(e, singleGame.id)}>
+                                    <button className="btn_addtocart clickable" onClick={(e) => addGame(e, singleGame.id)}>
                                         {singleGame.price === 0
                                             ? "Add to Library"
                                             : inCart
@@ -93,10 +93,10 @@ function GameBody() {
                         <h2>MATURE CONTENT DESCRIPTION</h2>
                     </div> */}
                 <div>
-                    <h2>SYSTEM REQUIREMENTS </h2>
-                    <div>
+                    <h2>SYSTEM AVAILABILITY</h2>
+                    <div className="system-reqs-container">
                         {singleGame.systems?.map((system, idx) => (
-                            <div className="system_requirement_tag" key={system + idx}>{system}</div>
+                            <div className="system-requirement-tag" key={system + idx}>{system}</div>
                         ))}
                     </div>
                 </div>

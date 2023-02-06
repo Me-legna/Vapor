@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import LoginForm from './components/auth/LoginForm';
-import SignUpForm from './components/auth/SignUpForm';
 import NavBar from './components/navigation';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
@@ -13,6 +11,8 @@ import AllGames from './components/StoreHomePage/AllGames';
 import SingleGame from './components/SingleGame';
 import CreateGameForm from './components/SingleGame/CreateGameForm';
 import Cart from './components/Cart';
+import LoginPage from './components/auth/LoginPage';
+import SignupPage from './components/auth/SignupPage';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -35,10 +35,11 @@ function App() {
       <NavBar />
       <Switch>
         <Route path='/login' exact={true}>
-          <LoginForm />
+          <LoginPage />
+          {/* <LoginForm /> */}
         </Route>
         <Route path='/join' exact={true}>
-          <SignUpForm />
+          <SignupPage />
         </Route>
         <ProtectedRoute path='/users' exact={true} >
           <UsersList />

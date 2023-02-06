@@ -21,13 +21,13 @@ function CartItems(){
         e.target.src = vaporLogo
     }
     return(
-        <div>
+        <div className='cart-games-list-container'>
             {cart.items.map(item => (
-                <div key={item.id}>
-                    <div className="clickable" onClick={() => history.push(`/games/${item.id}`)}>
-                        <img src={item.preview} onError={addDefaultSrc} alt={item.title}></img>
+                <div className='cart-indiv-game' key={item.id}>
+                    <div className="cart-game-list-image-container clickable" onClick={() => history.push(`/games/${item.id}`)}>
+                        <img className='cart-game-list-image' src={item.preview} onError={addDefaultSrc} alt={item.title}></img>
                     </div>
-                    <div className="cart_title_and_price">
+                    <div className="cart-title-and-price">
                         <p className="clickable" onClick={() => history.push(`/games/${item.id}`)}>{item.title}</p>
                         <div>
                             <p>${item.price}</p>

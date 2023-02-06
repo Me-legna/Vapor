@@ -1,6 +1,6 @@
 import { useEffect } from "react"
 import { useDispatch } from "react-redux"
-import { loadCart} from "../../store/cart"
+import { loadCart } from "../../store/cart"
 import CartItems from "./CartItems"
 import Checkout from "./Checkout"
 import ContinueOrRemove from "./ContinueOrRemove"
@@ -10,20 +10,27 @@ function Cart() {
 
     useEffect(() => {
         dispatch(loadCart())
-    },[dispatch])
+    }, [dispatch])
 
 
     return (
-        <div>
-            <header>
-                <p>AllProducts {'>'} Your Shopping Cart</p>
-                <h1>YOUR SHOPPING CART</h1>
+        <div className="cart-container">
+            <header className='single-header'>
+                <div>
+                    <p>AllProducts {'>'} Your Shopping Cart</p>
+                    <h1>YOUR SHOPPING CART</h1>
+                </div>
+                <div></div>
             </header>
-            <section>
-                <CartItems />
-                <Checkout />
+            <section className="main-cart">
+                <div className="cart">
+                    <CartItems />
+                    <Checkout />
+                </div>
             </section>
-            <ContinueOrRemove />
+            <div style={{ paddingRight: '20%'}} className="main-cart">
+                <ContinueOrRemove />
+            </div>
         </div>
     )
 }

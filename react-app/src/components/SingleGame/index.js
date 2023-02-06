@@ -31,11 +31,13 @@ function SingleGame() {
 
     return loaded && (
         // <h1>SingleGame</h1>
-        <>
-            <header>
+        <section>
+            <header className='single-header'>
+                <div className='single-header-left'>
                 <p>AllGames {`> ${game.title ? `${game.genres[0]} > ${game.title}` : ''}`}</p>
                 <h1>{game.title}</h1>
-                <div style={{ width: "10%" }}>
+                </div>
+                <div style={{ width: "10%", paddingTop: '2%' }}>
                     {user && user.id === game.developer_id && (
                         <div>
                             <OpenModalButton
@@ -60,7 +62,7 @@ function SingleGame() {
             {/* <section>
                 <GameReviews/>
             </section> */}
-        </>
+        </section>
 
     )
 }
