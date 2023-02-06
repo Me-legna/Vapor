@@ -213,11 +213,11 @@ fieldset {
     background-image: url('../../images/vapor-background.png');
 }
 
-input::-webkit-outer-spin-button,
+/* input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
-}
+} */
 
 input[type="checkbox" i] {
     margin-right: 10px;
