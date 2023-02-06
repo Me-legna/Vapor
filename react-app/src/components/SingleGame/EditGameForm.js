@@ -1,4 +1,4 @@
-import { useEffect } from "react"
+import React, { useEffect } from "react"
 import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useModal } from "../../context/Modal"
@@ -7,6 +7,7 @@ import { update_game } from "../../store/games"
 
 function EditGameForm() {
     const game = useSelector(state => state.games.singleGame)
+    const [previewUrl, setPreviewUrl] = useState('')
     const [title, setTitle] = useState(game.title)
     const [price, setPrice] = useState(game.price)
     const [description, setDescription] = useState(game.description)
@@ -84,9 +85,8 @@ function EditGameForm() {
     const systemComponents = systems.map(system => (
         selectedSystems.includes(system)
             ?
-            <>
-                <label key={system}>
-                    {system}
+            <React.Fragment key={system}>
+                <label >
                     <input
                         type="checkbox"
                         id={system}
@@ -96,13 +96,13 @@ function EditGameForm() {
                         style={{ cursor: 'pointer' }}
                         checked
                     />
+                    {system}
                 </label>
                 <br />
-            </>
+            </React.Fragment>
             :
-            <>
-                <label key={system}>
-                    {system}
+            <React.Fragment key={system}>
+                <label >
                     <input
                         type="checkbox"
                         id={system}
@@ -111,18 +111,18 @@ function EditGameForm() {
                         onChange={(e) => systemSelected(e, system)}
                         style={{ cursor: 'pointer' }}
                     />
+                    {system}
                 </label>
                 <br />
-            </>
+            </React.Fragment>
     ))
 
     //helper component to render checkboxes for each genre
     const genreComponents = genres.map(genre => (
         selectedGenres.includes(genre)
             ?
-            <>
-                <label key={genre}>
-                    {genre}
+            <React.Fragment key={genre}>
+                <label >
                     <input
                         type="checkbox"
                         id={genre}
@@ -132,13 +132,13 @@ function EditGameForm() {
                         style={{ cursor: 'pointer' }}
                         checked
                     />
+                    {genre}
                 </label>
                 <br />
-            </>
+            </React.Fragment >
             :
-            <>
-                <label key={genre}>
-                    {genre}
+            <React.Fragment key={genre}>
+                <label >
                     <input
                         type="checkbox"
                         id={genre}
@@ -147,24 +147,56 @@ function EditGameForm() {
                         onChange={(e) => genreSelected(e, genre)}
                         style={{ cursor: 'pointer' }}
                     />
+                    {genre}
                 </label>
                 <br />
-            </>
+            </React.Fragment >
     ))
 
+    const disabled = errors.length ||
+        !previewUrl ||
+        !title ||
+        !description ||
+        !about ||
+        !selectedSystems.length ||
+        !selectedGenres.length ||
+        !rating ? true : false
+
     return (
-        <>
+        <div className="form-container">
             <div className="modal-header">
-                <h1>Edit Game Details</h1>
+                <h1>Update Your Game</h1>
             </div>
             <div className="modal-body-container">
-                <form onSubmit={handleSubmit} className='spot-form flex-column'>
+                <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }} className='spot-form flex-column'>
                     <ul>
                         {errors.map((error, idx) => (
                             <li key={idx}>{error}</li>
                         ))}
                     </ul>
                     <label className="modal-label">
+                        <div>
+                            <strong className="form-input-type">Preview Image URL:</strong>
+                            <p style={{ visibility: !previewUrl ? 'visible' : 'hidden' }}
+                                className="form-input-error">Required</p>
+                        </div>
+                        <br />
+                        <input
+                            className="modal-top-input"
+                            type="url"
+                            placeholder="Preview Image Url"
+                            value={previewUrl}
+                            onChange={(e) => setPreviewUrl(e.target.value)}
+                            required
+                        />
+                    </label>
+                    <label className="modal-label">
+                        <div>
+                            <strong className="form-input-type">Title:</strong>
+                            <p style={{ visibility: !title ? 'visible' : 'hidden' }}
+                                className="form-input-error">Required</p>
+                        </div>
+                        <br />
                         <input
                             className="modal-top-input"
                             type="text"
@@ -176,21 +208,32 @@ function EditGameForm() {
                             required
                         />
                     </label>
-                    <label className="modal-label">
-                        <input
-                            className="modal-bottom-input"
-                            type="number"
-                            step={0.01}
-                            min={0}
-                            placeholder="Price"
-                            value={price}
-                            onChange={(e) => setPrice(e.target.value)}
-                            required
-                        />
+                    <label className="modal-label" style={{width: '100%'}}>
+                        Price:
+                        <br />
+                        <div>
+                            <strong className="">$</strong>
+                            <input
+                                className="modal-bottom-input form-input-type"
+                                type="number"
+                                step={0.01}
+                                min={0}
+                                placeholder="Price"
+                                value={price}
+                                onChange={(e) => setPrice(e.target.value)}
+                                required
+                            />
+                        </div>
                     </label>
                     <label className="modal-label">
+                        <div>
+                            <strong className="form-input-type">Description:</strong>
+                            <p style={{ visibility: !description ? 'visible' : 'hidden' }}
+                                className="form-input-error">Required</p>
+                        </div>
+                        <br />
                         <input
-                            className="modal-input"
+                            className="modal-input description"
                             type="text"
                             minLength={1}
                             maxLength={300}
@@ -201,6 +244,12 @@ function EditGameForm() {
                         />
                     </label>
                     <label className="modal-label">
+                        <div>
+                            <strong className="form-input-type">ESRB Rating:</strong>
+                            <p style={{ visibility: !rating ? 'visible' : 'hidden' }}
+                                className="form-input-error">Select a Rating</p>
+                        </div>
+                        <br />
                         <select
                             className="modal-input"
                             type="select"
@@ -209,14 +258,19 @@ function EditGameForm() {
                             onChange={(e) => setRating(e.target.value)}
                             required
                         >
-                            <option value="E">Everyone</option>
-                            <option value="T">Teen</option>
-                            <option value="M">Mature</option>
+                            <option value=""></option>
+                            <option value="E">Everyone (E)</option>
+                            <option value="T">Teen (T)</option>
+                            <option value="M">Mature (M)</option>
                         </select>
                     </label>
                     <br />
                     <label className="modal-label">
-                        About This Game:
+                        <div>
+                            <strong className="form-input-type">About this game:</strong>
+                            <p style={{ visibility: !about ? 'visible' : 'hidden' }}
+                                className="form-input-error">Required</p>
+                        </div>
                         <br />
                         <textarea
                             value={about}
@@ -224,27 +278,34 @@ function EditGameForm() {
                             required
                         />
                     </label>
-                    <fieldset>
-                        Systems:
-                        <br />
-                        {systemComponents}
-                    </fieldset>
-                    <fieldset>
-                        Genres:
-                        <br/>
-                        {genreComponents}
-                    </fieldset>
+                    <label className="modal-label">
+                        <div>
+                            <strong className="form-input-type">Systems:</strong>
+                            <p style={{ visibility: !selectedSystems.length ? 'visible' : 'hidden' }}
+                                className="form-input-error">At least 1 Required</p>
+                        </div>
+                        <fieldset>
+                            {systemComponents}
+                        </fieldset>
+                    </label>
+                    <label className="modal-label">
+                        <div>
+                            <strong className="form-input-type">Genres:</strong>
+                            <p style={{ visibility: !selectedGenres.length ? 'visible' : 'hidden' }}
+                                className="form-input-error">At least 1 Required</p>
+                        </div>
+                        <fieldset>
+                            {genreComponents}
+                        </fieldset>
+                    </label>
                     <button
+                        className={disabled ? "submit-button disabled" : "submit-button"}
                         type="submit"
-                        disabled={
-                            errors.length ||
-                            !selectedSystems.length ||
-                            !selectedGenres.length
-                        }
-                    >Update Game Details</button>
+                        disabled={disabled}
+                    >Update</button>
                 </form>
             </div>
-        </>
+        </div >
     )
 }
 

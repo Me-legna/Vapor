@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
-import { Redirect } from 'react-router-dom';
+import { Redirect, NavLink } from 'react-router-dom';
 import { signUp } from '../../store/session';
 
 const SignUpForm = () => {
@@ -16,10 +16,12 @@ const SignUpForm = () => {
   const onSignUp = async (e) => {
     e.preventDefault();
     if (password === repeatPassword) {
-      const data = await dispatch(signUp(username, email, password));
+      const data = await dispatch(signUp(username, developerAlias, email, password));
       if (data) {
         setErrors(data)
       }
+    } else {
+      setErrors(['Password inputs are required and must be matching'])
     }
   };
 
@@ -49,13 +51,16 @@ const SignUpForm = () => {
 
   return (
     <form onSubmit={onSignUp}>
+      <br />
       <div>
         {errors.map((error, ind) => (
           <div key={ind}>{error}</div>
         ))}
       </div>
+      <br />
       <div>
         <label>User Name</label>
+        <br />
         <input
           type='text'
           name='username'
@@ -65,6 +70,7 @@ const SignUpForm = () => {
       </div>
       <div>
         <label>Developer Alias</label>
+        <br />
         <input
           type='text'
           name='developerAlias'
@@ -74,8 +80,9 @@ const SignUpForm = () => {
       </div>
       <div>
         <label>Email</label>
+        <br />
         <input
-          type='text'
+          type='email'
           name='email'
           onChange={updateEmail}
           value={email}
@@ -83,6 +90,7 @@ const SignUpForm = () => {
       </div>
       <div>
         <label>Password</label>
+        <br />
         <input
           type='password'
           name='password'
@@ -92,6 +100,7 @@ const SignUpForm = () => {
       </div>
       <div>
         <label>Repeat Password</label>
+        <br />
         <input
           type='password'
           name='repeat_password'
@@ -101,6 +110,10 @@ const SignUpForm = () => {
         ></input>
       </div>
       <button type='submit'>Sign Up</button>
+      <br />
+      <NavLink to='/login'>
+        Already have an account?
+      </NavLink>
     </form>
   );
 };

@@ -68,12 +68,30 @@ td {
 }
 
 .modal-body-container {
-    background-image: url('../../images/vapor-background.png');
+    /* background-image: url('../../images/vapor-background.png'); */
     padding-top: 5px;
+    width: 100%;
+}
+
+.delete-form {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.delete-modal-header {
+    margin: 15% 0% 0%;
+}
+
+.delete-modal-body-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }
 
 .modal-header h1 {
-    background-image: url('../../images/vapor-background.png');
+    /* background-image: url('../../images/vapor-background.png'); */
     margin-bottom: 0px;
     margin-top: 0px;
     color: white;
@@ -85,13 +103,13 @@ td {
     background-color: #434953;
     color: white;
     border: 1px solid black;
-    padding: 5px;
+    text-align: center;
+    /* padding: 5px; */
     border-radius: 5px;
     padding: 8px;
     overflow: auto;
     height: 20px;
-    width: 150px;
-    margin: 8px;
+    width: 50%;
 }
 
 .modal-bottom-input {
@@ -102,8 +120,8 @@ td {
     padding: 8px;
     overflow: auto;
     height: 20px;
-    width: 50px;
-    margin: 8px;
+    width: 78%;
+    margin: 8px 8px 8px 2px;
 }
 
 .modal-input {
@@ -111,11 +129,22 @@ td {
     color: white;
     border: 1px solid black;
     border-radius: 5px;
-    padding: 8px;
+    /* padding: 8px; */
     overflow: auto;
-    height: 20px;
-    width: 200px;
+    height: 38px;
+    width: 50%;
+    text-align: center;
     margin: 8px;
+}
+
+.form-input-type {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.form-input-error {
+    display: inline-block;
+    color: red
 }
 
 textarea {
@@ -125,21 +154,31 @@ textarea {
     border-radius: 5px;
     padding: 8px;
     overflow: auto;
-    height: 20px;
-    width: 200px;
+    height: 15vw;
+    width: 65%;
+    text-align: center;
+    resize: none;
+}
+
+.description {
+    height: 7vw;
 }
 
 .modal-label {
     color: white;
     font-size: 15px;
-    font-weight: 600px;
     margin: 8px;
+    padding: 0% 0%;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 fieldset {
     border: solid 1px black;
     border-radius: 5px;
-    width: 15%;
+    width: 35%;
     background-color: #434953;
     color: white;
 
@@ -153,4 +192,29 @@ fieldset {
     margin: 10px;
     border: none;
     border-radius: 5px;
+    cursor: pointer;
+}
+
+.disabled {
+    opacity: 50%;
+    cursor: default
+}
+
+.form-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    background-image: url('../../images/vapor-background.png');
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type="checkbox" i] {
+    margin-right: 10px;
 }
