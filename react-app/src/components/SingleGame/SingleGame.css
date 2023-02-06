@@ -31,6 +31,9 @@
 .game-body-left {
     background-image: url('../../images/vapor-background.png');
     color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
 }
 
@@ -39,6 +42,7 @@
     color: white;
     margin-top: 0px;
     margin-left: 10px;
+    border-bottom: 1px solid darkblue;
 }
 
 .media-left-container {
@@ -217,4 +221,41 @@ input::-webkit-inner-spin-button {
 
 input[type="checkbox" i] {
     margin-right: 10px;
+}
+
+.single-header {
+    display: flex;
+    justify-content: space-around;
+    padding-right: 15%;
+    background-image: url('../../images/vapor-background.png');
+}
+
+.game-body-comp-container {}
+
+.system-reqs-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.system-requirement-tag {
+    border: 1px 0px 1px 1px
+}
+
+.main-cart {
+    background-image: url('../../images/vapor-background.png');
+    color: white;
+    /* height: 50vh; */
+}
+
+.cart {
+    display: flex;
+    width: 85%;
+    align-items: center;
+    flex-direction: column;
+}
+
+.continue-remove {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
 }

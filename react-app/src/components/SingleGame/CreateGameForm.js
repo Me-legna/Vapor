@@ -147,7 +147,7 @@ function CreateGameForm() {
                 <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }} className='spot-form flex-column'>
                     <ul>
                         {errors.map((error, idx) => (
-                            <li key={idx}>{error}</li>
+                            <li style={{ color: 'red' }} key={idx}>{error}</li>
                         ))}
                     </ul>
                     <label className="modal-label">

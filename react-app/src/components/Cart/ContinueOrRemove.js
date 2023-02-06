@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux"
 import { useHistory } from "react-router-dom"
 import { deleteCart } from "../../store/cart"
-
+import './Cart.css'
 
 function ContinueOrRemove(){
     const dispatch = useDispatch()
@@ -13,9 +13,9 @@ function ContinueOrRemove(){
     }
 
     return (
-        <div>
+        <div className="continue-remove">
             <div>
-                <button onClick={() => history.push('/store')}>Continue Shopping</button>
+                <button className="continue-button clickable" onClick={() => history.push('/store')}>Continue Shopping</button>
             </div>
             <div>
                 <p onClick={removeAll} className="clickable">Remove all items</p>

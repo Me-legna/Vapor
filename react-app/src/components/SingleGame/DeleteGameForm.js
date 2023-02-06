@@ -33,7 +33,7 @@ function DeleteGameForm() {
                 <form onSubmit={handleSubmit} className='delete-form'>
                     <ul>
                         {errors.map((error, idx) => (
-                            <li key={idx}>{error}</li>
+                            <li style={{ color: 'red' }} key={idx}>{error}</li>
                         ))}
                     </ul>
                     <div style={{marginBottom:'4%'}}>
