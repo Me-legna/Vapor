@@ -7,7 +7,8 @@ import { update_game } from "../../store/games"
 
 function EditGameForm() {
     const game = useSelector(state => state.games.singleGame)
-    const [previewUrl, setPreviewUrl] = useState('')
+    const preview = game.media?.find(image => image?.is_preview === true)
+    const [previewUrl, setPreviewUrl] = useState(preview?.url)
     const [title, setTitle] = useState(game.title)
     const [price, setPrice] = useState(game.price)
     const [description, setDescription] = useState(game.description)
@@ -171,7 +172,7 @@ function EditGameForm() {
                 <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }} className='spot-form flex-column'>
                     <ul>
                         {errors.map((error, idx) => (
-                            <li key={idx}>{error}</li>
+                            <li style={{ color: 'red' }} key={idx}>{error}</li>
                         ))}
                     </ul>
                     <label className="modal-label">

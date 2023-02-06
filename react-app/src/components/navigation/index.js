@@ -1,6 +1,6 @@
 import './Navigation.css'
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 import LogoutButton from '../auth/LogoutButton';
 import vaporLogo from '../../images/vapor-logo.png'
 import { useSelector } from 'react-redux';
@@ -8,24 +8,21 @@ import DemoLogin from './DemoLogin';
 
 const NavBar = () => {
    const user = useSelector(state => state.session.user)
+   const history = useHistory()
 
    return (
       <section id='navbar'>
          <div id='navbar-components'>
-            <div className='flex center'>
-               <div>
-                  <NavLink to='/store' exact={true} activeClassName='active'>
-                     <img src={vaporLogo} alt='vapor-logo'></img>
-                  </NavLink>
+            <div className='main-nav flex center'>
+               <div className='clickable logo-container' onClick={()=>history.push('/store')}>
+                     <img className='home-logo' src={vaporLogo} alt='vapor-logo'></img>
                </div>
-               &nbsp;
-               &nbsp;
                <div>
-                  <NavLink to='/games/new' exact={true} activeClassName='active'>
+                  <button className='cart-add-button' onClick={() => history.push('/games/new')}>
                      Add Game
-                  </NavLink>
+                  </button>
                </div>
-               <div>
+               {/* <div>
                   <ul>
                      <li>
                         Store
@@ -40,20 +37,20 @@ const NavBar = () => {
                         Support
                      </li>
                   </ul>
-               </div>
+               </div> */}
             </div>
-            <div>
-               <NavLink to='/cart' exact={true} activeClassName='active'>
+            <div className='nav-right'>
+               <button className='cart-add-button' onClick={()=>history.push('/cart')}>
                   Cart
-               </NavLink>
+               </button>
                <br />
                {
                   !user
                      ?
                      <>
-                        <NavLink to='/login' exact={true} activeClassName='active'>
+                        <button className='cart-add-button' onClick={() => history.push('/login')}>
                            Login
-                        </NavLink>
+                        </button>
                         <br/>
                         <DemoLogin />
                      </>

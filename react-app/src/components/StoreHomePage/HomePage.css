@@ -5,31 +5,36 @@
 
 .game-list-image-container {
     width: 20%;
+    height: 80px;
 }
 
 .games-list-container {
     background-image: url('../../images/vapor-background.png');
+    height: 100vh;
 }
 
 .indiv-game {
-    /* height: 69px;
-    display: flex;
-    margin-bottom: 5px;
-    padding-left: 10%; */
-
     background-color: #202d39;
     height: 40%;
     width: 60%;
     color: white;
     display: flex;
-    flex-direction: row;
-    justify-content: center;
     margin: 0px auto 5px auto;
+    align-items: center;
 }
 
 .indiv-game-nav {
     color: white;
 }
+
+.game-list-info-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 70%;
+}
+
+.game-list-left-info {}
 
 .system-icon {
     margin-left: 10px;
@@ -41,7 +46,7 @@
     padding-top: 4px;
 }
 
-.game-list-title{
+.game-list-title {
     margin: 8px 10px 0px;
 }
 

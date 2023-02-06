@@ -14,18 +14,18 @@ function Checkout() {
         <>
             <div className="estimated_totals_container">
                 <div className="cart_totals">
-                    <div className="estimate_totals">
+                    <div className="estimate-totals">
                         <div>
                             Estimated Total
                             <sup>1</sup>
-                            <p>${cart.total}</p>
                         </div>
+                            <p className="cart-price">${cart.total}</p>
                     </div>
                 </div>
                 <div className="purchase_actions">
                     <div>Is this a purchase for yourself or is it a gift? Only one available option until future features are implemented.</div>
                     <div>
-                        <button disabled={cart.items.length === 0} className={cart.items.length ? 'clickable' : ''} onClick={checkout}>Purchase for myself</button>
+                        <button disabled={cart.items.length === 0} className={`purchase-button ${cart.items.length ? 'clickable' : ''}`} onClick={checkout}>Purchase for myself</button>
                         {/* <button>Purchase as a gift</button> */}
                     </div>
                 </div>

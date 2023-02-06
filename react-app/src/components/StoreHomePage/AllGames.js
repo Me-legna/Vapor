@@ -17,7 +17,7 @@ function AllGames() {
         dispatch(load_all_games())
     }, [dispatch])
 
-    async function handleClick(gameId){
+    async function handleClick(gameId) {
         await dispatch(load_one_game(gameId))
             .then(() => history.push(`/games/${gameId}`))
 
@@ -28,8 +28,8 @@ function AllGames() {
     }
 
     return allGamesArr.length && (
-        <>
-            <div className='games-list-container'>
+        <div className='games-list-container'>
+            <div>
 
                 {allGamesArr.map(game => (
                     // <NavLink className='indiv-game-nav' key={game.title} to={`/games/${game.id}`}>
@@ -38,41 +38,43 @@ function AllGames() {
                         <div className='game-list-image-container'>
                             <img className='game-list-image' src={game.media.find(image => image.is_preview === true).url} onError={addDefaultSrc} alt='game-img'></img>
                         </div>
-                        <div>
-                            <div className='game-list-title'>
-                                {game.title}
-                            </div>
-                            <div className='system-icon-container'>
-                                {game.systems.map(system => (
-                                    system === 'Windows'
-                                        ?
-                                        <i key={`${system.id}`} className="system-icon fa-brands fa-windows"></i>
-                                        : system === 'MacOS'
+                        <div className='game-list-info-container'>
+                            <div className='game-list-left-info'>
+                                <div className='game-list-title'>
+                                    {game.title}
+                                </div>
+                                <div className='system-icon-container'>
+                                    {game.systems.map(system => (
+                                        system === 'Windows'
                                             ?
-                                            <i key={`${system.id}`} className="system-icon fa-brands fa-apple"></i>
-                                            : system === 'VaporOS + Linux'
+                                            <i key={`${system.id}`} className="system-icon fa-brands fa-windows"></i>
+                                            : system === 'MacOS'
                                                 ?
-                                                <img key={`${system.id}`} src={logo} alt='logo' className="system-icon logo"></img>
-                                                :
-                                                <></>
-                                ))}
+                                                <i key={`${system.id}`} className="system-icon fa-brands fa-apple"></i>
+                                                : system === 'VaporOS + Linux'
+                                                    ?
+                                                    <img key={`${system.id}`} src={logo} alt='logo' className="system-icon logo"></img>
+                                                    :
+                                                    <></>
+                                    ))}
+                                </div>
+                                <div style={{ padding: '5px 10px 5px 10px', fontSize: '15px', color: 'grey' }}>
+                                    {game.genres.map((genre, idx) => (
+                                        idx === 0
+                                            ? genre
+                                            : `, ${genre}`
+                                    ))}
+                                </div>
                             </div>
-                            <div style={{ padding:'5px 10px 5px 10px', fontSize:'15px',color:'grey'}}>
-                                {game.genres.map((genre, idx) => (
-                                    idx === 0
-                                        ? genre
-                                        : `, ${genre}`
-                                ))}
+                            <div style={{ marginLeft: "40%", marginTop: "10px", color: 'rgb(187 232 25)' }}>
+                                {game.price > 0 ? `$${game.price}` : 'Free'}
                             </div>
-                        </div>
-                        <div style={{ marginLeft: "40%", marginTop: "10px", color:'rgb(187 232 25)'}}>
-                            {game.price > 0 ? `$${game.price}` : 'Free'}
                         </div>
                     </div>
                     // </NavLink>
                 ))}
             </div>
-        </>
+        </div>
     )
 }
 

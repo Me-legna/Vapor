@@ -22,7 +22,7 @@ function OpenModalButton({
         faIcon
 
           ?
-          <div onClick={onClick}>
+          <div className='clickable' onClick={onClick}>
             {faIcon}
           </div>
           :

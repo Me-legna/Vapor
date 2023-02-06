@@ -93,10 +93,10 @@ function GameBody() {
                         <h2>MATURE CONTENT DESCRIPTION</h2>
                     </div> */}
                 <div>
-                    <h2>SYSTEM REQUIREMENTS </h2>
-                    <div>
+                    <h2>SYSTEM AVAILABILITY</h2>
+                    <div className="system-reqs-container">
                         {singleGame.systems?.map((system, idx) => (
-                            <div className="system_requirement_tag" key={system + idx}>{system}</div>
+                            <div className="system-requirement-tag" key={system + idx}>{system}</div>
                         ))}
                     </div>
                 </div>
