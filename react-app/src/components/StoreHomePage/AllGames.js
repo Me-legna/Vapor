@@ -22,6 +22,10 @@ function AllGames() {
             .then(() => history.push(`/games/${gameId}`))
 
     }
+    const addDefaultSrc = (e) => {
+        e.target.onerror = null; // prevents looping
+        e.target.src = logo
+    }
 
     return allGamesArr.length && (
         <>
@@ -32,7 +36,7 @@ function AllGames() {
                     <div key={game.id} className='indiv-game' onClick={() => handleClick(game.id)}>
                         {console.log('game', game)}
                         <div className='game-list-image-container'>
-                            <img className='game-list-image' src={game.media.find(image => image.is_preview === true).url} alt='game-img'></img>
+                            <img className='game-list-image' src={game.media.find(image => image.is_preview === true).url} onError={addDefaultSrc} alt='game-img'></img>
                         </div>
                         <div>
                             <div className='game-list-title'>

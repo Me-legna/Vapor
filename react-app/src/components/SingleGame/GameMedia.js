@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { useSelector } from "react-redux"
 import './SingleGame.css'
+import vaporLogo from '../../images/vapor-icon.png'
 
 function GameMedia() {
     const singleGame = useSelector(state => state.games.singleGame)
@@ -11,15 +12,16 @@ function GameMedia() {
         setSelectedMedia(singleGame.media?.[0].url)
     }, [singleGame])
 
-    const addDefaultSrc = (ev) => {
-        ev.target.src = 'some default image url'
+    const addDefaultSrc = (e) => {
+        e.target.onerror = null; // prevents looping
+        e.target.src = vaporLogo
     }
 
     return (
         <div className="media-comp-container">
             <div className="media-left-container">
                 <figure className="showcase-img-container">
-                    <img className="showcase-img" src={selectedMedia} alt='selected-media'></img>
+                    <img className="showcase-img" src={selectedMedia} onError={addDefaultSrc} alt='selected-media'></img>
                 </figure>
                 <div>
                     {singleGame.media?.map((media, idx) => (
@@ -27,6 +29,7 @@ function GameMedia() {
                             className="small-media"
                             key={media.id}
                             src={media.url}
+                            onError={addDefaultSrc} 
                             alt={`${singleGame.title} #${idx + 1}`}
                             onClick={() => setSelectedMedia(media.url)}
                         />
@@ -34,7 +37,7 @@ function GameMedia() {
                 </div>
             </div>
             <div className="media-right-container">
-                <img className="cover-img" src={previewImage?.url} alt='game-preview'></img>
+                <img className="cover-img" src={previewImage?.url} onError={addDefaultSrc} alt='game-preview'></img>
                 <p className="discription-p">
                     {singleGame.description}
                 </p>
