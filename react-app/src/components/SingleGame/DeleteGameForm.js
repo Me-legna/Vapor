@@ -25,18 +25,18 @@ function DeleteGameForm() {
 
     return (
         <>
-            <div className="modal-header">
-                <h1>Are you sure you want to delete this server?</h1>
+            <div className="delete-modal-header">
+                <h1>Are you sure you want to delete this game?</h1>
             </div>
-            <div className="modal-body-container">
+            <div className="delete-modal-body-container">
 
-                <form onSubmit={handleSubmit} className='modal-body'>
+                <form onSubmit={handleSubmit} className='delete-form'>
                     <ul>
                         {errors.map((error, idx) => (
                             <li key={idx}>{error}</li>
                         ))}
                     </ul>
-                    <div>
+                    <div style={{marginBottom:'4%'}}>
                         <label>
                             No
                             <input
@@ -58,7 +58,11 @@ function DeleteGameForm() {
                             />
                         </label>
                     </div>
-                    {checked && (<button type="submit" className="submit-spot clickable" disabled={!checked}>Delete Game</button>)}
+                    <button
+                        type="submit"
+                        className={!checked ? "submit-button disabled" : "submit-button"}
+                        disabled={!checked}
+                    >Delete Game</button>
                 </form>
             </div>
         </>
