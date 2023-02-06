@@ -3,8 +3,12 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import LogoutButton from '../auth/LogoutButton';
 import vaporLogo from '../../images/vapor-logo.png'
+import { useSelector } from 'react-redux';
+import DemoLogin from './DemoLogin';
 
 const NavBar = () => {
+   const user = useSelector(state => state.session.user)
+
    return (
       <section id='navbar'>
          <div id='navbar-components'>
@@ -42,12 +46,20 @@ const NavBar = () => {
                <NavLink to='/cart' exact={true} activeClassName='active'>
                   Cart
                </NavLink>
-               <br/>
-               <NavLink to='/login' exact={true} activeClassName='active'>
-                  Login
-               </NavLink>
-               <br/>
-               <LogoutButton />
+               <br />
+               {
+                  !user
+                     ?
+                     <>
+                        <NavLink to='/login' exact={true} activeClassName='active'>
+                           Login
+                        </NavLink>
+                        <br/>
+                        <DemoLogin />
+                     </>
+                     :
+                     <LogoutButton />
+               }
             </div>
          </div>
       </section>

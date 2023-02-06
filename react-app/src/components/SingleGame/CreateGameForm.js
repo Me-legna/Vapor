@@ -9,7 +9,7 @@ import { create_game } from "../../store/games"
 function CreateGameForm() {
     const user = useSelector(state => state.session.user)
     const today = new Date().toISOString().split('T')[0]
-    const [previewUrl, setPreviewUrl] = useState('https://www.brawlhalla.com/c/uploads/2022/05/BHxSF-Trailer-Thumb.png')
+    const [previewUrl, setPreviewUrl] = useState('')
     const [title, setTitle] = useState('')
     const [inputDate, setInputDate] = useState(today)
     const [price, setPrice] = useState(0)
@@ -95,7 +95,7 @@ function CreateGameForm() {
 
     //helper component to render checkboxes for each system
     const systemComponents = systems.map((system, idx) => (
-        <div  key={system + idx}>
+        <div key={system + idx}>
             <label key={system + idx}>
                 {system}
                 <input
@@ -130,9 +130,10 @@ function CreateGameForm() {
     ))
 
     const disabled = errors.length ||
-        !title.length ||
-        !description.length ||
-        !about.length ||
+        !previewUrl ||
+        !title ||
+        !description ||
+        !about ||
         !selectedSystems.length ||
         !selectedGenres.length ||
         !rating ? true : false
@@ -143,14 +144,16 @@ function CreateGameForm() {
                 <h1>Add Your Game</h1>
             </div>
             <div className="modal-body-container">
-                <form onSubmit={handleSubmit} style={{ display:'flex',flexDirection:'column'}} className='spot-form flex-column'>
+                <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column' }} className='spot-form flex-column'>
                     <ul>
                         {errors.map((error, idx) => (
                             <li key={idx}>{error}</li>
                         ))}
                     </ul>
                     <label className="modal-label">
-                        Preview Image Url:
+                        <strong className="form-input-type">Preview Image URL:</strong>
+                        <p style={{ visibility: !previewUrl ? 'visible' : 'hidden' }}
+                            className="form-input-error">Required</p>
                         <br />
                         <input
                             className="modal-top-input"
@@ -162,7 +165,9 @@ function CreateGameForm() {
                         />
                     </label>
                     <label className="modal-label">
-                        Title:
+                        <strong className="form-input-type">Title:</strong>
+                        <p style={{ visibility: !title ? 'visible' : 'hidden' }}
+                            className="form-input-error">Required</p>
                         <br />
                         <input
                             className="modal-top-input"
@@ -192,8 +197,9 @@ function CreateGameForm() {
                     <label className="modal-label">
                         Price:
                         <br />
+                        <strong className="">$</strong>
                         <input
-                            className="modal-bottom-input"
+                            className="modal-bottom-input form-input-type"
                             type="number"
                             step={0.01}
                             min={0}
@@ -204,7 +210,9 @@ function CreateGameForm() {
                         />
                     </label>
                     <label className="modal-label">
-                        Description:
+                        <strong className="form-input-type">Description:</strong>
+                        <p style={{ visibility: !description ? 'visible' : 'hidden' }}
+                            className="form-input-error">Required</p>
                         <br />
                         <input
                             className="modal-input"
@@ -218,7 +226,9 @@ function CreateGameForm() {
                         />
                     </label>
                     <label className="modal-label">
-                        ESRB Rating:
+                        <strong className="form-input-type">ESRB Rating:</strong>
+                        <p style={{ visibility: !rating ? 'visible' : 'hidden' }}
+                            className="form-input-error">Select a Rating</p>
                         <br />
                         <select
                             className="modal-input"
@@ -228,15 +238,17 @@ function CreateGameForm() {
                             onChange={(e) => setRating(e.target.value)}
                             required
                         >
-                            <option value="">Select a Rating</option>
-                            <option value="E">Everyone</option>
-                            <option value="T">Teen</option>
-                            <option value="M">Mature</option>
+                            <option value=""></option>
+                            <option value="E">Everyone (E)</option>
+                            <option value="T">Teen (T)</option>
+                            <option value="M">Mature (M)</option>
                         </select>
                     </label>
                     <br />
                     <label className="modal-label">
-                        About This Game:
+                        <strong className="form-input-type">About this game:</strong>
+                        <p style={{ visibility: !about ? 'visible' : 'hidden' }}
+                            className="form-input-error">Required</p>
                         <br />
                         <textarea
                             value={about}
@@ -245,13 +257,17 @@ function CreateGameForm() {
                         />
                     </label>
                     <label className="modal-label">
-                        Systems:
+                        <strong className="form-input-type">Systems:</strong>
+                        <p style={{ visibility: !selectedSystems.length ? 'visible' : 'hidden' }}
+                            className="form-input-error">At least 1 Required</p>
                         <fieldset>
                             {systemComponents}
                         </fieldset>
                     </label>
                     <label className="modal-label">
-                        Genres:
+                        <strong className="form-input-type">Genres:</strong>
+                        <p style={{ visibility: !selectedGenres.length ? 'visible' : 'hidden' }}
+                            className="form-input-error">At least 1 Required</p>
                         <fieldset>
                             {genreComponents}
                         </fieldset>

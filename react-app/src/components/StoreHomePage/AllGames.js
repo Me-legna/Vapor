@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { NavLink, useHistory } from 'react-router-dom'
 import { load_all_games, load_one_game } from '../../store/games'
+import logo from '../../images/vapor-icon.png'
 import './HomePage.css'
 
 
@@ -34,23 +35,23 @@ function AllGames() {
                             <img className='game-list-image' src={game.media.find(image => image.is_preview === true).url} alt='game-img'></img>
                         </div>
                         <div>
-                            <div style={{marginLeft:'10px'}}>
+                            <div className='game-list-title'>
                                 {game.title}
                             </div>
-                            <div>
-                                {/* {game.systems.map(system => (
+                            <div className='system-icon-container'>
+                                {game.systems.map(system => (
                                     system === 'Windows'
                                         ?
-                                        <i key={`${system.id}`} className="fa-brands fa-windows"></i>
+                                        <i key={`${system.id}`} className="system-icon fa-brands fa-windows"></i>
                                         : system === 'MacOS'
                                             ?
-                                            <i key={`${system.id}`} className="fa-brands fa-apple"></i>
+                                            <i key={`${system.id}`} className="system-icon fa-brands fa-apple"></i>
                                             : system === 'VaporOS + Linux'
                                                 ?
-                                                <i key={`${system.id}`} className="fa-solid fa-smog"></i>
+                                                <img key={`${system.id}`} src={logo} alt='logo' className="system-icon logo"></img>
                                                 :
                                                 <></>
-                                ))} */}
+                                ))}
                             </div>
                             <div style={{ padding:'5px 10px 5px 10px', fontSize:'15px',color:'grey'}}>
                                 {game.genres.map((genre, idx) => (

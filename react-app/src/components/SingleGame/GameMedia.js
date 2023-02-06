@@ -11,6 +11,10 @@ function GameMedia() {
         setSelectedMedia(singleGame.media?.[0].url)
     }, [singleGame])
 
+    const addDefaultSrc = (ev) => {
+        ev.target.src = 'some default image url'
+    }
+
     return (
         <div className="media-comp-container">
             <div className="media-left-container">
