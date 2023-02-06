@@ -72,19 +72,16 @@ def reset_cart():
     # game = Game.query.get(item_id)
     cart = Cart.query.filter(Cart.user_id==current_user.id).one()
 
-    if not checkout:
-        for item in cart.items:
-            cart.items.remove(item)
-
-        cart.total = 0
+    if checkout:
+        current_user.games_owned.extend(cart.items)
         db.session.commit()
-        return jsonify(cart.to_dict())
-    else:
-        for item in cart.items:
-            cart.items.remove(item)
-            current_user.games_owned.append(item)
-
-        cart.total = 0
-        db.session.commit()
-        return jsonify(cart.to_dict())
+    cart.items = []
+    cart.total = 0
+    db.session.commit()
+    return jsonify(cart.to_dict())
+    # else:
+    #     cart.items = []
+    #     cart.total = 0
+    #     db.session.commit()
+    #     return jsonify(cart.to_dict())
         # return jsonify({'message': 'Order feature incoming'})

@@ -1,34 +1,37 @@
 #modal {
-    position: fixed;
-    top: 0;
-    right: 0;
-    left: 0;
-    bottom: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 10px;
-    z-index: 9999;
-  }
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  z-index: 9999;
+}
 
-  #modal-background {
-    position: fixed;
-    top: 0;
-    right: 0;
-    left: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.7);
-    z-index: 9999;
-  }
+#modal-background {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 9999;
+}
 
-  #modal-content {
-    position: absolute;
-    background-color:#202d39;
-    border-radius: 10px;
-    padding-left: 40px;
-    padding-right: 40px;
-    overflow-y: auto;
-    height: 30%;
-    width: 20%;
-    z-index: 9999;
-  }
+#modal-content {
+  position: absolute;
+  display: flex;
+  background-color: #202d39;
+  border-radius: 10px;
+  padding-left: 40px;
+  padding-right: 40px;
+  overflow-y: auto;
+  height: 100%;
+  width: 80%;
+  z-index: 9999;
+  flex-direction: column;
+  align-items: center;
+}

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Redirect, useHistory } from 'react-router-dom';
 import { login } from '../../store/session';
 
 const LoginForm = () => {
@@ -9,6 +9,7 @@ const LoginForm = () => {
   const [password, setPassword] = useState('');
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
+  const history = useHistory()
 
   const onLogin = async (e) => {
     e.preventDefault();
@@ -27,18 +28,21 @@ const LoginForm = () => {
   };
 
   if (user) {
-    return <Redirect to='/' />;
+    return <Redirect to='/store' />;
   }
 
   return (
     <form onSubmit={onLogin}>
+      <br />
       <div>
         {errors.map((error, ind) => (
           <div key={ind}>{error}</div>
         ))}
       </div>
+      <br />
       <div>
         <label htmlFor='email'>Email</label>
+        <br />
         <input
           name='email'
           type='text'
@@ -49,6 +53,7 @@ const LoginForm = () => {
       </div>
       <div>
         <label htmlFor='password'>Password</label>
+        <br />
         <input
           name='password'
           type='password'
@@ -56,7 +61,11 @@ const LoginForm = () => {
           value={password}
           onChange={updatePassword}
         />
+        <br />
         <button type='submit'>Login</button>
+        <br />
+        <button className='signup-button'
+          onClick={() => (history.push('/join'))}>Join Vapor</button>
       </div>
     </form>
   );

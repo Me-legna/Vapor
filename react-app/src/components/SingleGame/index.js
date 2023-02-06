@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useParams } from 'react-router-dom'
+import { useHistory, useParams } from 'react-router-dom'
 import { load_one_game } from '../../store/games'
 import OpenModalButton from '../OpenModalButton'
 import DeleteGameForm from './DeleteGameForm'
@@ -15,16 +15,17 @@ function SingleGame() {
     const game = useSelector(state => state.games.singleGame)
     const [loaded, setLoaded] = useState(false)
     const dispatch = useDispatch()
+    const history = useHistory()
     const { gameId } = useParams()
 
     useEffect(() => {
-        if (!Object.keys(game).length){
-            if(gameId){
+        if (!Object.keys(game).length) {
+            if (gameId) {
                 dispatch(load_one_game(gameId))
             }
         }
         setLoaded(true)
-    }, [dispatch, game, gameId])
+    }, [dispatch, history, game, gameId])
 
     // if(!loaded) return null
 
@@ -41,7 +42,7 @@ function SingleGame() {
                                 modalComponent={<EditGameForm />}
                                 faIcon={<i className="fa-solid fa-pen-to-square"></i>}
                             />
-                            <br/>
+                            <br />
                             <OpenModalButton
                                 modalComponent={<DeleteGameForm />}
                                 faIcon={<i className="fa-solid fa-trash-can"></i>}

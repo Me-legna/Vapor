@@ -11,24 +11,35 @@ import { useEffect } from "react"
 function GameBody() {
     const singleGame = useSelector(state => state.games.singleGame)
     const user = useSelector(state => state.session.user)
-    const inLibrary = user.games_owned.find(game => game.id === singleGame.id)
-    const inCart = user.cart.items.find(game => game.id === singleGame.id)
+    const inLibrary = user && user.games_owned.find(game => game.id === singleGame.id)
+    const inCart = user && user.cart.items.find(game => game.id === singleGame.id)
     const dispatch = useDispatch()
     const history = useHistory()
     const { setModalContent } = useModal()
 
+    console.log('inLibrary', inLibrary)
+    console.log('inCart', inCart)
+
+
     useEffect(()=> {
-        
+        dispatch(authenticate())
+    }, [dispatch])
+
+    useEffect(()=> {
     },[inLibrary, inCart])
 
     async function addGame(e, gameId) {
         e.preventDefault()
-        await dispatch(addToCart(gameId))
-        await dispatch(authenticate())
-        if(singleGame.price === 0){
-            setModalContent(<AddedToLibrary />)
+        if(user){
+            await dispatch(addToCart(gameId))
+            await dispatch(authenticate())
+            if(singleGame.price === 0){
+                setModalContent(<AddedToLibrary />)
+            }else{
+                history.push('/cart')
+            }
         }else{
-            history.push('/cart')
+            history.push('/login')
         }
     }
 
