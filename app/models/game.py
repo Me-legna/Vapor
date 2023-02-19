@@ -66,7 +66,7 @@ class GameImage(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     game_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("games.id")), nullable=False)
     url = db.Column(db.String, nullable=False)
-    is_preview = db.Column(db.Boolean, default=False)
+    # is_preview = db.Column(db.Boolean, default=False)
 
     game = db.relationship('Game', back_populates='media',foreign_keys=[game_id])
 
@@ -86,6 +86,7 @@ class Game(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(200), nullable=False)
+    cover_image = db.Column(db.String, nullable=False)
     developer_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")), nullable=False)
     release_date = db.Column(db.Date, nullable=False) # default=datetime.now().strftime("%m/%d/Y")
     price = db.Column(db.Float, nullable=False)
