@@ -129,4 +129,3 @@ class Game(db.Model):
             'preview': [media.url for media in self.media if media.is_preview == True][0],
             'systems': [system.name for system in self.systems]
         }
- 
