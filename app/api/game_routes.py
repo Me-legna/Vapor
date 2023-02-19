@@ -82,17 +82,13 @@ def create_game():
             title=form.data['title'],
             developer_id=current_user.id,
             release_date=release_date,
+            cover_image=request.json['previewUrl'],
             price=form.data['price'],
             description=form.data['description'],
             about=form.data['about'],
             rating=form.data['rating'],
             systems=systems,
             genres=genres
-        )
-        image = GameImage(
-            url = request.json['previewUrl'],
-            is_preview = True,
-            game=game
         )
 
         db.session.add(game)
@@ -119,8 +115,8 @@ def update_game(game_id):
     """
     Updates and returns a game.
     """
-
-    game = Game.query.get(game_id)
+    with db.session.no_autoflush:
+        game = Game.query.get(game_id)
 
     if game is None:
         return jsonify({'message': "Game couldn't be found", 'statusCode': 404}), 404
@@ -131,6 +127,7 @@ def update_game(game_id):
     # return jsonify({'game': game.to_dict()})
     json_systems = request.json['systems']
     json_genres = request.json['genres']
+    json_cover = request.json['previewUrl']
 
     systems = System.query.filter(System.name.in_(json_systems)).all()
     genres = Genre.query.filter(Genre.name.in_(json_genres)).all()
@@ -140,6 +137,7 @@ def update_game(game_id):
     if form.validate_on_submit():
 
         game.title=form.data['title']
+        game.cover_image=json_cover
         game.price=form.data['price']
         game.description=form.data['description']
         game.about=form.data['about']

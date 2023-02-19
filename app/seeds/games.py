@@ -27,6 +27,7 @@ def seed_games():
 
     game_1 = Game(
         title='Pac-Man',
+        cover_image='https://geometrydash.io/data/image/pacman-30th-anniversary.jpg',
         developer_id=1,
         release_date=date(2022, 11, 7),
         price=59.99,
@@ -36,6 +37,7 @@ def seed_games():
         )
     game_2 = Game(
         title='Smite',
+        cover_image='https://www.aroged.com/wp-content/uploads/2023/01/1673697820_SMITE-Magic-The-Gathering-Crossover-heralds-biggest-content-update.jpg',
         developer_id=4,
         release_date=date(2021, 11, 7),
         price=0,
@@ -45,6 +47,7 @@ def seed_games():
         )
     game_3 = Game(
         title='League of Legends',
+        cover_image='https://cdnportal.mobalytics.gg/production/2021/06/64779e0a-league-of-legends-game-bg.png',
         developer_id=1,
         release_date=date(2022, 12, 7),
         price=0,
@@ -54,6 +57,7 @@ def seed_games():
         )
     game_4 = Game(
         title='Call of Duty',
+        cover_image='https://www.nicepng.com/png/detail/77-775555_call-of-duty-zombies-png-download-call-of.png',
         developer_id=4,
         release_date=date(2023, 1, 20),
         price=59.99,
@@ -62,36 +66,15 @@ def seed_games():
         rating='M'
     )
 
-    game_1_image1 = GameImage(
-        url = 'https://geometrydash.io/data/image/pacman-30th-anniversary.jpg',
-        is_preview = True,
-        game=game_1
-    )
     game_1_image2 = GameImage(
         url = 'https://freepacman.org/images/pacman-game-card.png',
-        is_preview = False,
         game=game_1
-    )
-    game_2_image1 = GameImage(
-        url = 'https://www.aroged.com/wp-content/uploads/2023/01/1673697820_SMITE-Magic-The-Gathering-Crossover-heralds-biggest-content-update.jpg',
-        is_preview = True,
-        game=game_2
-    )
-    game_3_image1 = GameImage(
-        url = 'https://cdnportal.mobalytics.gg/production/2021/06/64779e0a-league-of-legends-game-bg.png',
-        is_preview = True,
-        game=game_3
-    )
-    game_4_image1 = GameImage(
-        url = 'https://www.nicepng.com/png/detail/77-775555_call-of-duty-zombies-png-download-call-of.png',
-        is_preview = True,
-        game=game_4
     )
 
     db.session.add_all([arcade, moba, shooter])
     db.session.add_all([mac, windows, vapor_os])
     db.session.add_all([game_1, game_2,game_3,game_4])
-    db.session.add_all([game_1_image1, game_1_image2, game_2_image1, game_3_image1, game_4_image1])
+    db.session.add(game_1_image2)
 
     game_1.genres.append(arcade)
     game_2.genres.append(moba)

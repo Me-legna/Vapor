@@ -66,7 +66,7 @@ class GameImage(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     game_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("games.id")), nullable=False)
     url = db.Column(db.String, nullable=False)
-    is_preview = db.Column(db.Boolean, default=False)
+    # is_preview = db.Column(db.Boolean, default=False)
 
     game = db.relationship('Game', back_populates='media',foreign_keys=[game_id])
 
@@ -74,7 +74,6 @@ class GameImage(db.Model):
         return {
             'id': self.id,
             'url': self.url,
-            'is_preview': self.is_preview
         }
 
 
@@ -86,6 +85,7 @@ class Game(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(200), nullable=False)
+    cover_image = db.Column(db.String, nullable=False)
     developer_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")), nullable=False)
     release_date = db.Column(db.Date, nullable=False) # default=datetime.now().strftime("%m/%d/Y")
     price = db.Column(db.Float, nullable=False)
@@ -112,6 +112,7 @@ class Game(db.Model):
         return {
             'id': self.id,
             'title': self.title,
+            'cover': self.cover_image,
             'developer_id': self.developer_id,
             'release_date': self.formatted_release_date,
             'price': self.price,
@@ -126,6 +127,6 @@ class Game(db.Model):
             'id': self.id,
             'title': self.title,
             'price': self.price,
-            'preview': [media.url for media in self.media if media.is_preview == True][0],
+            'preview': self.cover_image,
             'systems': [system.name for system in self.systems]
         }
