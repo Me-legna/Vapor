@@ -7,8 +7,7 @@ import { update_game } from "../../store/games"
 
 function EditGameForm() {
     const game = useSelector(state => state.games.singleGame)
-    const preview = game.media?.find(image => image?.is_preview === true)
-    const [previewUrl, setPreviewUrl] = useState(preview?.url)
+    const [previewUrl, setPreviewUrl] = useState(game.cover)
     const [title, setTitle] = useState(game.title)
     const [price, setPrice] = useState(game.price)
     const [description, setDescription] = useState(game.description)
@@ -51,7 +50,8 @@ function EditGameForm() {
             about,
             rating,
             systems: selectedSystems,
-            genres: selectedGenres
+            genres: selectedGenres,
+            previewUrl
         }
 
         await dispatch(update_game(game.id, updatedGame))
@@ -177,7 +177,7 @@ function EditGameForm() {
                     </ul>
                     <label className="modal-label">
                         <div>
-                            <strong className="form-input-type">Preview Image URL:</strong>
+                            <strong className="form-input-type">Cover Image:</strong>
                             <p style={{ visibility: !previewUrl ? 'visible' : 'hidden' }}
                                 className="form-input-error">Required</p>
                         </div>
@@ -185,7 +185,7 @@ function EditGameForm() {
                         <input
                             className="modal-top-input"
                             type="url"
-                            placeholder="Preview Image Url"
+                            placeholder="Cover Image URL"
                             value={previewUrl}
                             onChange={(e) => setPreviewUrl(e.target.value)}
                             required

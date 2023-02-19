@@ -152,7 +152,7 @@ function CreateGameForm() {
                     </ul>
                     <label className="modal-label">
                         <div>
-                            <strong className="form-input-type">Preview Image URL:</strong>
+                            <strong className="form-input-type">Cover Image:</strong>
                             <p style={{ visibility: !previewUrl ? 'visible' : 'hidden' }}
 
                                 className="form-input-error">Required</p>
@@ -161,7 +161,7 @@ function CreateGameForm() {
                         <input
                             className="modal-top-input"
                             type="url"
-                            placeholder="Preview Image Url"
+                            placeholder="Cover Image Url"
                             value={previewUrl}
                             onChange={(e) => setPreviewUrl(e.target.value)}
                             required

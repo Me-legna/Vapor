@@ -74,7 +74,6 @@ class GameImage(db.Model):
         return {
             'id': self.id,
             'url': self.url,
-            'is_preview': self.is_preview
         }
 
 
@@ -113,6 +112,7 @@ class Game(db.Model):
         return {
             'id': self.id,
             'title': self.title,
+            'cover': self.cover_image,
             'developer_id': self.developer_id,
             'release_date': self.formatted_release_date,
             'price': self.price,
@@ -127,6 +127,6 @@ class Game(db.Model):
             'id': self.id,
             'title': self.title,
             'price': self.price,
-            'preview': [media.url for media in self.media if media.is_preview == True][0],
+            'preview': self.cover_image,
             'systems': [system.name for system in self.systems]
         }

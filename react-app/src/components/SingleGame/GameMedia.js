@@ -5,11 +5,10 @@ import vaporLogo from '../../images/vapor-icon.png'
 
 function GameMedia() {
     const singleGame = useSelector(state => state.games.singleGame)
-    const previewImage = singleGame.media?.find(img => img.is_preview === true)
     const [selectedMedia, setSelectedMedia] = useState()
 
     useEffect(() => {
-        setSelectedMedia(singleGame.media?.[0]?.url)
+        setSelectedMedia(singleGame.cover)
     }, [singleGame])
 
     const addDefaultSrc = (e) => {
@@ -37,7 +36,7 @@ function GameMedia() {
                 </div>
             </div>
             <div className="media-right-container">
-                <img className="cover-img" src={previewImage?.url} onError={addDefaultSrc} alt='game-preview'></img>
+                <img className="cover-img" src={singleGame.cover} onError={addDefaultSrc} alt='game-preview'></img>
                 <p className="discription-p">
                     {singleGame.description}
                 </p>
