@@ -14,7 +14,7 @@ def get_all_games():
     """
     Get all games available
     """
-    games = Game.query.all()
+    games = Game.query.filter(Game.is_in_store == True).all()
     games_list = []
     for game in games:
         game_dict = game.to_dict()
@@ -174,7 +174,8 @@ def delete_game(game_id):
     if game.developer_id != current_user.id:
         return jsonify({'message': "Unauthorized", 'statusCode': 401}), 401
 
-    db.session.delete(game)
+    # db.session.delete(game)
+    game.is_in_store=False
     db.session.commit()
 
     return jsonify({'message': "Successfully deleted", 'statusCode': 200}), 200

@@ -42,6 +42,11 @@ def seed_orders():
 
     db.session.add_all([demo_order, marnie_order, bobbie_order, melegna_order])
 
+    demo.games_owned.extend(demo_order.order_detail)
+    marnie.games_owned.extend(marnie_order.order_detail)
+    bobbie.games_owned.extend(bobbie_order.order_detail)
+    melegna.games_owned.extend(melegna_order.order_detail)
+
     db.session.commit()
 
 
