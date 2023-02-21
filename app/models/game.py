@@ -1,3 +1,4 @@
+from email.policy import default
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 
 
@@ -86,6 +87,7 @@ class Game(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(200), nullable=False)
     cover_image = db.Column(db.String, nullable=False)
+    is_in_store = db.Column(db.Boolean, nullable=False, default=True)
     developer_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")), nullable=False)
     release_date = db.Column(db.Date, nullable=False) # default=datetime.now().strftime("%m/%d/Y")
     price = db.Column(db.Float, nullable=False)
@@ -113,6 +115,7 @@ class Game(db.Model):
             'id': self.id,
             'title': self.title,
             'cover': self.cover_image,
+            'is_in_store': self.is_in_store,
             'developer_id': self.developer_id,
             'release_date': self.formatted_release_date,
             'price': self.price,

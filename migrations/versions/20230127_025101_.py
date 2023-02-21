@@ -85,7 +85,14 @@ def upgrade():
     )
 
     if environment == "production":
+        op.execute(f"ALTER TABLE genres SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE systems SET SCHEMA {SCHEMA};")
         op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE games SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE game_genres SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE game_images SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE library SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE system_availability SET SCHEMA {SCHEMA};")
     # ### end Alembic commands ###
 
 def downgrade():
