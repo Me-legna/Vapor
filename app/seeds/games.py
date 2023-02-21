@@ -86,11 +86,11 @@ def seed_games():
     game_3.systems.append(windows)
     game_4.systems.extend([mac, windows, vapor_os])
 
-    # demo = User.query.get(1)
-    # melegna = User.query.get(4)
+    demo = User.query.get(1)
+    melegna = User.query.get(4)
 
-    # demo.games_owned.extend([game_1, game_3])
-    # melegna.games_owned.extend([game_2, game_4])
+    demo.games_owned.extend([game_1, game_3])
+    melegna.games_owned.extend([game_2, game_4])
 
     db.session.commit()
 
