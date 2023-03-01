@@ -15,47 +15,16 @@ def get_orders():
     Get orders of current user
     """
     orders = Order.query.filter(Order.user_id==current_user.id).all()
+    orders_list = [order.to_dict() for order in orders]
 
-    return jsonify([order.to_dict() for order in orders])
-
-
-@order_routes.route('/', methods=['POST'])
-@login_required
-def add_to_cart():
-    """
-    Add free item to library of current user
-    Add non-free item to cart of current user
-    """
-    item_id = request.json['item_id']
-
-    game = Game.query.get(item_id)
-    cart = Cart.query.filter(Cart.user_id==current_user.id).one()
+    return jsonify({"Orders": orders_list})
 
 
-    if game not in cart.items:
-        if game.price == 0:
-            new_order =  Order(
-            customer=current_user,
-            order_detail=[game],
-            type='Purchase',
-            total=0
-            )
-            current_user.games_owned.append(game)
-            db.session.add(new_order)
-            db.session.commit()
-        else:
-            cart.items.append(game)
-            cart.total += game.price
-            db.session.commit()
-
-
-    return jsonify(cart.to_dict())
-
-@cart_routes.route('/', methods=['PUT'])
+@order_routes.route('/', methods=['PUT'])
 @login_required
 def remove_from_cart():
     """
-    remove item from cart of current user
+    refund item from an order of current user
     """
     item_id = request.json['item_id']
 
@@ -68,6 +37,7 @@ def remove_from_cart():
         db.session.commit()
 
     return jsonify(cart.to_dict())
+
 
 @order_routes.route('/', methods=['DELETE'])
 @login_required
