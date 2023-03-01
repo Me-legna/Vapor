@@ -86,7 +86,7 @@ def reset_cart():
         customer=current_user,
         order_detail=cart.items,
         type='Purchase',
-        total=cart.price
+        total=cart.total
         )
         current_user.games_owned.extend(cart.items)
         db.session.add(new_order)

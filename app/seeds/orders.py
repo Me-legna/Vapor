@@ -58,9 +58,11 @@ def seed_orders():
 # it will reset the primary keys for you as well.
 def undo_orders():
     if environment == "production":
+        db.session.execute(f"TRUNCATE table {SCHEMA}.library RESTART IDENTITY CASCADE;")
         db.session.execute(f"TRUNCATE table {SCHEMA}.order_items RESTART IDENTITY CASCADE;")
         db.session.execute(f"TRUNCATE table {SCHEMA}.orders RESTART IDENTITY CASCADE;")
     else:
+        db.session.execute("DELETE FROM library")
         db.session.execute("DELETE FROM order_items")
         db.session.execute("DELETE FROM orders")
 
