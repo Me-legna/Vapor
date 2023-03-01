@@ -6,7 +6,8 @@ order_items = db.Table(
     "order_items",
     db.Model.metadata,
     db.Column("orders", db.Integer, db.ForeignKey(add_prefix_for_prod('orders.id')), primary_key=True),
-    db.Column("games", db.Integer, db.ForeignKey(add_prefix_for_prod('games.id')), primary_key=True)
+    db.Column("games", db.Integer, db.ForeignKey(add_prefix_for_prod('games.id')), primary_key=True),
+    db.Column("is_refunded", db.Boolean, default=False)
 )
 
 if environment == "production":
