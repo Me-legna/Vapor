@@ -1,7 +1,7 @@
 from crypt import methods
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
-from app.models import Cart, Game, User, db
+from app.models import Cart, Game, Order, User, db
 from app.forms import GameForm
 from .auth_routes import validation_errors_to_error_messages
 
@@ -31,17 +31,23 @@ def add_to_cart():
     game = Game.query.get(item_id)
     cart = Cart.query.filter(Cart.user_id==current_user.id).one()
 
-    # if game not in cart.items:
-    #     if game.price == 0:
-    #         current_user.games_owned.append(game)
-    #         db.session.commit()
-        # else:
-            # cart.items.append(game)
-            # cart.total += game.price
-            # db.session.commit()
-    cart.items.append(game)
-    cart.total += game.price
-    db.session.commit()
+
+    if game not in cart.items:
+        if game.price == 0:
+            new_order =  Order(
+            customer=current_user,
+            order_detail=[game],
+            type='Purchase',
+            total=0
+            )
+            current_user.games_owned.append(game)
+            db.session.add(new_order)
+            db.session.commit()
+        else:
+            cart.items.append(game)
+            cart.total += game.price
+            db.session.commit()
+
 
     return jsonify(cart.to_dict())
 
@@ -75,9 +81,16 @@ def reset_cart():
     # game = Game.query.get(item_id)
     cart = Cart.query.filter(Cart.user_id==current_user.id).one()
 
-    # if checkout:
-    #     current_user.games_owned.extend(cart.items)
-    #     db.session.commit()
+    if checkout:
+        new_order =  Order(
+        customer=current_user,
+        order_detail=cart.items,
+        type='Purchase',
+        total=cart.price
+        )
+        current_user.games_owned.extend(cart.items)
+        db.session.add(new_order)
+        db.session.commit()
     cart.items = []
     cart.total = 0
     db.session.commit()

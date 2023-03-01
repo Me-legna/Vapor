@@ -19,6 +19,7 @@ function GameBody() {
 
     // console.log('inLibrary', inLibrary)
     // console.log('inCart', inCart)
+    // console.log('singleGame', singleGame)
 
 
     useEffect(()=> {
@@ -33,11 +34,11 @@ function GameBody() {
         if(user){
             await dispatch(addToCart(gameId))
             await dispatch(authenticate())
-            // if(singleGame.price === 0){
-            //     setModalContent(<AddedToLibrary />)
-            // }else{
+            if(singleGame.price === 0){
+                setModalContent(<AddedToLibrary />)
+            }else{
                 history.push('/cart')
-            // }
+            }
         }else{
             history.push('/login')
         }
