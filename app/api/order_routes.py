@@ -1,3 +1,4 @@
+from datetime import datetime
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
 from app.models import Cart, Game, Order, User, db, OrderItem
@@ -52,8 +53,25 @@ def refund_item(order_id):
     if order.customer_id != current_user.id:
         return jsonify({'message': "Unauthorized", 'statusCode': 401}), 401
 
-
     item_id = request.json['itemId']
+
+    order_items = OrderItem.query.filter(OrderItem.order_id == order_id, OrderItem.game_id == item_id).all()
+    game = Game.query.get(item_id)
+
+    for item in order_items:
+        if item.is_refunded:
+            return jsonify({'message': "You have previously refunded this item. Please contact Vapor support to continue. However, they will likely not respond to this buffoonery."})
+
+    order_item = order_items[0]
+
+    order_item.is_refunded = True
+    order_item.amount = -order_item.amount
+    order_item.refund_date = datetime.now()
+    current_user.games_owned.remove(game)
+
+    db.session.commit()
+
+    return jsonify(order.to_dict())
     # orditems = db.metadata.tables['order_items']
     # # items = (
     # #     orditems.update()
@@ -68,37 +86,4 @@ def refund_item(order_id):
 
     # game = [item for item in order.order_detail if item.id == item_id][0]
 
-
-
-    # print("orderrrrrrrrrrrrrrrrrr", item)
-
-
-    # return jsonify(order.to_dict())
-
-
-@order_routes.route('/', methods=['DELETE'])
-@login_required
-def reset_cart():
-    """
-    checks if checking out to send to orders and
-    empties all items from and reset price of cart of current user
-    """
-    checkout = request.json['checkout']
-
-    # game = Game.query.get(item_id)
-    cart = Cart.query.filter(Cart.user_id==current_user.id).one()
-
-    if checkout:
-        new_order =  Order(
-        customer=current_user,
-        order_detail=cart.items,
-        type='Purchase',
-        total=cart.total
-        )
-        current_user.games_owned.extend(cart.items)
-        db.session.add(new_order)
-        db.session.commit()
-    cart.items = []
-    cart.total = 0
-    db.session.commit()
-    return jsonify(cart.to_dict())
+    # print("orderrrrrrrrrrrrrrrrrr", current_user.to_dict())

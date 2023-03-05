@@ -1,5 +1,5 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
-from datetime import datetime
+from datetime import datetime, date
 
 
 # order_items = db.Table(
@@ -23,7 +23,7 @@ class Order(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     customer_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")), nullable=False)
     type = db.Column(db.Enum('Purchase', 'Gift Purchase', 'In-Game Purchase', name='purchase_type', create_type=False), nullable=False)
-    purchase_date = db.Column(db.DateTime, nullable=False, default=datetime.now())
+    purchase_date = db.Column(db.Date, nullable=False, default=date.today())
     total = db.Column(db.Float, nullable=False)
 
     customer = db.relationship('User', back_populates='purchases')
@@ -52,14 +52,24 @@ class OrderItem(db.Model):
     order_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("orders.id")), primary_key=True)
     game_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("games.id")), primary_key=True)
     is_refunded = db.Column(db.Boolean, default=False)
-    price = db.Column(db.Float, nullable=False)
+    refund_date = db.Column(db.Date, default=None)
+    amount = db.Column(db.Float, nullable=False)
 
     game = db.relationship('Game')
+
+    @property
+    def formatted_refund_date(self):
+        if self.refund_date == None:
+            return None
+        else:
+            return self.refund_date.strftime("%b %d, %Y")
 
     def to_dict(self):
         return {
             # "order_id": self.order_id,
             # "game_id": self.game_id,
             "game": self.game.to_order_dict(),
-            "is_refunded": self.is_refunded
+            "is_refunded": self.is_refunded,
+            "refund_date": self.formatted_refund_date,
+            "amount": self.amount
         }

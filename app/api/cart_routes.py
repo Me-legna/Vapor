@@ -82,7 +82,7 @@ def reset_cart():
     cart = Cart.query.filter(Cart.user_id==current_user.id).one()
 
     if checkout:
-        new_order =  Order(
+        new_order = Order(
         customer=current_user,
         order_detail=cart.items,
         type='Purchase',

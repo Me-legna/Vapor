@@ -25,7 +25,7 @@ def upgrade():
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('customer_id', sa.Integer(), nullable=False),
     sa.Column('type', sa.Enum('Purchase', 'Gift Purchase', 'In-Game Purchase', name='purchase_type'), nullable=False),
-    sa.Column('purchase_date', sa.DateTime(), nullable=False),
+    sa.Column('purchase_date', sa.Date(), nullable=False),
     sa.Column('total', sa.Float(), nullable=False),
     sa.ForeignKeyConstraint(['customer_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')

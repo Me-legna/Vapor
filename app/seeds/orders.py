@@ -17,25 +17,25 @@ def seed_orders():
 
     demo_order = Order(
         customer=demo,
-        order_detail=[OrderItem(game=smite, price=smite.price)],
+        order_detail=[OrderItem(game=smite, amount=smite.price)],
         type='Purchase',
         total=smite.price
         )
     marnie_order = Order(
         customer=marnie,
-        order_detail=[OrderItem(game=pac_man, price=pac_man.price), OrderItem(game=lol, price=lol.price), OrderItem(game=cod, price=cod.price)],
+        order_detail=[OrderItem(game=pac_man, amount=pac_man.price), OrderItem(game=lol, amount=lol.price), OrderItem(game=cod, amount=cod.price)],
         type='Purchase',
         total=pac_man.price + lol.price + cod.price
         )
     bobbie_order = Order(
         customer=bobbie,
-        order_detail=[OrderItem(game=smite, price=smite.price), OrderItem(game=lol, price=lol.price)],
+        order_detail=[OrderItem(game=smite, amount=smite.price), OrderItem(game=lol, amount=lol.price)],
         type='Purchase',
         total=lol.price + smite.price
         )
     melegna_order = Order(
         customer=melegna,
-        order_detail=[OrderItem(game=pac_man, price=pac_man.price), OrderItem(game=lol, price=lol.price)],
+        order_detail=[OrderItem(game=pac_man, amount=pac_man.price), OrderItem(game=lol, amount=lol.price)],
         type='Purchase',
         total=pac_man.price + lol.price
     )
