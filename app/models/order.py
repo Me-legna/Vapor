@@ -29,11 +29,15 @@ class Order(db.Model):
     customer = db.relationship('User', back_populates='purchases')
     order_detail = db.relationship('Game', secondary=order_items)
 
+    @property
+    def formatted_purchase_date(self):
+        return self.purchase_date.strftime("%b %d, %Y")
+
     def to_dict(self):
         return {
             'type': self.type,
-            'purchase_date': self.purchase_date,
+            'purchaseDate': self.formatted_purchase_date,
             'total': self.total,
-            'customer': self.customer.to_dict(),
-            'items': [item.title for item in self.order_detail]
+            'customerId': self.customer_id,
+            'items': [item.to_order_dict() for item in self.order_detail]
         }
