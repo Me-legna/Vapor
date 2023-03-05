@@ -2,16 +2,16 @@ from .db import db, environment, SCHEMA, add_prefix_for_prod
 from datetime import datetime
 
 
-order_items = db.Table(
-    "order_items",
-    db.Model.metadata,
-    db.Column("orders", db.Integer, db.ForeignKey(add_prefix_for_prod('orders.id')), primary_key=True),
-    db.Column("games", db.Integer, db.ForeignKey(add_prefix_for_prod('games.id')), primary_key=True),
-    db.Column("is_refunded", db.Boolean, default=False)
-)
+# order_items = db.Table(
+#     "order_items",
+#     db.Model.metadata,
+#     db.Column("order_id", db.Integer, db.ForeignKey(add_prefix_for_prod('orders.id')), primary_key=True),
+#     db.Column("game_id", db.Integer, db.ForeignKey(add_prefix_for_prod('games.id')), primary_key=True),
+#     db.Column("is_refunded", db.Boolean, default=False)
+# )
 
-if environment == "production":
-    order_items.schema = SCHEMA
+# if environment == "production":
+#     order_items.schema = SCHEMA
 
 
 class Order(db.Model):
@@ -27,7 +27,7 @@ class Order(db.Model):
     total = db.Column(db.Float, nullable=False)
 
     customer = db.relationship('User', back_populates='purchases')
-    order_detail = db.relationship('Game', secondary=order_items)
+    order_detail = db.relationship('OrderItem')
 
     @property
     def formatted_purchase_date(self):
@@ -35,9 +35,31 @@ class Order(db.Model):
 
     def to_dict(self):
         return {
+            'id': self.id,
             'type': self.type,
             'purchaseDate': self.formatted_purchase_date,
             'total': self.total,
             'customerId': self.customer_id,
-            'items': [item.to_order_dict() for item in self.order_detail]
+            'items': [item.to_dict() for item in self.order_detail]
+        }
+
+class OrderItem(db.Model):
+    __tablename__ = 'order_items'
+
+    if environment == "production":
+        __table_args__ = {'schema': SCHEMA}
+
+    order_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("orders.id")), primary_key=True)
+    game_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("games.id")), primary_key=True)
+    is_refunded = db.Column(db.Boolean, default=False)
+    price = db.Column(db.Float, nullable=False)
+
+    game = db.relationship('Game')
+
+    def to_dict(self):
+        return {
+            # "order_id": self.order_id,
+            # "game_id": self.game_id,
+            "game": self.game.to_order_dict(),
+            "is_refunded": self.is_refunded
         }

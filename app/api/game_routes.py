@@ -115,8 +115,9 @@ def update_game(game_id):
     """
     Updates and returns a game.
     """
-    with db.session.no_autoflush:
-        game = Game.query.get(game_id)
+    # with db.session.no_autoflush:
+    #     game = Game.query.get(game_id)
+    game = Game.query.get(game_id)
 
     if game is None:
         return jsonify({'message': "Game couldn't be found", 'statusCode': 404}), 404

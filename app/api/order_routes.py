@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
-from app.models import Cart, Game, Order, User, db, order_items
+from app.models import Cart, Game, Order, User, db, OrderItem
 from app.forms import GameForm
 from .auth_routes import validation_errors_to_error_messages
 
@@ -13,7 +13,7 @@ def get_orders():
     """
     GET orders of current user
     """
-    orders = Order.query.filter(Order.user_id==current_user.id).all()
+    orders = Order.query.filter(Order.customer_id==current_user.id).all()
     orders_list = [order.to_dict() for order in orders]
 
     return jsonify({"Orders": orders_list})
@@ -25,8 +25,13 @@ def get_single_order(order_id):
     """
     GET single order of current user
     """
-
     order = Order.query.get(order_id)
+
+    if order is None:
+        return jsonify({'message': "Order couldn't be found", 'statusCode': 404}), 404
+
+    if order.customer_id != current_user.id:
+        return jsonify({'message': "Unauthorized", 'statusCode': 401}), 401
 
 
     return jsonify(order.to_dict())
@@ -39,28 +44,36 @@ def refund_item(order_id):
     refund item from an order of current user
     """
 
-    item_id = request.json['itemId']
     order = Order.query.get(order_id)
-    orditems = db.metadata.tables['order_items']
-    # items = (
-    #     orditems.update()
-    #     .where(orditems.columns.orders == order_id and orditems.columns.games == item_id)
-    #     .values(is_refunded=True)
-    # )
-    item = db.update(orditems)
-    val = item.values({"is_refunded": False})
-    res = val.where(order_items.c.orders == order_id and order_items.c.games == item_id)
-    db.session.execute(res)
-    db.session.commit()
 
-    game = [item for item in order.order_detail if item.id == item_id][0]
+    if order is None:
+        return jsonify({'message': "Order couldn't be found", 'statusCode': 404}), 404
+
+    if order.customer_id != current_user.id:
+        return jsonify({'message': "Unauthorized", 'statusCode': 401}), 401
 
 
+    item_id = request.json['itemId']
+    # orditems = db.metadata.tables['order_items']
+    # # items = (
+    # #     orditems.update()
+    # #     .where(orditems.columns.orders == order_id and orditems.columns.games == item_id)
+    # #     .values(is_refunded=True)
+    # # )
+    # item = db.update(orditems)
+    # val = item.values({"is_refunded": False})
+    # res = val.where(order_items.c.orders == order_id and order_items.c.games == item_id)
+    # db.session.execute(res)
+    # db.session.commit()
 
-    print("orderrrrrrrrrrrrrrrrrr", item)
+    # game = [item for item in order.order_detail if item.id == item_id][0]
 
 
-    return jsonify(order.to_dict())
+
+    # print("orderrrrrrrrrrrrrrrrrr", item)
+
+
+    # return jsonify(order.to_dict())
 
 
 @order_routes.route('/', methods=['DELETE'])

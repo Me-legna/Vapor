@@ -1,5 +1,5 @@
 from datetime import datetime
-from app.models import db, User, Game, Order, environment, SCHEMA
+from app.models import db, User, Game, Order, OrderItem, environment, SCHEMA
 
 
 # Adds a demo user, you can add other users here if you want
@@ -17,35 +17,35 @@ def seed_orders():
 
     demo_order = Order(
         customer=demo,
-        order_detail=[smite],
+        order_detail=[OrderItem(game=smite, price=smite.price)],
         type='Purchase',
         total=smite.price
         )
     marnie_order = Order(
         customer=marnie,
-        order_detail=[pac_man, lol, cod],
+        order_detail=[OrderItem(game=pac_man, price=pac_man.price), OrderItem(game=lol, price=lol.price), OrderItem(game=cod, price=cod.price)],
         type='Purchase',
-        total= pac_man.price + lol.price + cod.price
+        total=pac_man.price + lol.price + cod.price
         )
     bobbie_order = Order(
         customer=bobbie,
-        order_detail=[lol, smite],
+        order_detail=[OrderItem(game=smite, price=smite.price), OrderItem(game=lol, price=lol.price)],
         type='Purchase',
-        total= lol.price + smite.price
+        total=lol.price + smite.price
         )
     melegna_order = Order(
         customer=melegna,
-        order_detail=[pac_man, lol],
+        order_detail=[OrderItem(game=pac_man, price=pac_man.price), OrderItem(game=lol, price=lol.price)],
         type='Purchase',
-        total= pac_man.price + lol.price
+        total=pac_man.price + lol.price
     )
 
     db.session.add_all([demo_order, marnie_order, bobbie_order, melegna_order])
 
-    demo.games_owned.extend(demo_order.order_detail)
-    marnie.games_owned.extend(marnie_order.order_detail)
-    bobbie.games_owned.extend(bobbie_order.order_detail)
-    melegna.games_owned.extend(melegna_order.order_detail)
+    demo.games_owned.extend([detail.game for detail in demo_order.order_detail])
+    marnie.games_owned.extend([detail.game for detail in demo_order.order_detail])
+    bobbie.games_owned.extend([detail.game for detail in bobbie_order.order_detail])
+    melegna.games_owned.extend([detail.game for detail in melegna_order.order_detail])
 
     db.session.commit()
 
