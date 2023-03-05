@@ -25,17 +25,17 @@ def upgrade():
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('customer_id', sa.Integer(), nullable=False),
     sa.Column('type', sa.Enum('Purchase', 'Gift Purchase', 'In-Game Purchase', name='purchase_type'), nullable=False),
-    sa.Column('purchase_date', sa.DateTime(), nullable=False),
+    sa.Column('purchase_date', sa.Date(), nullable=False),
     sa.Column('total', sa.Float(), nullable=False),
     sa.ForeignKeyConstraint(['customer_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('order_items',
-    sa.Column('orders', sa.Integer(), nullable=False),
-    sa.Column('games', sa.Integer(), nullable=False),
-    sa.ForeignKeyConstraint(['games'], ['games.id'], ),
-    sa.ForeignKeyConstraint(['orders'], ['orders.id'], ),
-    sa.PrimaryKeyConstraint('orders', 'games')
+    sa.Column('order_id', sa.Integer(), nullable=False),
+    sa.Column('game_id', sa.Integer(), nullable=False),
+    sa.ForeignKeyConstraint(['game_id'], ['games.id'], ),
+    sa.ForeignKeyConstraint(['order_id'], ['orders.id'], ),
+    sa.PrimaryKeyConstraint('order_id', 'game_id')
     )
 
     if environment == "production":

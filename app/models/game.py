@@ -133,3 +133,10 @@ class Game(db.Model):
             'preview': self.cover_image,
             'systems': [system.name for system in self.systems]
         }
+        
+    def to_order_dict(self):
+        return {
+            'id': self.id,
+            'title': self.title,
+            'cover': self.cover_image,
+        }

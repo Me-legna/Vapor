@@ -4,6 +4,7 @@ import { deleteCart } from "../../store/cart"
 function Checkout() {
     const cart = useSelector(state => state.cart)
     const dispatch = useDispatch()
+    console.log('cart', cart)
 
     const checkout = async (e) => {
 

@@ -15,11 +15,11 @@ def seed_carts():
     melegna_cart = Cart(
         user_id=4
     )
+    test_cart = Cart(
+        user_id=5
+    )
 
-    db.session.add(demo_cart)
-    db.session.add(marnie_cart)
-    db.session.add(bobbie_cart)
-    db.session.add(melegna_cart)
+    db.session.add_all([demo_cart, marnie_cart, bobbie_cart, melegna_cart, test_cart])
     db.session.commit()
 
 
