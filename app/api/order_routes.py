@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import date
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
 from app.models import Cart, Game, Order, User, db, OrderItem
@@ -66,7 +66,7 @@ def refund_item(order_id):
 
     order_item.is_refunded = True
     order_item.amount = -order_item.amount
-    order_item.refund_date = datetime.now()
+    order_item.refund_date = date.today()
     current_user.games_owned.remove(game)
 
     db.session.commit()

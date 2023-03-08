@@ -13,6 +13,9 @@ import CreateGameForm from './components/SingleGame/CreateGameForm';
 import Cart from './components/Cart';
 import LoginPage from './components/auth/LoginPage';
 import SignupPage from './components/auth/SignupPage';
+import AllOrders from './components/AllOrders';
+import SingleOrder from './components/SingleOrder';
+import Library from './components/Library';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -58,6 +61,15 @@ function App() {
         </Route>
         <ProtectedRoute path='/cart' exact={true}>
           <Cart />
+        </ProtectedRoute>
+        <ProtectedRoute path='/orders' exact={true}>
+          <AllOrders />
+        </ProtectedRoute>
+        <ProtectedRoute path='/orders/:orderId' exact={true}>
+          <SingleOrder />
+        </ProtectedRoute>
+        <ProtectedRoute path='/library' exact={true}>
+          <Library />
         </ProtectedRoute>
         <Route path='/'>
           <Redirect to='/store' />
