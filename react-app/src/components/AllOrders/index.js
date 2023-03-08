@@ -1,5 +1,5 @@
-import AllOrdersBody from "./body";
-import AllOrdersHeader from "./header";
+import AllOrdersBody from "./Body";
+import AllOrdersHeader from "./Header";
 
 function AllOrders() {
 	return (
