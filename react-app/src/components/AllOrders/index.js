@@ -1,7 +1,13 @@
+import AllOrdersBody from "./body";
+import AllOrdersHeader from "./header";
+
 function AllOrders() {
-    return (
-        <h1>AllOrders</h1>
-    )
+	return (
+		<>
+			<AllOrdersHeader />
+			<AllOrdersBody />
+		</>
+	);
 }
 
-export default AllOrders
+export default AllOrders;

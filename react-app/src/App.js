@@ -15,6 +15,7 @@ import LoginPage from './components/auth/LoginPage';
 import SignupPage from './components/auth/SignupPage';
 import AllOrders from './components/AllOrders';
 import SingleOrder from './components/SingleOrder';
+import Library from './components/Library';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -66,6 +67,9 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path='/orders/:orderId' exact={true}>
           <SingleOrder />
+        </ProtectedRoute>
+        <ProtectedRoute path='/library' exact={true}>
+          <Library />
         </ProtectedRoute>
         <Route path='/'>
           <Redirect to='/store' />
