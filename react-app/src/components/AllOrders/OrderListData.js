@@ -1,3 +1,4 @@
+import React from "react";
 import { useSelector } from "react-redux";
 
 function OrderListData() {
@@ -6,23 +7,22 @@ function OrderListData() {
 	return (
 		<>
 			{ordersList.map((order) => {
-				if (order.total === 0) return null;
-				else
-					return (
-						<tr>
-							<td>{order.purchaseDate}</td>
-							<td>
-								{order.items.map((item) => (
-									<>
-										{`${item.game.title}`}
-										<br />
-									</>
-								))}
-							</td>
-							<td>{order.type}</td>
-							<td>{`$${order.total}`}</td>
-						</tr>
-					);
+				// if (order.total === 0) return <React.Fragment key={order.id + order.type}></React.Fragment>;
+				return (
+					<tr key={order.id}>
+						<td key={order.id}>{order.purchaseDate}</td>
+						<td>
+							{order.items.map((item) => (
+								<React.Fragment key={item.game.id}>
+									{`${item.game.title} - $${item.amount}${item.is_refunded ? '(Refunded)' :''}`}
+									<br />
+								</React.Fragment>
+							))}
+						</td>
+						<td>{order.type}</td>
+						<td>{`$${order.total}`}</td>
+					</tr>
+				);
 			})}
 		</>
 	);

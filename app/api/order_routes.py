@@ -66,6 +66,7 @@ def refund_item(order_id):
 
     order_item.is_refunded = True
     order_item.amount = -order_item.amount
+    order.total = order.total + order_item.amount
     order_item.refund_date = date.today()
     current_user.games_owned.remove(game)
 
