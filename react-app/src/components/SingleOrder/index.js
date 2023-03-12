@@ -13,9 +13,9 @@ function SingleOrder() {
 			</Row>
 			<Row>
 				<Col>
-					<Button>Home</Button>
+					<Button className="btn-link">Home</Button>
 					{" > "}
-					<Button>Recent Purchases</Button>
+					<Button className="btn-link">Recent Purchases</Button>
 				</Col>
 			</Row>
 		</Container>
