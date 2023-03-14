@@ -5,13 +5,11 @@ function AllOrdersHeader() {
 
 	return (
 		<header className="">
-			<div className="" style={{ color: "#68c1f5" }}>
+			<div style={{ color: "#68c1f5" }}>
 				<p style={{ color: "#8f98a0" }}>
 					{"Home > Account > Purchase History"}
 				</p>
-				<h1
-					style={{ color: "white" }}
-				>{`${user.username}'s Purchase History`}</h1>
+				<h1 className="text-white">{`${user.username}'s Purchase History`}</h1>
 				Problem with a transaction? Select it below to get help.
 			</div>
 		</header>

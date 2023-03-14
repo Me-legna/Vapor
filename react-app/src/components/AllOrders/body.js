@@ -9,7 +9,7 @@ function AllOrdersBody() {
 	return (
 		<Container className="width-10">
 			<Table hover  striped border="">
-				<thead className="table-hover"style={{ backgroundColor: "#0197cf", color: "white" }}>
+				<thead className="text-white table-hover"style={{ backgroundColor: "#0197cf"}}>
 					<tr>
 						<th className="text-center">Date</th>
 						<th>Items</th>

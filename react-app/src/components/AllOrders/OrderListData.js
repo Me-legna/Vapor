@@ -25,7 +25,7 @@ function OrderListData() {
 						>
 							{order.purchaseDate}
 						</td>
-						<td style={{ color: "white" }}>
+						<td className="text-white">
 							{order.items.map((item) => (
 								<React.Fragment key={item.game.id}>
 									{`${item.game.title} - $${item.amount}${
@@ -35,10 +35,9 @@ function OrderListData() {
 								</React.Fragment>
 							))}
 						</td>
-						<td style={{ color: "white" }}>{order.type}</td>
+						<td className="text-white">{order.type}</td>
 						<td
-							style={{ color: "white" }}
-							className="text-center"
+							className="text-white text-center"
 						>{`$${order.total}`}</td>
 					</tr>
 					// <Row style={{cursor: 'pointer'}} className="mt-3 table-hover" onClick={() => history.push(`/orders/${order.id}`) } key={order.id}>

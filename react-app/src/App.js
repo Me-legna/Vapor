@@ -37,47 +37,47 @@ function App() {
 	return (
 		<>
 			<NavBar />
-			<div className="main">
-				<Switch>
-					<Route path="/login" exact={true}>
-						<LoginPage />
-						{/* <LoginForm /> */}
-					</Route>
-					<Route path="/join" exact={true}>
-						<SignupPage />
-					</Route>
-					<ProtectedRoute path="/users" exact={true}>
-						<UsersList />
-					</ProtectedRoute>
-					<ProtectedRoute path="/users/:userId" exact={true}>
-						<User />
-					</ProtectedRoute>
-					<Route path="/store" exact={true}>
-						<AllGames />
-					</Route>
-					<ProtectedRoute path="/games/new" exact={true}>
-						<CreateGameForm />
-					</ProtectedRoute>
-					<Route path="/games/:gameId">
-						<SingleGame />
-					</Route>
-					<ProtectedRoute path="/cart" exact={true}>
-						<Cart />
-					</ProtectedRoute>
+			<Switch>
+				<Route path="/login" exact={true}>
+					<LoginPage />
+					{/* <LoginForm /> */}
+				</Route>
+				<Route path="/join" exact={true}>
+					<SignupPage />
+				</Route>
+				<ProtectedRoute path="/users" exact={true}>
+					<UsersList />
+				</ProtectedRoute>
+				<ProtectedRoute path="/users/:userId" exact={true}>
+					<User />
+				</ProtectedRoute>
+				<Route path="/store" exact={true}>
+					<AllGames />
+				</Route>
+				<ProtectedRoute path="/games/new" exact={true}>
+					<CreateGameForm />
+				</ProtectedRoute>
+				<Route path="/games/:gameId">
+					<SingleGame />
+				</Route>
+				<div className="main">
+				<ProtectedRoute path="/cart" exact={true}>
+					<Cart />
+				</ProtectedRoute>
 					<ProtectedRoute path="/orders" exact={true}>
 						<AllOrders />
 					</ProtectedRoute>
 					<ProtectedRoute path="/orders/:orderId" exact={true}>
 						<SingleOrder />
 					</ProtectedRoute>
-					<ProtectedRoute path="/library" exact={true}>
-						<Library />
-					</ProtectedRoute>
-					<Route path="/">
-						<Redirect to="/store" />
-					</Route>
-				</Switch>
-			</div>
+				<ProtectedRoute path="/library" exact={true}>
+					<Library />
+				</ProtectedRoute>
+				</div>
+				<Route path="/">
+					<Redirect to="/store" />
+				</Route>
+			</Switch>
 		</>
 	);
 }

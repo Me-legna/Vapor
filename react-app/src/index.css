@@ -4,6 +4,9 @@ body{
     background: #1b2838;
     /* background-image: url('./images/vapor-background.png'); */
 }
+.text-white{
+    color:white
+}
 .flex{
     display: flex;
 }
