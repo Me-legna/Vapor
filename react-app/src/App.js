@@ -37,6 +37,7 @@ function App() {
 	return (
 		<>
 			<NavBar />
+			<>
 			<Switch>
 				<Route path="/login" exact={true}>
 					<LoginPage />
@@ -60,7 +61,6 @@ function App() {
 				<Route path="/games/:gameId">
 					<SingleGame />
 				</Route>
-				<div className="main">
 				<ProtectedRoute path="/cart" exact={true}>
 					<Cart />
 				</ProtectedRoute>
@@ -73,11 +73,11 @@ function App() {
 				<ProtectedRoute path="/library" exact={true}>
 					<Library />
 				</ProtectedRoute>
-				</div>
 				<Route path="/">
 					<Redirect to="/store" />
 				</Route>
 			</Switch>
+			</>
 		</>
 	);
 }

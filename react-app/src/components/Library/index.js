@@ -1,5 +1,9 @@
 function Library() {
-  return <h1>Library</h1>;
+	return (
+		<div className="main">
+			<h1>Library</h1>
+		</div>
+	);
 }
 
 export default Library;

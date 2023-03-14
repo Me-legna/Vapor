@@ -21,6 +21,7 @@ function OrderDetails(){
 					<Row>
 						{order.items?.map((item) => (
 							<Row
+								key={item.id + item.game.title}
 								style={{ color: "#5eafde" }}
 							>{`${item.game.title} - $${item.amount}`}</Row>
 						))}
