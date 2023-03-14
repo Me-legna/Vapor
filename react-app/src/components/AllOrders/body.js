@@ -1,14 +1,15 @@
 import Table from "react-bootstrap/Table";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import Container from "react-bootstrap/Container";
 import OrderListData from "./OrderListData";
-import { Container } from "react-bootstrap";
+import './Orders.css'
 
 function AllOrdersBody() {
 	return (
 		<Container className="width-10">
-			<Table hover striped border="">
-				<thead>
+			<Table hover  striped border="">
+				<thead className="table-hover"style={{ backgroundColor: "#0197cf", color: "white" }}>
 					<tr>
 						<th className="text-center">Date</th>
 						<th>Items</th>
@@ -16,7 +17,7 @@ function AllOrdersBody() {
 						<th className="text-center">Total</th>
 					</tr>
 				</thead>
-				<tbody>
+				<tbody >
 					<OrderListData />
 				</tbody>
 			</Table>

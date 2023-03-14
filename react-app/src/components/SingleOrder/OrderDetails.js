@@ -7,7 +7,7 @@ function OrderDetails(){
     return (
 			<Container className="mt-4">
 				<section>
-					<Row>Transaction ID: {order.id}</Row>
+					<Row>Transaction ID: 1708286993139{order.id}</Row>
 					<Row>Type: {order.type} </Row>
 					<Row>Purchased: {order.purchaseDate} </Row>
 				</section>
