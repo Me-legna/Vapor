@@ -22,6 +22,9 @@
     margin: 0px auto 5px auto;
     align-items: center;
 }
+.indiv-game:hover {
+    background-color: #07b5ef9c;
+}
 
 .indiv-game-nav {
     color: white;

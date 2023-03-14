@@ -30,15 +30,18 @@ function SingleOrder() {
 		loaded && (
 			<Container>
 				<Row>
-					<Col lg className="p-3">
+					<Col lg className="text-white p-3">
 						Vapor Support
 					</Col>
 				</Row>
 				<Row>
 					<Col>
-						<Button className="btn-link">Home</Button>
+						{/* <Button className="text-white btn-link">Home</Button>
 						{" > "}
-						<Button className="btn-link">Recent Purchases</Button>
+						<Button className="btn-link">Recent Purchases</Button> */}
+						<p style={{ color: "#8f98a0" }}>
+							{"Home  >  Account  >  Purchase History"}
+						</p>
 					</Col>
 				</Row>
 				<OrderDetails />
