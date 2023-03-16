@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import date
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
 from app.models import Cart, Game, Order, User, db, OrderItem
@@ -59,14 +59,18 @@ def refund_item(order_id):
     game = Game.query.get(item_id)
 
     for item in order_items:
-        if item.is_refunded:
-            return jsonify({'message': "You have previously refunded this item. Please contact Vapor support to continue. However, they will likely not respond to this buffoonery."})
+        if item.game.id == item_id:
+            if item.is_refunded:
+                return jsonify({'error': "You have previously refunded this item. Please contact Vapor support to continue. However, they will likely not respond to this buffoonery."}),409
+            if item.amount == 0:
+                return jsonify({'error': "You are trying to refund an item you got for free... We will deposit $0 into your account at some point. For now, hold that item for us."}), 409
 
     order_item = order_items[0]
 
     order_item.is_refunded = True
     order_item.amount = -order_item.amount
-    order_item.refund_date = datetime.now()
+    order.total = order.total + order_item.amount
+    order_item.refund_date = date.today()
     current_user.games_owned.remove(game)
 
     db.session.commit()
