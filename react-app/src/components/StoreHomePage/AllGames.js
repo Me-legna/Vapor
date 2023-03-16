@@ -36,7 +36,7 @@ function AllGames() {
                     <div key={game.id} className='indiv-game clickable' onClick={() => handleClick(game.id)}>
                         {/* {console.log('game', game)} */}
                         <div className='game-list-image-container'>
-                            <img className='game-list-image' src={game.cover} onError={addDefaultSrc} alt='game-img'></img>
+                            <img className='p-1 game-list-image' src={game.cover} onError={addDefaultSrc} alt='game-img'></img>
                         </div>
                         <div className='game-list-info-container'>
                             <div className='game-list-left-info'>
