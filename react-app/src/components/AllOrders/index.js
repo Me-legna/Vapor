@@ -13,10 +13,11 @@ function AllOrders() {
 	},[dispatch])
 
 	return (
-		<>
+		<div className="main">
 			<AllOrdersHeader />
 			<AllOrdersBody />
-		</>
+		</div>
+
 	);
 }
 

@@ -1,0 +1,39 @@
+.issue-button-arrow {
+	background-image: url(https://help.steampowered.com/public/images/arrow_right.png);
+	background-repeat: no-repeat;
+	background-position: right 14px center;
+	background-size: auto 16px;
+	z-index: 1;
+}
+.game-list-image-container {
+	width: 20%;
+	height: 80px;
+}
+.indiv-item {
+	background-color: #202d39;
+	height: 40%;
+	width: 70%;
+	color: white;
+	display: flex;
+	margin: 0px 0px 5px 0px;
+	align-items: left;
+}
+.item-list {
+	background-color: #445468;
+    width: 100%
+}
+.item-list:hover{
+    background-color: #09a9edcc;
+}
+.issue-button {
+	display: block;
+	max-width: 712px;
+	box-sizing: border-box;
+	margin-top: 10px;
+	padding-right: 30px;
+	border: solid 1px;
+	border-color: #445468;
+	font-size: 15px;
+	color: white;
+	background-color: #445468;
+}
