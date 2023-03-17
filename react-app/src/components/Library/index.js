@@ -8,7 +8,7 @@ function Library() {
 
 	return (
 		<div className="main">
-			<Container className="text-white">
+			<Container className="pt-3 text-white">
 				<p style={{ color: "#8f98a0" }}>{`${user.username} > Library`}</p>
 				<h1>Library</h1>
 				<OwnedGames/>

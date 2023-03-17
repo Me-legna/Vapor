@@ -5,7 +5,7 @@ function AllOrdersHeader() {
 
 	return (
 		<header className="">
-			<div style={{ color: "#68c1f5" }}>
+			<div className="pt-3" style={{ color: "#68c1f5" }}>
 				<p style={{ color: "#8f98a0" }}>
 					{"Home > Account > Order History"}
 				</p>
