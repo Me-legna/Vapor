@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import NavBar from "./components/navigation";
+import NaviBar from "./components/navigation";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UsersList from "./components/UsersList";
 import User from "./components/User";
@@ -36,8 +36,7 @@ function App() {
 
 	return (
 		<>
-			<NavBar />
-			<>
+			<NaviBar />
 			<Switch>
 				<Route path="/login" exact={true}>
 					<LoginPage />
@@ -77,7 +76,6 @@ function App() {
 					<Redirect to="/store" />
 				</Route>
 			</Switch>
-			</>
 		</>
 	);
 }
