@@ -6,6 +6,7 @@ import OpenModalButton from '../OpenModalButton'
 import DeleteGameForm from './DeleteGameForm'
 import EditGameForm from './EditGameForm'
 import GameBody from './GameBody'
+import GameHeader from './GameHeader'
 import GameMedia from './GameMedia'
 import GameReviews from './GameReviews'
 import './SingleGame.css'
@@ -31,38 +32,50 @@ function SingleGame() {
 
     return loaded && (
         // <h1>SingleGame</h1>
-        <section>
-            <header className='single-header'>
-                <div className='single-header-left'>
-                <p>AllGames {`> ${game.title ? `${game.genres[0]} > ${game.title}` : ''}`}</p>
-                <h1>{game.title}</h1>
-                </div>
-                <div style={{ width: "10%", paddingTop: '2%' }}>
-                    {user && user.id === game.developer_id && (
-                        <div>
-                            <OpenModalButton
-                                modalComponent={<EditGameForm />}
-                                faIcon={<i className="fa-solid fa-pen-to-square"></i>}
-                            />
-                            <br />
-                            <OpenModalButton
-                                modalComponent={<DeleteGameForm />}
-                                faIcon={<i className="fa-solid fa-trash-can"></i>}
-                            />
-                        </div>
-                    )}
-                </div>
-            </header>
-            <section>
+        <section className='main'>
+            <GameHeader/>
+            {/* <section>
                 <GameMedia />
             </section>
             <section>
                 <GameBody />
-            </section>
+            </section> */}
             {/* <section>
                 <GameReviews/>
             </section> */}
         </section>
+        // <section>
+        //     <header className='single-header'>
+        //         <div className='single-header-left'>
+        //         <p>AllGames {`> ${game.title ? `${game.genres[0]} > ${game.title}` : ''}`}</p>
+        //         <h1>{game.title}</h1>
+        //         </div>
+        //         <div style={{ width: "10%", paddingTop: '2%' }}>
+        //             {user && user.id === game.developer_id && (
+        //                 <div>
+        //                     <OpenModalButton
+        //                         modalComponent={<EditGameForm />}
+        //                         faIcon={<i className="fa-solid fa-pen-to-square"></i>}
+        //                     />
+        //                     <br />
+        //                     <OpenModalButton
+        //                         modalComponent={<DeleteGameForm />}
+        //                         faIcon={<i className="fa-solid fa-trash-can"></i>}
+        //                     />
+        //                 </div>
+        //             )}
+        //         </div>
+        //     </header>
+        //     <section>
+        //         <GameMedia />
+        //     </section>
+        //     <section>
+        //         <GameBody />
+        //     </section>
+        //     {/* <section>
+        //         <GameReviews/>
+        //     </section> */}
+        // </section>
 
     )
 }

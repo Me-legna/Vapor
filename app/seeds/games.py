@@ -6,7 +6,7 @@ from app.models import db, Genre, System, Game, GameImage, User, environment, SC
 # Adds Games, Genres, and Systems
 def seed_games():
     arcade = Genre(
-        name='arcade'
+        name='Arcade'
     )
     moba = Genre(
         name='MOBA'
