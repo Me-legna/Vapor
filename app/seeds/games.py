@@ -70,11 +70,31 @@ def seed_games():
         url = 'https://freepacman.org/images/pacman-game-card.png',
         game=game_1
     )
+    game_1_image3 = GameImage(
+        url = 'https://npr.brightspotcdn.com/dims4/default/36c6d59/2147483647/strip/true/crop/535x535+0+0/resize/880x880!/quality/90/?url=http%3A%2F%2Fnpr-brightspot.s3.amazonaws.com%2Flegacy%2Fsites%2Fkuar%2Ffiles%2F201504%2Fpac-man.png',
+        game=game_1
+    )
+    game_1_image4 = GameImage(
+        url = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSyN2zJi8hU0ZllgOh3NJdBmthicv438xGkAlTVwTZl4f9x8H_yrruWm2vroSGEnPJfRE&usqp=CAU',
+        game=game_1
+    )
+    game_1_image5 = GameImage(
+        url = 'https://www.split.io/wp-content/uploads/2021/06/BLOG-PacMan.png',
+        game=game_1
+    )
+    game_1_image6 = GameImage(
+        url = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHzU6xWnZb7Zo7Fv0YIge75oKHMhZeApnQd5m2v2VkDSURsP9B9dff51WoLD0KJmaCgAo&usqp=CAU',
+        game=game_1
+    )
+    game_1_image7 = GameImage(
+        url = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS68FDP-FE6YJw15FUR_Xse0NliQfdKH4ZGvQrUJPzpYGdQWvnNLA8dkFhONJRreHVlpxY&usqp=CAU',
+        game=game_1
+    )
 
     db.session.add_all([arcade, moba, shooter])
     db.session.add_all([mac, windows, vapor_os])
     db.session.add_all([game_1, game_2,game_3,game_4])
-    db.session.add(game_1_image2)
+    db.session.add_all([game_1_image2, game_1_image3, game_1_image4, game_1_image5, game_1_image6, game_1_image7])
 
     game_1.genres.append(arcade)
     game_2.genres.append(moba)

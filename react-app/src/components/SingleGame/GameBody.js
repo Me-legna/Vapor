@@ -22,12 +22,12 @@ function GameBody() {
     // console.log('singleGame', singleGame)
 
 
-    useEffect(()=> {
-        dispatch(authenticate())
-    }, [dispatch])
+    // useEffect(()=> {
+    //     dispatch(authenticate())
+    // }, [dispatch])
 
-    useEffect(()=> {
-    },[inLibrary, inCart])
+    // useEffect(()=> {
+    // },[inLibrary, inCart])
 
     async function addGame(e, gameId) {
         e.preventDefault()

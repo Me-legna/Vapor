@@ -27,55 +27,90 @@ function AllGames() {
         e.target.src = logo
     }
 
-    return !!allGamesArr.length && (
-        <div className='games-list-container'>
-            <div>
-
-                {allGamesArr.map(game => (
-                    // <NavLink className='indiv-game-nav' key={game.title} to={`/games/${game.id}`}>
-                    <div key={game.id} className='indiv-game clickable' onClick={() => handleClick(game.id)}>
-                        {/* {console.log('game', game)} */}
-                        <div className='game-list-image-container'>
-                            <img className='p-1 game-list-image' src={game.cover} onError={addDefaultSrc} alt='game-img'></img>
-                        </div>
-                        <div className='game-list-info-container'>
-                            <div className='game-list-left-info'>
-                                <div className='game-list-title'>
-                                    {game.title}
-                                </div>
-                                <div className='system-icon-container'>
-                                    {game.systems.map((system, idx) => (
-                                        system === 'Windows'
-                                            ?
-                                            <i key={`${idx}`} className="system-icon fa-brands fa-windows"></i>
-                                            : system === 'MacOS'
-                                                ?
-                                                <i key={`${idx}`} className="system-icon fa-brands fa-apple"></i>
-                                                : system === 'VaporOS + Linux'
-                                                    ?
-                                                    <img key={`${idx}`} src={logo} alt='logo' className="system-icon logo"></img>
-                                                    :
-                                                    <React.Fragment key={`${idx}`}></React.Fragment>
-                                    ))}
-                                </div>
-                                <div style={{ padding: '5px 10px 5px 10px', fontSize: '15px', color: 'grey' }}>
-                                    {game.genres.map((genre, idx) => (
-                                        idx === 0
-                                            ? <React.Fragment key={`${idx}`}>{genre}</React.Fragment>
-                                            : <React.Fragment key={`${idx}`}>{`, ${genre}`}</React.Fragment>
-                                    ))}
-                                </div>
-                            </div>
-                            <div style={{ marginLeft: "40%", marginTop: "10px", color: 'rgb(187 232 25)' }}>
-                                {game.price > 0 ? `$${game.price}` : 'Free'}
-                            </div>
-                        </div>
-                    </div>
-                    // </NavLink>
-                ))}
-            </div>
-        </div>
-    )
+    return (
+			!!allGamesArr.length && (
+				<div className="games-list-container">
+					<div>
+						{allGamesArr.map((game) => (
+							// <NavLink className='indiv-game-nav' key={game.title} to={`/games/${game.id}`}>
+							<div
+								key={game.id}
+								className="indiv-game clickable"
+								onClick={() => history.push(`/games/${game.id}`)}
+							>
+								{/* {console.log('game', game)} */}
+								<div className="game-list-image-container">
+									<img
+										className="p-1 game-list-image"
+										src={game.cover}
+										onError={addDefaultSrc}
+										alt="game-img"
+									></img>
+								</div>
+								<div className="game-list-info-container">
+									<div className="game-list-left-info">
+										<div className="game-list-title">{game.title}</div>
+										<div className="system-icon-container">
+											{game.systems.map((system, idx) =>
+												system === "Windows" ? (
+													<i
+														key={`${idx}`}
+														className="system-icon fa-brands fa-windows"
+													></i>
+												) : system === "MacOS" ? (
+													<i
+														key={`${idx}`}
+														className="system-icon fa-brands fa-apple"
+													></i>
+												) : system === "VaporOS + Linux" ? (
+													<img
+														key={`${idx}`}
+														src={logo}
+														alt="logo"
+														className="system-icon logo"
+													></img>
+												) : (
+													<React.Fragment key={`${idx}`}></React.Fragment>
+												)
+											)}
+										</div>
+										<div
+											style={{
+												padding: "5px 10px 5px 10px",
+												fontSize: "15px",
+												color: "grey",
+											}}
+										>
+											{game.genres.map((genre, idx) =>
+												idx === 0 ? (
+													<React.Fragment key={`${idx}`}>
+														{genre}
+													</React.Fragment>
+												) : (
+													<React.Fragment
+														key={`${idx}`}
+													>{`, ${genre}`}</React.Fragment>
+												)
+											)}
+										</div>
+									</div>
+									<div
+										style={{
+											marginLeft: "40%",
+											marginTop: "10px",
+											color: "rgb(187 232 25)",
+										}}
+									>
+										{game.price > 0 ? `$${game.price}` : "Free"}
+									</div>
+								</div>
+							</div>
+							// </NavLink>
+						))}
+					</div>
+				</div>
+			)
+		);
 }
 
 export default AllGames
