@@ -38,21 +38,21 @@ function SingleGame() {
     return (
 			Object.keys(game).length && (
 				// <h1>SingleGame</h1>
-				<div className="main">
-                    <Container>
+
+                    <>
 
 					<GameHeader />
 
 						<GameMedia />
-                    </Container>
+                    </>
 
-					{/* <section>
-                <GameBody />
-            </section> */}
-					{/* <section>
-                <GameReviews/>
-            </section> */}
-				</div>
+			// 		{/* <section>
+            //     <GameBody />
+            // </section> */}
+			// 		{/* <section>
+            //     <GameReviews/>
+            // </section> */}
+
 				// <section>
 				//     <header className='single-header'>
 				//         <div className='single-header-left'>

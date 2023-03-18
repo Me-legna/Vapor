@@ -26,7 +26,7 @@ function GameMedia() {
 	};
 
 	return (
-		<Container className="d-flex p-0">
+		<div className="d-flex p-0">
 			<div>
 				<Figure className="showcase-img-container">
 				{/* <Figure style={{ height: "80%", minWidth: "100%", paddingRight: "2%" }}> */}
@@ -57,7 +57,7 @@ function GameMedia() {
 			<Card style={{ minWidth: "30%", maxWidth: "30%" }}>
 				<Card.Img className="" alt="game-cover-image" src={singleGame.cover} />
 			</Card>
-		</Container>
+		</div>
 
 		// <Container className="d-flex m-0 p-0">
 		// <div className="media-comp-container">
