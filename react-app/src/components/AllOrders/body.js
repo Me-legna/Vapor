@@ -7,7 +7,7 @@ import './Orders.css'
 
 function AllOrdersBody() {
 	return (
-		<Container className="width-10">
+		<Container className="p-0 pt-1 width-10">
 			<Table hover  striped border="">
 				<thead className="text-white table-hover"style={{ backgroundColor: "#0197cf"}}>
 					<tr>

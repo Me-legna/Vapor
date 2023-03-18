@@ -14,12 +14,10 @@ function AllOrders() {
 	}, [dispatch]);
 
 	return (
-		<div className="main">
 			<Container>
 				<AllOrdersHeader />
 				<AllOrdersBody />
 			</Container>
-		</div>
 	);
 }
 

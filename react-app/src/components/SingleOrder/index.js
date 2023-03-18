@@ -27,8 +27,7 @@ function SingleOrder() {
 	// if((!user || !order.id) && user.id !== order.customer_id) return null
 	return (
 		loaded && (
-			<div className="main">
-				<Container>
+				<Container className="p-0">
 					<Row>
 						<Col lg className="text-white p-3">
 							Vapor Support
@@ -47,7 +46,6 @@ function SingleOrder() {
 					<OrderDetails />
 					<Issues />
 				</Container>
-			</div>
 		)
 	);
 }
