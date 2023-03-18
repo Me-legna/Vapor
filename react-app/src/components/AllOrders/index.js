@@ -14,10 +14,10 @@ function AllOrders() {
 	}, [dispatch]);
 
 	return (
-			<Container>
+			<>
 				<AllOrdersHeader />
 				<AllOrdersBody />
-			</Container>
+			</>
 	);
 }
 
