@@ -18,14 +18,14 @@ const UploadImage = ({gameId}) => {
 		// some sort of loading message is a good idea
 		setImageLoading(true);
 
-		const res = await fetch("/api/images", {
+		const res = await fetch("/api/media", {
 			method: "POST",
 			body: formData,
 		});
 		if (res.ok) {
 			await res.json();
 			setImageLoading(false);
-			// history.push("/images");
+			// history.push("/media");
 		} else {
 			setImageLoading(false);
 			// a real app would probably use more advanced

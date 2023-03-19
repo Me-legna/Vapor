@@ -2,7 +2,7 @@ from datetime import date
 from platform import release
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
-from app.models import Game, GameImage, System, Genre, db
+from app.models import Game, GameMedia, System, Genre, db
 from app.forms import GameForm
 from .auth_routes import validation_errors_to_error_messages
 

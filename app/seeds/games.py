@@ -1,5 +1,5 @@
 from datetime import date
-from app.models import db, Genre, System, Game, GameImage, User, environment, SCHEMA
+from app.models import db, Genre, System, Game, GameMedia, User, environment, SCHEMA
 
 
 
@@ -66,27 +66,27 @@ def seed_games():
         rating='M'
     )
 
-    game_1_image2 = GameImage(
+    game_1_image2 = GameMedia(
         url = 'https://freepacman.org/images/pacman-game-card.png',
         game=game_1
     )
-    game_1_image3 = GameImage(
+    game_1_image3 = GameMedia(
         url = 'https://npr.brightspotcdn.com/dims4/default/36c6d59/2147483647/strip/true/crop/535x535+0+0/resize/880x880!/quality/90/?url=http%3A%2F%2Fnpr-brightspot.s3.amazonaws.com%2Flegacy%2Fsites%2Fkuar%2Ffiles%2F201504%2Fpac-man.png',
         game=game_1
     )
-    game_1_image4 = GameImage(
+    game_1_image4 = GameMedia(
         url = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSyN2zJi8hU0ZllgOh3NJdBmthicv438xGkAlTVwTZl4f9x8H_yrruWm2vroSGEnPJfRE&usqp=CAU',
         game=game_1
     )
-    game_1_image5 = GameImage(
+    game_1_image5 = GameMedia(
         url = 'https://www.split.io/wp-content/uploads/2021/06/BLOG-PacMan.png',
         game=game_1
     )
-    game_1_image6 = GameImage(
+    game_1_image6 = GameMedia(
         url = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHzU6xWnZb7Zo7Fv0YIge75oKHMhZeApnQd5m2v2VkDSURsP9B9dff51WoLD0KJmaCgAo&usqp=CAU',
         game=game_1
     )
-    game_1_image7 = GameImage(
+    game_1_image7 = GameMedia(
         url = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS68FDP-FE6YJw15FUR_Xse0NliQfdKH4ZGvQrUJPzpYGdQWvnNLA8dkFhONJRreHVlpxY&usqp=CAU',
         game=game_1
     )
@@ -125,14 +125,14 @@ def undo_games():
     if environment == "production":
         db.session.execute(f"TRUNCATE table {SCHEMA}.game_genres RESTART IDENTITY CASCADE;")
         db.session.execute(f"TRUNCATE table {SCHEMA}.system_availability RESTART IDENTITY CASCADE;")
-        db.session.execute(f"TRUNCATE table {SCHEMA}.game_images RESTART IDENTITY CASCADE;")
+        db.session.execute(f"TRUNCATE table {SCHEMA}.game_media RESTART IDENTITY CASCADE;")
         db.session.execute(f"TRUNCATE table {SCHEMA}.games RESTART IDENTITY CASCADE;")
         db.session.execute(f"TRUNCATE table {SCHEMA}.systems RESTART IDENTITY CASCADE;")
         db.session.execute(f"TRUNCATE table {SCHEMA}.genres RESTART IDENTITY CASCADE;")
     else:
         db.session.execute("DELETE FROM game_genres")
         db.session.execute("DELETE FROM system_availability")
-        db.session.execute("DELETE FROM game_images")
+        db.session.execute("DELETE FROM game_media")
         db.session.execute("DELETE FROM games")
         db.session.execute("DELETE FROM systems")
         db.session.execute("DELETE FROM genres")
