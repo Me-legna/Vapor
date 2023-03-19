@@ -12,8 +12,11 @@ image_routes = Blueprint("images", __name__)
 def upload_image():
     if "image" not in request.files:
         return {"errors": "image required"}, 400
+    if "gameId" not in request.files:
+        return {"errors": "game id required"}, 400
 
     image = request.files["image"]
+    gameId = request.files["gameId"]
 
     if not allowed_file(image.filename):
         return {"errors": "file type not permitted"}, 400
@@ -29,7 +32,6 @@ def upload_image():
         return upload, 400
 
     url = upload["url"]
-    gameId = request.json['gameId']
     # flask_login allows us to get the current user from the request
     new_image = GameImage(game_id=gameId, url=url)
     db.session.add(new_image)
