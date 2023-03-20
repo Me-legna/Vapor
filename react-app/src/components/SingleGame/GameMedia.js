@@ -4,16 +4,17 @@ import Container from "react-bootstrap/Container";
 import Carousel from "react-bootstrap/Carousel";
 import Stack from "react-bootstrap/Stack";
 import Card from "react-bootstrap/Card";
-import Figure from "react-bootstrap/Figure";
+import FigureImage from "react-bootstrap/FigureImage";
 import Image from "react-bootstrap/Image";
 import vaporLogo from "../../images/vapor-icon.png";
 import "./SingleGame.css";
 
 function GameMedia() {
 	const singleGame = useSelector((state) => state.games.singleGame);
-	const media = useSelector((state) => state.games.singleGame.media);
+	const mediaList = useSelector((state) => state.games.singleGame.media);
+	const [isVideo, setIsVideo] = useState(mediaList.length ? mediaList[0].is_video : false)
 	const [selectedMedia, setSelectedMedia] = useState(
-		media.length ? singleGame.media[0].url : vaporLogo
+		mediaList.length ? mediaList[0].url : vaporLogo
 	);
 
 	// useEffect(() => {
@@ -26,37 +27,53 @@ function GameMedia() {
 	};
 
 	return (
-		<div className="d-flex p-0">
-			<div>
-				<Figure className="showcase-img-container">
-				{/* <Figure style={{ height: "80%", minWidth: "100%", paddingRight: "2%" }}> */}
-					<Figure.Image
-						style={{ height: "100%", width: "100%" }}
-						src={selectedMedia}
-						alt="selected-media"
-					/>
-				</Figure>
-				<Carousel slide>
-					{/* {singleGame.media?.map((media, idx) => (
-						<Carousel.Item
-							key={idx}
-							onClick={() => setSelectedMedia(media.url)}
-						>
-							<Image
-								className="d-block w-50"
-								alt="carousel-item"
-								onError={addDefaultSrc}
-								height={50}
-								width={50}
-								src={media.url}
+		<div className="d-flex p-0 media-ctn">
+			<div className="left-col">
+				<div className="showcase-ctn">
+					<div className="showcase-overflow">
+						{isVideo ? (
+							<FigureImage
+								alt="171x180"
+								src={selectedMedia}
+								className="showcase-img-ctn"
 							/>
-						</Carousel.Item>
-					))} */}
-				</Carousel>
+						) : (
+							<iframe
+								src={`https://www.youtube.com/embed/qAUwCe_8DXE`}
+								allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+								allowFullScreen
+								className="showcase-img-ctn"
+								title="Embedded youtube"
+							/>
+						)}
+						<div className="showcase-reel">
+							{/* {mediaList &&
+								mediaList.map((media) =>
+									media.is_video ? (
+										<iframe
+											src={`https://www.youtube.com/embed/${media.url}`}
+											allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+											allowFullScreen
+											title="Embedded youtube"
+										/>
+									) : (
+										<Image></Image>
+									)
+								)} */}
+						</div>
+						<div className="mt-1 showcase-slider"></div>
+					</div>
+				</div>
 			</div>
-			<Card style={{ minWidth: "30%", maxWidth: "30%" }}>
-				<Card.Img className="" alt="game-cover-image" src={singleGame.cover} />
-			</Card>
+			<div className="right-col">
+				<Card>
+					<Card.Img
+						className=""
+						alt="game-cover-image"
+						src={singleGame.cover}
+					/>
+				</Card>
+			</div>
 		</div>
 
 		// <Container className="d-flex m-0 p-0">
