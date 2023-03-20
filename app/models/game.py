@@ -68,6 +68,7 @@ class GameMedia(db.Model):
     game_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("games.id")), nullable=False)
     url = db.Column(db.String, nullable=False)
     is_video = db.Column(db.Boolean, default=False)
+    thumbnail_url = db.Column(db.String)
 
     game = db.relationship('Game', back_populates='media',foreign_keys=[game_id])
 
@@ -75,7 +76,8 @@ class GameMedia(db.Model):
         return {
             'id': self.id,
             'url': self.url,
-            'is_video': self.is_video
+            'is_video': self.is_video,
+            'thumbnail_url': self.thumbnail_url
         }
 
 
