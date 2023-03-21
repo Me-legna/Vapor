@@ -1,5 +1,5 @@
 from datetime import date
-from app.models import db, Genre, System, Game, GameMedia, User, environment, SCHEMA
+from app.models import db, Genre, System, Game, GameMedia, User, environment, SCHEMA, game
 
 
 
@@ -27,7 +27,7 @@ def seed_games():
 
     game_1 = Game(
         title='Pac-Man',
-        cover_image='https://geometrydash.io/data/image/pacman-30th-anniversary.jpg',
+        cover_image='https://vapor-bucket.s3.us-east-2.amazonaws.com/Pac-Man/pacman_cover_1600x960.jpeg',
         developer_id=1,
         release_date=date(2022, 11, 7),
         price=59.99,
@@ -66,6 +66,18 @@ def seed_games():
         rating='M'
     )
 
+    game_1_video1 = GameMedia(
+        url = 'https://cdn.akamai.steamstatic.com/steam/apps/256918897/movie_max_vp9.webm?t=1669908749',
+        game=game_1,
+        is_video=True,
+        thumbnail_url = 'https://freepacman.org/images/pacman-game-card.png'
+    )
+    game_1_video2 = GameMedia(
+        url = 'https://cdn.akamai.steamstatic.com/steam/apps/256867710/movie480_vp9.webm?t=1641402419',
+        game=game_1,
+        is_video=True,
+        thumbnail_url = 'https://freepacman.org/images/pacman-game-card.png'
+    )
     game_1_image2 = GameMedia(
         url = 'https://freepacman.org/images/pacman-game-card.png',
         game=game_1
@@ -94,7 +106,8 @@ def seed_games():
     db.session.add_all([arcade, moba, shooter])
     db.session.add_all([mac, windows, vapor_os])
     db.session.add_all([game_1, game_2,game_3,game_4])
-    db.session.add_all([game_1_image2, game_1_image3, game_1_image4, game_1_image5, game_1_image6, game_1_image7])
+    db.session.add_all([game_1_video1, game_1_video2,game_1_image2, game_1_image3, game_1_image4, game_1_image5, game_1_image6, game_1_image7])
+    # db.session.add_all([game_1_video2,game_1_image2, game_1_image3, game_1_image4, game_1_image5, game_1_image6, game_1_image7])
 
     game_1.genres.append(arcade)
     game_2.genres.append(moba)
