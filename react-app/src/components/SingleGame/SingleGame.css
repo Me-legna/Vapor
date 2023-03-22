@@ -247,35 +247,38 @@ input[type="checkbox" i] {
 }
 
 .media-ctn {
-	height: 28em;
+	height: 25rem;
+	background-color: #0f0f0f9c;
 }
 .right-col {
 	width: 30%;
 	height: 100%;
+    margin-left: 12px;
 }
 .left-col {
 	width: 70%;
 	height: 100%;
-	border: 1px solid red;
-	margin-right: 2%;
+	/* border: 1px solid red; */
+	/* margin-right: 1%; */
 }
 .showcase-ctn {
 	height: 100%;
-    position: relative;
+	position: relative;
 }
 .showcase-overflow {
 	height: 100%;
 }
 .showcase-reel {
-	/* position: relative; */
-	margin-bottom: 0.4rem;
-	height: 15%;
-	border: 1px solid green;
+	/* position: relative;
+	top: 1rem; */
+	height: 20%;
+	margin-top: 1rem;
+	/* border: 1px solid green; */
 }
 .showcase-slider {
 	display: flex;
 	height: 4%;
-	border: 1px solid yellow;
+	/* border: 1px solid yellow; */
 }
 .showcase-scroll {
 	/* position: absolute; */
@@ -285,7 +288,7 @@ input[type="checkbox" i] {
 	display: flex;
 }
 .thumbnail {
-	border: 1px solid black;
+	/* border: 1px solid black; */
 	min-height: 64px;
 	min-width: 116px;
 	margin: 2px;
@@ -293,7 +296,7 @@ input[type="checkbox" i] {
 	background-color: black;
 }
 .selected-thumbnail {
-	border: 1px solid black;
+	/* border: 1px solid black; */
 	min-height: 64px;
 	min-width: 116px;
 	margin: 2px;
@@ -309,29 +312,29 @@ input[type="checkbox" i] {
 	width: 100%;
 	min-height: 78%;
 	max-height: 78%;
-    position: absolute;
-	border: 1px solid blue;
-    opacity: 0;
-    visibility: hidden;
-    transition: 2.5s ;
-    background-color: black;
+	position: absolute;
+	/* border: 1px solid blue; */
+	opacity: 0;
+	visibility: hidden;
+	transition: 2.5s;
+	background-color: black;
 	/* margin-bottom: 0.4rem; */
 }
 
 .selected-showcase {
-    opacity: 1;
-    visibility: visible
+	opacity: 1;
+	visibility: visible;
 }
 
 .showcase-img {
 	width: 100%;
 	height: 100%;
 }
-.figure-ctn{
-    background-color: #000;
-    display: flex;
-    height: 78%;
-    margin-bottom: 0.4rem;
-    justify-content: center;
-    width: 100%;
+.figure-ctn {
+	background-color: #000;
+	display: flex;
+	height: 75%;
+	margin-bottom: 0.4rem;
+	justify-content: center;
+	width: 100%;
 }
