@@ -253,7 +253,7 @@ input[type="checkbox" i] {
 .right-col {
 	width: 30%;
 	height: 100%;
-    margin-left: 12px;
+	margin-left: 12px;
 }
 .left-col {
 	width: 70%;
@@ -289,6 +289,10 @@ input[type="checkbox" i] {
 }
 .thumbnail {
 	/* border: 1px solid black; */
+	display: flex;
+	cursor: pointer;
+	justify-content: center;
+	align-items: center;
 	min-height: 64px;
 	min-width: 116px;
 	margin: 2px;
@@ -297,11 +301,28 @@ input[type="checkbox" i] {
 }
 .selected-thumbnail {
 	/* border: 1px solid black; */
+	display: flex;
+	cursor: pointer;
+	justify-content: center;
+	align-items: center;
 	min-height: 64px;
 	min-width: 116px;
 	margin: 2px;
 	text-align: center;
 	background-color: white;
+}
+.play-btn-ctn {
+	position: absolute;
+	display: flex;
+	background-color: #212529;
+	width: 8%;
+	height: 8%;
+	align-items: center;
+	justify-content: center;
+}
+.play-vid-btn {
+	color: #bebaba;
+	/* color: #56f500; */
 }
 .thumb-img {
 	height: 100%;

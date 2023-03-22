@@ -75,6 +75,7 @@ function MediaShowcase() {
 									controls
 									onEnded={() => setIsPlaying(false)}
 									muted
+                                    style={{cursor:"pointer"}}
 									ref={(el) => (videoRefs.current[media.id] = el)}
 									preload="auto"
 									autoPlay={true}
@@ -123,6 +124,9 @@ function MediaShowcase() {
 											className="thumb-img"
 											src={media.thumbnail_url}
 										/>
+                                        <div className="play-btn-ctn">
+										<i className="fa-solid fa-play play-vid-btn"></i>
+                                        </div>
 									</div>
 								) : (
 									<div
