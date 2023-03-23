@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import Card from "react-bootstrap/Card";
+import Table from "react-bootstrap/Table";
 import Figure from "react-bootstrap/Figure";
 import Image from "react-bootstrap/Image";
 import vaporLogo from "../../images/vapor-icon.png";
@@ -9,12 +10,14 @@ import MediaShowcase from "./MediaShowcase";
 
 function GameSummary() {
 	const singleGame = useSelector((state) => state.games.singleGame);
+	const addDefaultSrc = (e) => {
+		e.target.onerror = null; // prevents looping
+		e.target.src = vaporLogo;
+	};
 
 	return (
 		<div className="right-col">
-			<Card>
-				<Card.Img className="" alt="game-cover-image" src={singleGame.cover} />
-			</Card>
+			{/* <Image src={singleGame.cover} alt={`${singleGame.title} cover`} onError={addDefaultSrc}/> */}
 		</div>
 		// <Container className="d-flex m-0 p-0">
 		// <div className="media-comp-container">

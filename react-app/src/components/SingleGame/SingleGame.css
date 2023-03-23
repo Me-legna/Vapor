@@ -290,6 +290,7 @@ input[type="checkbox" i] {
 .thumbnail {
 	/* border: 1px solid black; */
 	display: flex;
+	position: relative;
 	cursor: pointer;
 	justify-content: center;
 	align-items: center;
@@ -299,24 +300,17 @@ input[type="checkbox" i] {
 	text-align: center;
 	background-color: black;
 }
-.selected-thumbnail {
+.selected-thumb {
 	/* border: 1px solid black; */
-	display: flex;
-	cursor: pointer;
-	justify-content: center;
-	align-items: center;
-	min-height: 64px;
-	min-width: 116px;
-	margin: 2px;
-	text-align: center;
 	background-color: white;
 }
 .play-btn-ctn {
 	position: absolute;
 	display: flex;
+	border-radius: 4px;
 	background-color: #212529;
-	width: 8%;
-	height: 8%;
+	width: 30%;
+	height: 35%;
 	align-items: center;
 	justify-content: center;
 }

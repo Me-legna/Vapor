@@ -116,7 +116,7 @@ function MediaShowcase() {
 											handleSelect(media.is_video, idx, media.url);
 										}}
 										className={
-											selectedThumb === idx ? "selected-thumbnail" : "thumbnail"
+											selectedThumb === idx ? "thumbnail selected-thumb" : "thumbnail"
 										}
 									>
 										<Image
