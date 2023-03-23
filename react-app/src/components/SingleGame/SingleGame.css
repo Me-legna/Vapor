@@ -348,23 +348,35 @@ input[type="checkbox" i] {
 	width: 100%;
 }
 .description-ctn {
-	max-height: 25%;
+	max-height: 7rem;
 	overflow: auto;
 	padding-right: 2%;
 	color: white;
 	line-height: 17px;
 	font-size: 13px;
-	margin-bottom: 3%;
+	/* margin-bottom: 7%; */
+}
+.game-table-ctn{
+	height: 20%;
+	margin-top: 1rem;
 }
 .game-detail-table {
 	margin: 0px;
 	color: #ffffff6b;
+	width: 80%;
 }
 .game-detail-table tbody tr td {
 	margin: 0px;
 	color: white;
 }
+.game-detail-table tbody tr * {
+	margin: 0px;
+	padding: 0.1rem 0;
+	color: white;
+}
 .game-detail-table * {
 	vertical-align: middle;
 	font-size: 12px;
+	height: 12px;
+
 }
