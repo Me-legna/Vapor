@@ -39,7 +39,7 @@ function App() {
 		<>
 			<NaviBar />
 
-				<Container style={{ maxWidth: "786px" }} className='p-0 pt-1 pb-3' fluid="md">
+				<Container style={{ maxWidth: "960px" }} className='p-0 pt-1 pb-3' fluid="md">
 					<Switch>
 						<Route path="/login" exact={true}>
 							<LoginPage />

@@ -17,7 +17,48 @@ function GameSummary() {
 
 	return (
 		<div className="right-col">
-			{/* <Image src={singleGame.cover} alt={`${singleGame.title} cover`} onError={addDefaultSrc}/> */}
+			<div className="game-cover-img-ctn">
+				<Image
+					className="game-cover-img"
+					src={singleGame.cover}
+					alt={`${singleGame.title} cover`}
+					onError={addDefaultSrc}
+				/>
+			</div>
+			<p className="description-ctn">
+				{/* {singleGame.description} */}
+				Become the king and fight over Europe in this fresh take on medieval
+				real-time grand strategy. Manage provinces, gather armies, initiate
+				diplomacy, and dabble in espionage. The path is open: become the true
+				Sovereign of your people and bring them to glory.
+			</p>
+			<div>
+				<Table className="game-detail-table">
+					<tbody>
+						<tr>
+							<th>REVIEWS:</th>
+							<td>Positive?</td>
+						</tr>
+						<tr>
+							<th>RATING:</th>
+							<td>{singleGame.rating}</td>
+						</tr>
+						<tr>
+							<th>RELEASE DATE:</th>
+							<td>{singleGame.release_date}</td>
+						</tr>
+						<tr>
+							<th>DEVELOPER:</th>
+							<td>
+								{singleGame.developer
+									? singleGame.developer
+									: "Anonymous Studios"}
+							</td>
+						</tr>
+					</tbody>
+				</Table>
+			</div>
+			<div></div>
 		</div>
 		// <Container className="d-flex m-0 p-0">
 		// <div className="media-comp-container">
