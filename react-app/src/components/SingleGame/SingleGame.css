@@ -17,14 +17,6 @@
 	justify-content: center;
 }
 
-.game-body-left {
-	background-image: url("../../images/vapor-background.png");
-	color: white;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-}
-
 .game-body-left h2 {
 	margin-top: 0px;
 	color: white;
@@ -233,6 +225,7 @@ input[type="checkbox" i] {
 	justify-content: space-around;
 }
 
+/*------ MediaShowCase ------*/
 .media-ctn {
 	height: 27rem;
 	background-color: #0f0f0f9c;
@@ -245,8 +238,6 @@ input[type="checkbox" i] {
 .left-col {
 	width: 70%;
 	height: 100%;
-	/* border: 1px solid red; */
-	/* margin-right: 1%; */
 }
 .showcase-ctn {
 	height: 100%;
@@ -256,26 +247,19 @@ input[type="checkbox" i] {
 	height: 100%;
 }
 .showcase-reel {
-	/* position: relative;
-	top: 1rem; */
 	height: 20%;
-	/* margin-top: 1rem; */
-	/* border: 1px solid green; */
 }
 .showcase-slider {
 	display: flex;
 	height: 4%;
-	/* border: 1px solid yellow; */
 }
 .showcase-scroll {
-	/* position: absolute; */
 	height: 100%;
 	overflow: hidden;
 	overflow-x: scroll;
 	display: flex;
 }
 .thumbnail {
-	/* border: 1px solid black; */
 	display: flex;
 	position: relative;
 	cursor: pointer;
@@ -288,7 +272,6 @@ input[type="checkbox" i] {
 	background-color: black;
 }
 .selected-thumb {
-	/* border: 1px solid black; */
 	background-color: white;
 }
 .play-btn-ctn {
@@ -303,7 +286,6 @@ input[type="checkbox" i] {
 }
 .play-vid-btn {
 	color: #bebaba;
-	/* color: #56f500; */
 }
 .thumb-img {
 	height: 100%;
@@ -315,12 +297,10 @@ input[type="checkbox" i] {
 	height: inherit;
 	position: absolute;
 	object-fit: inherit;
-	/* border: 1px solid blue; */
 	opacity: 0;
 	visibility: hidden;
 	transition: 2.5s;
 	background-color: black;
-	/* margin-bottom: 0.4rem; */
 }
 
 .selected-showcase {
@@ -340,6 +320,8 @@ input[type="checkbox" i] {
 	justify-content: center;
 	width: 100%;
 }
+
+/*------ GameSummary ------*/
 .game-cover-img {
 	width: 100%;
 	margin-bottom: 3%;
@@ -354,9 +336,8 @@ input[type="checkbox" i] {
 	color: white;
 	line-height: 17px;
 	font-size: 13px;
-	/* margin-bottom: 7%; */
 }
-.game-table-ctn{
+.game-table-ctn {
 	height: 20%;
 	margin-top: 1rem;
 }
@@ -378,5 +359,58 @@ input[type="checkbox" i] {
 	vertical-align: middle;
 	font-size: 12px;
 	height: 12px;
+}
 
+/* ------ GameBody ------ */
+.game-body-ctn {
+}
+.game-body-left {
+	width: 68%;
+	float: left;
+}
+.game-body-right {
+	width: 30%;
+	float: right;
+}
+.add-to-ctn {
+	position: relative;
+	padding: 16px;
+	padding-bottom: 28px;
+	background-color: #445468;
+	border-radius: 4px;
+}
+.detail-icon-ctn {
+	float: right;
+}
+.game-price {
+	width: 50%;
+	text-align: center;
+	font-size: 14px;
+}
+.add-to-btn-ctn {
+	position: absolute;
+	right: 16px;
+	bottom: -17px;
+	background-color: black;
+	width: 35%;
+	padding: 2px 2px 2px 0px;
+	justify-content: space-between;
+}
+.add-to-cart-btn{
+	border-radius: 4px;
+    background-color: #21a321;
+	color: rgba(255, 255, 255, 0.774)
+}
+.add-to-cart-btn:hover {
+	background-color: #5ec25edc;
+	color:white
+}
+.add-to-library-btn{
+	border-radius: 4px;
+	/* background-color: #5ec25edc; */
+	color: rgba(255, 255, 255, 0.774)
+}
+.add-to-library-btn:hover {
+	background-color: #4f8fefe8;
+	color:white
 }

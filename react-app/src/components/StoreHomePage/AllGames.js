@@ -62,15 +62,13 @@ function AllGames() {
 														key={`${idx}`}
 														className="system-icon fa-brands fa-apple"
 													></i>
-												) : system === "VaporOS + Linux" ? (
+												) : (
 													<img
 														key={`${idx}`}
 														src={logo}
 														alt="logo"
 														className="system-icon logo"
 													></img>
-												) : (
-													<React.Fragment key={`${idx}`}></React.Fragment>
 												)
 											)}
 										</div>

@@ -42,15 +42,15 @@ function SingleGame() {
 
 			<>
 				<GameHeader />
-				<div className="d-flex p-0 media-ctn">
+				<section className="d-flex p-0 media-ctn">
 					<MediaShowcase />
 					<GameSummary />
-				</div>
+				</section>
+				<section className="body-ctn">
+					<GameBody />
+				</section>
 			</>
 
-			// 		{/* <section>
-			//     <GameBody />
-			// </section> */}
 			// 		{/* <section>
 			//     <GameReviews/>
 			// </section> */}
