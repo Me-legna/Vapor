@@ -27,8 +27,8 @@ const NaviBar = () => {
 	};
 
 	return (
-		<NavBar variant="dark" collapseOnSelect expand="md" id="navbar">
-			<Container style={{maxWidth:'786px'}} fluid='md' className="p-0 main">
+		<NavBar sticky="top" variant="dark" collapseOnSelect expand="md" id="navbar">
+			<Container style={{maxWidth:'960px'}} fluid='md' className="p-0 main">
 				<NavBar.Brand as={Link} to="/store" className="logo-container">
 					<img alt="logo" src={vaporLogo} width="100%" />
 				</NavBar.Brand>

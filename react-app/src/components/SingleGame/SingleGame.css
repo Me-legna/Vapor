@@ -234,7 +234,7 @@ input[type="checkbox" i] {
 }
 
 .media-ctn {
-	height: 25rem;
+	height: 27rem;
 	background-color: #0f0f0f9c;
 }
 .right-col {
@@ -259,7 +259,7 @@ input[type="checkbox" i] {
 	/* position: relative;
 	top: 1rem; */
 	height: 20%;
-	margin-top: 1rem;
+	/* margin-top: 1rem; */
 	/* border: 1px solid green; */
 }
 .showcase-slider {
@@ -311,11 +311,11 @@ input[type="checkbox" i] {
 	padding: 2px;
 }
 .showcase-img-ctn {
-	width: 100%;
-	min-height: 78%;
-	max-height: 78%;
+	width: inherit;
+	height: inherit;
 	position: absolute;
-	/* border: 1px solid blue; */
+	object-fit: inherit;
+	/* border: 1px solid blue; */
 	opacity: 0;
 	visibility: hidden;
 	transition: 2.5s;
@@ -335,36 +335,36 @@ input[type="checkbox" i] {
 .figure-ctn {
 	background-color: #000;
 	display: flex;
-	height: 75%;
-	margin-bottom: 0.4rem;
+	height: 79%;
+	margin-bottom: 0.1rem;
 	justify-content: center;
 	width: 100%;
 }
-.game-cover-img{
+.game-cover-img {
 	width: 100%;
 	margin-bottom: 3%;
 }
-.game-cover-img-ctn{
+.game-cover-img-ctn {
 	width: 100%;
 }
-.description-ctn{
-    max-height: 25%;
-    overflow: auto;
-    padding-right: 2%;
-    color: white;
+.description-ctn {
+	max-height: 25%;
+	overflow: auto;
+	padding-right: 2%;
+	color: white;
 	line-height: 17px;
-    font-size: 13px;
+	font-size: 13px;
 	margin-bottom: 3%;
 }
-.game-detail-table{
-    margin: 0px;
-    color: #ffffff6b;
+.game-detail-table {
+	margin: 0px;
+	color: #ffffff6b;
 }
-.game-detail-table tbody tr td{
-    margin: 0px;
-    color: white
+.game-detail-table tbody tr td {
+	margin: 0px;
+	color: white;
 }
-.game-detail-table *{
+.game-detail-table * {
 	vertical-align: middle;
 	font-size: 12px;
 }
