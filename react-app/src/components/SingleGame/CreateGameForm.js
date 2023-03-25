@@ -251,6 +251,7 @@ function CreateGameForm() {
                         >
                             <option value=""></option>
                             <option value="E">Everyone (E)</option>
+                            <option value="E10+">Everyone 10+ (E10+)</option>
                             <option value="T">Teen (T)</option>
                             <option value="M">Mature (M)</option>
                         </select>

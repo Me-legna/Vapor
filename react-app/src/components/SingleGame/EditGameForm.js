@@ -164,150 +164,191 @@ function EditGameForm() {
         !rating ? true : false
 
     return (
-        <div className="form-container">
-            <div className="modal-header">
-                <h1>Update Your Game</h1>
-            </div>
-            <div className="modal-body-container">
-                <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }} className='spot-form flex-column'>
-                    <ul>
-                        {errors.map((error, idx) => (
-                            <li style={{ color: 'red' }} key={idx}>{error}</li>
-                        ))}
-                    </ul>
-                    <label className="modal-label">
-                        <div>
-                            <strong className="form-input-type">Cover Image:</strong>
-                            <p style={{ visibility: !previewUrl ? 'visible' : 'hidden' }}
-                                className="form-input-error">Required</p>
-                        </div>
-                        <br />
-                        <input
-                            className="modal-top-input"
-                            type="url"
-                            placeholder="Cover Image URL"
-                            value={previewUrl}
-                            onChange={(e) => setPreviewUrl(e.target.value)}
-                            required
-                        />
-                    </label>
-                    <label className="modal-label">
-                        <div>
-                            <strong className="form-input-type">Title:</strong>
-                            <p style={{ visibility: !title ? 'visible' : 'hidden' }}
-                                className="form-input-error">Required</p>
-                        </div>
-                        <br />
-                        <input
-                            className="modal-top-input"
-                            type="text"
-                            minLength={1}
-                            maxLength={200}
-                            placeholder="Title"
-                            value={title}
-                            onChange={(e) => setTitle(e.target.value)}
-                            required
-                        />
-                    </label>
-                    <label className="modal-label" style={{width: '100%'}}>
-                        Price:
-                        <br />
-                        <div>
-                            <strong className="">$</strong>
-                            <input
-                                className="modal-bottom-input form-input-type"
-                                type="number"
-                                step={0.01}
-                                min={0}
-                                placeholder="Price"
-                                value={price}
-                                onChange={(e) => setPrice(e.target.value)}
-                                required
-                            />
-                        </div>
-                    </label>
-                    <label className="modal-label">
-                        <div>
-                            <strong className="form-input-type">Description:</strong>
-                            <p style={{ visibility: !description ? 'visible' : 'hidden' }}
-                                className="form-input-error">Required</p>
-                        </div>
-                        <br />
-                        <input
-                            className="modal-input description"
-                            type="text"
-                            minLength={1}
-                            maxLength={300}
-                            placeholder="Description"
-                            value={description}
-                            onChange={(e) => setDescription(e.target.value)}
-                            required
-                        />
-                    </label>
-                    <label className="modal-label">
-                        <div>
-                            <strong className="form-input-type">ESRB Rating:</strong>
-                            <p style={{ visibility: !rating ? 'visible' : 'hidden' }}
-                                className="form-input-error">Select a Rating</p>
-                        </div>
-                        <br />
-                        <select
-                            className="modal-input"
-                            type="select"
-                            placeholder="Rating"
-                            value={rating}
-                            onChange={(e) => setRating(e.target.value)}
-                            required
-                        >
-                            <option value=""></option>
-                            <option value="E">Everyone (E)</option>
-                            <option value="T">Teen (T)</option>
-                            <option value="M">Mature (M)</option>
-                        </select>
-                    </label>
-                    <br />
-                    <label className="modal-label">
-                        <div>
-                            <strong className="form-input-type">About this game:</strong>
-                            <p style={{ visibility: !about ? 'visible' : 'hidden' }}
-                                className="form-input-error">Required</p>
-                        </div>
-                        <br />
-                        <textarea
-                            value={about}
-                            onChange={(e) => setAbout(e.target.value)}
-                            required
-                        />
-                    </label>
-                    <label className="modal-label">
-                        <div>
-                            <strong className="form-input-type">Systems:</strong>
-                            <p style={{ visibility: !selectedSystems.length ? 'visible' : 'hidden' }}
-                                className="form-input-error">At least 1 Required</p>
-                        </div>
-                        <fieldset>
-                            {systemComponents}
-                        </fieldset>
-                    </label>
-                    <label className="modal-label">
-                        <div>
-                            <strong className="form-input-type">Genres:</strong>
-                            <p style={{ visibility: !selectedGenres.length ? 'visible' : 'hidden' }}
-                                className="form-input-error">At least 1 Required</p>
-                        </div>
-                        <fieldset>
-                            {genreComponents}
-                        </fieldset>
-                    </label>
-                    <button
-                        className={disabled ? "submit-button disabled" : "submit-button"}
-                        type="submit"
-                        disabled={disabled}
-                    >Update</button>
-                </form>
-            </div>
-        </div >
-    )
+			<div className="form-container">
+				<div className="modal-header">
+					<h1>Update Your Game</h1>
+				</div>
+				<div className="modal-body-container">
+					<form
+						onSubmit={handleSubmit}
+						style={{
+							display: "flex",
+							flexDirection: "column",
+							alignItems: "center",
+						}}
+						className="spot-form flex-column"
+					>
+						<ul>
+							{errors.map((error, idx) => (
+								<li style={{ color: "red" }} key={idx}>
+									{error}
+								</li>
+							))}
+						</ul>
+						<label className="modal-label">
+							<div>
+								<strong className="form-input-type">Cover Image:</strong>
+								<p
+									style={{ visibility: !previewUrl ? "visible" : "hidden" }}
+									className="form-input-error"
+								>
+									Required
+								</p>
+							</div>
+							<br />
+							<input
+								className="modal-top-input"
+								type="url"
+								placeholder="Cover Image URL"
+								value={previewUrl}
+								onChange={(e) => setPreviewUrl(e.target.value)}
+								required
+							/>
+						</label>
+						<label className="modal-label">
+							<div>
+								<strong className="form-input-type">Title:</strong>
+								<p
+									style={{ visibility: !title ? "visible" : "hidden" }}
+									className="form-input-error"
+								>
+									Required
+								</p>
+							</div>
+							<br />
+							<input
+								className="modal-top-input"
+								type="text"
+								minLength={1}
+								maxLength={200}
+								placeholder="Title"
+								value={title}
+								onChange={(e) => setTitle(e.target.value)}
+								required
+							/>
+						</label>
+						<label className="modal-label" style={{ width: "100%" }}>
+							Price:
+							<br />
+							<div>
+								<strong className="">$</strong>
+								<input
+									className="modal-bottom-input form-input-type"
+									type="number"
+									step={0.01}
+									min={0}
+									placeholder="Price"
+									value={price}
+									onChange={(e) => setPrice(e.target.value)}
+									required
+								/>
+							</div>
+						</label>
+						<label className="modal-label">
+							<div>
+								<strong className="form-input-type">Description:</strong>
+								<p
+									style={{ visibility: !description ? "visible" : "hidden" }}
+									className="form-input-error"
+								>
+									Required
+								</p>
+							</div>
+							<br />
+							<input
+								className="modal-input description"
+								type="text"
+								minLength={1}
+								maxLength={300}
+								placeholder="Description"
+								value={description}
+								onChange={(e) => setDescription(e.target.value)}
+								required
+							/>
+						</label>
+						<label className="modal-label">
+							<div>
+								<strong className="form-input-type">ESRB Rating:</strong>
+								<p
+									style={{ visibility: !rating ? "visible" : "hidden" }}
+									className="form-input-error"
+								>
+									Select a Rating
+								</p>
+							</div>
+							<br />
+							<select
+								className="modal-input"
+								type="select"
+								placeholder="Rating"
+								value={rating}
+								onChange={(e) => setRating(e.target.value)}
+								required
+							>
+								<option value=""></option>
+								<option value="E">Everyone (E)</option>
+								<option value="E10+">Everyone 10+ (E10+)</option>
+								<option value="T">Teen (T)</option>
+								<option value="M">Mature (M)</option>
+							</select>
+						</label>
+						<br />
+						<label className="modal-label">
+							<div>
+								<strong className="form-input-type">About this game:</strong>
+								<p
+									style={{ visibility: !about ? "visible" : "hidden" }}
+									className="form-input-error"
+								>
+									Required
+								</p>
+							</div>
+							<br />
+							<textarea
+								value={about}
+								onChange={(e) => setAbout(e.target.value)}
+								required
+							/>
+						</label>
+						<label className="modal-label">
+							<div>
+								<strong className="form-input-type">Systems:</strong>
+								<p
+									style={{
+										visibility: !selectedSystems.length ? "visible" : "hidden",
+									}}
+									className="form-input-error"
+								>
+									At least 1 Required
+								</p>
+							</div>
+							<fieldset>{systemComponents}</fieldset>
+						</label>
+						<label className="modal-label">
+							<div>
+								<strong className="form-input-type">Genres:</strong>
+								<p
+									style={{
+										visibility: !selectedGenres.length ? "visible" : "hidden",
+									}}
+									className="form-input-error"
+								>
+									At least 1 Required
+								</p>
+							</div>
+							<fieldset>{genreComponents}</fieldset>
+						</label>
+						<button
+							className={disabled ? "submit-button disabled" : "submit-button"}
+							type="submit"
+							disabled={disabled}
+						>
+							Update
+						</button>
+					</form>
+				</div>
+			</div>
+		);
 }
 
 export default EditGameForm

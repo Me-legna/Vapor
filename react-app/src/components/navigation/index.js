@@ -9,20 +9,26 @@ import LogoutButton from "../auth/LogoutButton";
 import vaporLogo from "../../images/vapor-logo.png";
 import { useDispatch, useSelector } from "react-redux";
 import DemoLogin from "./DemoLogin";
-import { logout } from "../../store/session";
+import { login, logout } from "../../store/session";
 
 const NaviBar = () => {
 	const user = useSelector((state) => state.session.user);
+   const demoEmail = 'demo@aa.io';
+   const demoPassword = 'password'
+
 	const history = useHistory();
 	const dispatch = useDispatch();
 
 	const onLogout = async (e) => {
 		await dispatch(logout());
 	};
+	const demoLogin = async (e) => {
+		await dispatch(login(demoEmail, demoPassword));
+	};
 
 	return (
-		<NavBar variant="dark" collapseOnSelect expand="lg" id="navbar">
-			<Container className="p-0 main">
+		<NavBar sticky="top" variant="dark" collapseOnSelect expand="md" id="navbar">
+			<Container style={{maxWidth:'960px'}} fluid='md' className="p-0 main">
 				<NavBar.Brand as={Link} to="/store" className="logo-container">
 					<img alt="logo" src={vaporLogo} width="100%" />
 				</NavBar.Brand>
@@ -51,28 +57,31 @@ const NaviBar = () => {
 					</Nav>
 					<Nav>
 						{user ? (
-							<NavDropdown
-							   title={user.username}
-							>
-								<NavDropdown.Item as={Link} to="/cart">
-									View Cart
+								<NavDropdown title={user.username}>
+									<NavDropdown.Item as={Link} to="/cart">
+										View Cart
+									</NavDropdown.Item>
+									<NavDropdown.Item as={Link} to="/orders">
+										Order History
+									</NavDropdown.Item>
+									<NavDropdown.Item
+										className="d-flex drop-item"
+										as={Link}
+										to="/store"
+										onClick={onLogout}
+									>
+										Logout: <p className="h-0">{user.username}</p>
+									</NavDropdown.Item>
+								</NavDropdown>
+						) : (
+							<NavDropdown title='Login'>
+								<NavDropdown.Item as={Link} to="/login">
+									Login
 								</NavDropdown.Item>
-								<NavDropdown.Item as={Link} to="/orders">
-									Order History
-								</NavDropdown.Item>
-								<NavDropdown.Item
-									className="d-flex drop-item"
-									as={Link}
-									to="/login"
-									onClick={onLogout}
-								>
-									Logout: <p className="h-0">{user.username}</p>
+								<NavDropdown.Item as={Link} to="/store" onClick={demoLogin}>
+									Demo User
 								</NavDropdown.Item>
 							</NavDropdown>
-						) : (
-							<Nav.Link as={Link} to="/login">
-								Login
-							</Nav.Link>
 						)}
 					</Nav>
 				</NavBar.Collapse>

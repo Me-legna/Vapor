@@ -1,12 +1,12 @@
 from datetime import date
-from app.models import db, Genre, System, Game, GameImage, User, environment, SCHEMA
+from app.models import db, Genre, System, Game, GameMedia, User, environment, SCHEMA, game
 
 
 
 # Adds Games, Genres, and Systems
 def seed_games():
     arcade = Genre(
-        name='arcade'
+        name='Arcade'
     )
     moba = Genre(
         name='MOBA'
@@ -27,7 +27,7 @@ def seed_games():
 
     game_1 = Game(
         title='Pac-Man',
-        cover_image='https://geometrydash.io/data/image/pacman-30th-anniversary.jpg',
+        cover_image='https://vapor-bucket.s3.us-east-2.amazonaws.com/Pac-Man/pacman_cover_1600x960.jpeg',
         developer_id=1,
         release_date=date(2022, 11, 7),
         price=59.99,
@@ -66,15 +66,48 @@ def seed_games():
         rating='M'
     )
 
-    game_1_image2 = GameImage(
+    game_1_video1 = GameMedia(
+        url = 'https://cdn.akamai.steamstatic.com/steam/apps/256918897/movie_max_vp9.webm?t=1669908749',
+        game=game_1,
+        is_video=True,
+        thumbnail_url = 'https://freepacman.org/images/pacman-game-card.png'
+    )
+    game_1_video2 = GameMedia(
+        url = 'https://cdn.akamai.steamstatic.com/steam/apps/256867710/movie480_vp9.webm?t=1641402419',
+        game=game_1,
+        is_video=True,
+        thumbnail_url = 'https://freepacman.org/images/pacman-game-card.png'
+    )
+    game_1_image2 = GameMedia(
         url = 'https://freepacman.org/images/pacman-game-card.png',
+        game=game_1
+    )
+    game_1_image3 = GameMedia(
+        url = 'https://npr.brightspotcdn.com/dims4/default/36c6d59/2147483647/strip/true/crop/535x535+0+0/resize/880x880!/quality/90/?url=http%3A%2F%2Fnpr-brightspot.s3.amazonaws.com%2Flegacy%2Fsites%2Fkuar%2Ffiles%2F201504%2Fpac-man.png',
+        game=game_1
+    )
+    game_1_image4 = GameMedia(
+        url = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSyN2zJi8hU0ZllgOh3NJdBmthicv438xGkAlTVwTZl4f9x8H_yrruWm2vroSGEnPJfRE&usqp=CAU',
+        game=game_1
+    )
+    game_1_image5 = GameMedia(
+        url = 'https://www.split.io/wp-content/uploads/2021/06/BLOG-PacMan.png',
+        game=game_1
+    )
+    game_1_image6 = GameMedia(
+        url = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHzU6xWnZb7Zo7Fv0YIge75oKHMhZeApnQd5m2v2VkDSURsP9B9dff51WoLD0KJmaCgAo&usqp=CAU',
+        game=game_1
+    )
+    game_1_image7 = GameMedia(
+        url = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS68FDP-FE6YJw15FUR_Xse0NliQfdKH4ZGvQrUJPzpYGdQWvnNLA8dkFhONJRreHVlpxY&usqp=CAU',
         game=game_1
     )
 
     db.session.add_all([arcade, moba, shooter])
     db.session.add_all([mac, windows, vapor_os])
     db.session.add_all([game_1, game_2,game_3,game_4])
-    db.session.add(game_1_image2)
+    db.session.add_all([game_1_video1, game_1_video2,game_1_image2, game_1_image3, game_1_image4, game_1_image5, game_1_image6, game_1_image7])
+    # db.session.add_all([game_1_video2,game_1_image2, game_1_image3, game_1_image4, game_1_image5, game_1_image6, game_1_image7])
 
     game_1.genres.append(arcade)
     game_2.genres.append(moba)
@@ -105,14 +138,14 @@ def undo_games():
     if environment == "production":
         db.session.execute(f"TRUNCATE table {SCHEMA}.game_genres RESTART IDENTITY CASCADE;")
         db.session.execute(f"TRUNCATE table {SCHEMA}.system_availability RESTART IDENTITY CASCADE;")
-        db.session.execute(f"TRUNCATE table {SCHEMA}.game_images RESTART IDENTITY CASCADE;")
+        db.session.execute(f"TRUNCATE table {SCHEMA}.game_media RESTART IDENTITY CASCADE;")
         db.session.execute(f"TRUNCATE table {SCHEMA}.games RESTART IDENTITY CASCADE;")
         db.session.execute(f"TRUNCATE table {SCHEMA}.systems RESTART IDENTITY CASCADE;")
         db.session.execute(f"TRUNCATE table {SCHEMA}.genres RESTART IDENTITY CASCADE;")
     else:
         db.session.execute("DELETE FROM game_genres")
         db.session.execute("DELETE FROM system_availability")
-        db.session.execute("DELETE FROM game_images")
+        db.session.execute("DELETE FROM game_media")
         db.session.execute("DELETE FROM games")
         db.session.execute("DELETE FROM systems")
         db.session.execute("DELETE FROM genres")
