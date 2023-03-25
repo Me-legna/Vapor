@@ -6,6 +6,7 @@ import { authenticate } from "../../store/session";
 import AddedToLibrary from "../Cart/AddedToLibrary";
 import Button from "react-bootstrap/Button";
 import logo from "../../images/vapor-icon.png";
+import SystemIcons from "../SystemIcons";
 
 function BuyGameBanner() {
 	const singleGame = useSelector((state) => state.games.singleGame);
@@ -17,7 +18,7 @@ function BuyGameBanner() {
 	const dispatch = useDispatch();
 	const history = useHistory();
 	const { setModalContent } = useModal();
-    
+
 
 	async function addGame(e, gameId) {
 		e.preventDefault();
@@ -37,20 +38,7 @@ function BuyGameBanner() {
 	return (
 		<div className="mt-5 text-white add-to-ctn">
 			<div className="d-flex align-items-center detail-icon-ctn">
-				{singleGame.systems.map((system, idx) =>
-					system === "Windows" ? (
-						<i key={`${idx}`} className="system-icon fa-brands fa-windows"></i>
-					) : system === "MacOS" ? (
-						<i key={`${idx}`} className="system-icon fa-brands fa-apple"></i>
-					) : (
-						<img
-							key={`${idx}`}
-							src={logo}
-							alt="logo"
-							className="system-icon logo"
-						></img>
-					)
-				)}
+				<SystemIcons systems={singleGame.systems}/>
 			</div>
 			{inLibrary ? (
 				<>
