@@ -8,9 +8,8 @@
     height: 80px;
 }
 
-.games-list-container {
-    background-image: url('../../images/vapor-background.png');
-    height: 100vh;
+.games-list-ctn {
+
 }
 
 .indiv-game {
@@ -23,7 +22,8 @@
     align-items: center;
 }
 .indiv-game:hover {
-    background-color: #07b5ef9c;
+    background-color: #09a9edcc;
+    cursor: pointer;
 }
 
 .indiv-game-nav {
@@ -56,6 +56,4 @@
 .logo {
     height: 14px;
     width: 16px;
-    position: relative;
-    top: 50%;
 }
