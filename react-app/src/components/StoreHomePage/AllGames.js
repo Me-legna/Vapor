@@ -6,9 +6,11 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import logo from "../../images/vapor-icon.png";
+import Image from "react-bootstrap/Image";
 import "./HomePage.css";
 import SystemIcons from "../SystemIcons";
 import GenresList from "../GenresList";
+import Table from "react-bootstrap/esm/Table";
 
 function AllGames() {
 	const allGamesObj = useSelector((state) => state.games.allGames.byId);
@@ -16,7 +18,6 @@ function AllGames() {
 	const [isHovering, setIsHovering] = useState(null);
 	const dispatch = useDispatch();
 	const history = useHistory();
-	// console.log(allGamesArr)
 
 	useEffect(() => {
 		dispatch(load_all_games());
@@ -38,9 +39,7 @@ function AllGames() {
 				<div className="text-white games-list-ctn">
 					{allGamesArr.map((game) => (
 						<div
-							// style={{ backgroundColor: "#445468", width: "100%" }}
 							onMouseEnter={() => setIsHovering(game.id)}
-							// onMouseLeave={() => setIsHovering(null)}
 							key={game.id + game.title}
 							style={{
 								backgroundColor:
@@ -109,14 +108,29 @@ function AllGames() {
 						</div>
 					))}
 				</div>
-					<div
-					className="pb-2 preview-section"
-						style={{}}
-					>
-						<div className="mt-2 preview-ctn">
-									testing
-						</div>
+				<div className="pb-2 preview-section">
+					<div className="mt-2 preview-ctn">
+							{allGamesArr.map(game => (
+								<div style={{display: isHovering === game.id ? 'flex' : 'none'}} className="preview-item">
+									<h2>{game.title}</h2>
+									<Container className="reviews-preview">
+										<Row>Overall User Reviews:</Row>
+										<Row>Very Positive(numReviews)</Row>
+									</Container>
+									<Container className="preview-genres">
+										<GenresList genres={game.genres}/>
+									</Container>
+									<Container className="preview-images-list-ctn">
+									{game.media.filter(media => media.is_video === false).slice(0,4).map(media => (
+										<div className="preview-image-ctn">
+											<Image className="library-list-image" src={media.url}/>
+										</div>
+									))}
+									</Container>
+								</div>
+							))}
 					</div>
+				</div>
 			</div>
 		)
 	);

@@ -5,9 +5,9 @@ function GenresList({genres}) {
 		<>
 			{genres.map((genre, idx) =>
 				idx === 0 ? (
-					<React.Fragment key={`${idx}`}>{genre}</React.Fragment>
+					<div key={`${idx}`}>{genre}</div>
 				) : (
-					<React.Fragment key={`${idx}`}>{`, ${genre}`}</React.Fragment>
+					<div key={`${idx}`}>{`, ${genre}`}</div>
 				)
 			)}
 		</>
