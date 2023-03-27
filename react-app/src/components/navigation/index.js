@@ -13,8 +13,8 @@ import { login, logout } from "../../store/session";
 
 const NaviBar = () => {
 	const user = useSelector((state) => state.session.user);
-   const demoEmail = 'demo@aa.io';
-   const demoPassword = 'password'
+	const demoEmail = "demo@aa.io";
+	const demoPassword = "password";
 
 	const history = useHistory();
 	const dispatch = useDispatch();
@@ -27,14 +27,20 @@ const NaviBar = () => {
 	};
 
 	return (
-		<NavBar sticky="top" variant="dark" collapseOnSelect expand="md" id="navbar">
-			<Container style={{maxWidth:'960px'}} fluid='md' className="p-0 main">
+		<NavBar
+			sticky="top"
+			variant="dark"
+			collapseOnSelect
+			expand="md"
+			id="navbar"
+		>
+			<Container style={{ maxWidth: "960px" }} fluid="md" className="p-0 main">
 				<NavBar.Brand as={Link} to="/store" className="logo-container">
 					<img alt="logo" src={vaporLogo} width="100%" />
 				</NavBar.Brand>
 				<NavBar.Toggle />
 				<NavBar.Collapse className="jc-sb">
-					<Nav style={{paddingRight:'5%'}} className="m-auto">
+					<Nav style={{ paddingRight: "5%" }} className="m-auto">
 						{/*
                   <Nav.Link href="/library" className="text-white">
                      Doesn't use react-router-dom
@@ -50,31 +56,31 @@ const NaviBar = () => {
 								Library
 							</Nav.Link>
 						)}
-						{/* <Nav.Link href="https://agonzalez.dev/">Chat</Nav.Link>
 						<Nav.Link href="https://mail.google.com/mail/u/0/#inbox?compose=GTvVlcRwRCXCSCkTjDmHXWRvlRNZbKKQbGRtmsMLZNJlGzDxHFlwwNsjDLXStwMfPRPfSTjdhdKMV">
-							Support
-						</Nav.Link> */}
+							Chat
+						</Nav.Link>
+						<Nav.Link href="https://agonzalez.dev/">Support</Nav.Link>
 					</Nav>
 					<Nav>
 						{user ? (
-								<NavDropdown title={user.username}>
-									<NavDropdown.Item as={Link} to="/cart">
-										View Cart
-									</NavDropdown.Item>
-									<NavDropdown.Item as={Link} to="/orders">
-										Order History
-									</NavDropdown.Item>
-									<NavDropdown.Item
-										className="d-flex drop-item"
-										as={Link}
-										to="/store"
-										onClick={onLogout}
-									>
-										Logout: <p className="h-0">{user.username}</p>
-									</NavDropdown.Item>
-								</NavDropdown>
+							<NavDropdown title={user.username}>
+								<NavDropdown.Item as={Link} to="/cart">
+									View Cart
+								</NavDropdown.Item>
+								<NavDropdown.Item as={Link} to="/orders">
+									Order History
+								</NavDropdown.Item>
+								<NavDropdown.Item
+									className="d-flex drop-item"
+									as={Link}
+									to="/store"
+									onClick={onLogout}
+								>
+									Logout: <p className="h-0">{user.username}</p>
+								</NavDropdown.Item>
+							</NavDropdown>
 						) : (
-							<NavDropdown title='Login'>
+							<NavDropdown title="Login">
 								<NavDropdown.Item as={Link} to="/login">
 									Login
 								</NavDropdown.Item>
