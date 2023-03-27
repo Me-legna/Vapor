@@ -91,6 +91,7 @@ class Game(db.Model):
     title = db.Column(db.String(200), nullable=False)
     cover_image = db.Column(db.String, nullable=False)
     is_in_store = db.Column(db.Boolean, nullable=False, default=True)
+    producer = db.Column(db.String(200), nullable=False)
     developer_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")), nullable=False)
     release_date = db.Column(db.Date, nullable=False) # default=datetime.now().strftime("%m/%d/Y")
     price = db.Column(db.Float, nullable=False)
@@ -120,6 +121,7 @@ class Game(db.Model):
             'cover': self.cover_image,
             'is_in_store': self.is_in_store,
             'developer_id': self.developer_id,
+            'developer': self.producer,
             'release_date': self.formatted_release_date,
             'price': self.price,
             'description': self.description,

@@ -42,18 +42,18 @@ const NaviBar = () => {
 						<Nav.Link as={Link} to="/store">
 							Store
 						</Nav.Link>
-						<Nav.Link href="https://github.com/Me-legna/Vapor">
+						{/* <Nav.Link href="https://github.com/Me-legna/Vapor">
 							Community
-						</Nav.Link>
+						</Nav.Link> */}
 						{user && (
 							<Nav.Link as={Link} to="/library">
 								Library
 							</Nav.Link>
 						)}
-						<Nav.Link href="https://agonzalez.dev/">Chat</Nav.Link>
+						{/* <Nav.Link href="https://agonzalez.dev/">Chat</Nav.Link>
 						<Nav.Link href="https://mail.google.com/mail/u/0/#inbox?compose=GTvVlcRwRCXCSCkTjDmHXWRvlRNZbKKQbGRtmsMLZNJlGzDxHFlwwNsjDLXStwMfPRPfSTjdhdKMV">
 							Support
-						</Nav.Link>
+						</Nav.Link> */}
 					</Nav>
 					<Nav>
 						{user ? (

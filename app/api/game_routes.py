@@ -47,10 +47,10 @@ def get_single_game(game_id):
     game_dict = game.to_dict()
     systems = [system.name for system in game.systems]
     genres = [genre.name for genre in game.genres]
-    developer = game.developer.developer_alias
+    # developer = game.developer.developer_alias
     game_dict['systems'] = systems
     game_dict['genres'] = genres
-    game_dict['developer'] = developer
+    # game_dict['developer'] = developer
 
     return jsonify(game_dict)
 
