@@ -13,7 +13,7 @@ function MediaShowcase() {
 	const [selectedThumb, setSelectedThumb] = useState(0);
 	const [isHovering, setIsHovering] = useState(false);
 	const [isPlaying, setIsPlaying] = useState(true);
-	const [currentVid, setCurrentVid] = useState(1);
+	const [currentVid, setCurrentVid] = useState(mediaList[0].is_video ? 1 : null);
 
 	useEffect(() => {
 		if (!isHovering && !isPlaying) {
@@ -76,7 +76,7 @@ function MediaShowcase() {
 									onEnded={() => setIsPlaying(false)}
 									muted
                                     style={{cursor:"pointer"}}
-									ref={(el) => (videoRefs.current[media.id] = el)}
+									ref={(el) => (videoRefs.current[idx + 1] = el)}
 									preload="auto"
 									autoPlay={true}
 									className={
