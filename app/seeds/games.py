@@ -36,6 +36,12 @@ def seed_games():
     retro = Genre(
         name='Retro'
     )
+    competitive = Genre(
+        name='Competitive'
+    )
+    sports = Genre(
+        name='Sports'
+    )
     choices_matter = Genre(
         name='Choices Matter'
     )
@@ -56,9 +62,6 @@ def seed_games():
     )
     fighting = Genre(
         name='Fighting'
-    )
-    platformer = Genre(
-        name='Platformer'
     )
     two_d_fighter = Genre(
         name='2D Fighter'
@@ -81,8 +84,20 @@ def seed_games():
     jrpg = Genre(
         name='J-RPG'
     )
+    mmorpg = Genre(
+        name='MMORPG'
+    )
+    open_world = Genre(
+        name='Open World'
+    )
     social_simulation = Genre(
         name='Social Simulation'
+    )
+    social_simulation = Genre(
+        name='Social Simulation'
+    )
+    farming_sim = Genre(
+        name='Farming Sim'
     )
 
     db.session.add_all([jrpg, social_simulation])
@@ -442,7 +457,169 @@ def seed_games():
         game=pac_man
     )
 
-    db.session.add_all([animal_crossing, apex_legends, brawlhalla, cod_mw2, dead_space, mass_effect, pac_man])
+    # ------ Rocket League ------ #
+
+    rocket_league = Game(
+        systems=[windows, vapor_os],
+        genres=[multiplayer, competitive, sports],
+        title='Rocket League',
+        cover_image='https://vapor-bucket.s3.us-east-2.amazonaws.com/Rocket_League/RL-1.jpeg',
+        developer_id=4,
+        producer='Psyonix LLC',
+        publisher='Psyonix LLC',
+        release_date=date(2015, 7, 7),
+        rating='E',
+        price=0,
+        description="Rocket League is a high-powered hybrid of arcade-style soccer and vehicular mayhem with easy-to-understand controls and fluid, physics-driven competition.",
+        about=rocket_league_about
+    )
+
+    rocket_league_video1 = GameMedia(
+        url = 'https://cdn.akamai.steamstatic.com/steam/apps/256934525/movie480_vp9.webm?t=1678293498',
+        game=rocket_league,
+        is_video=True,
+        thumbnail_url = 'https://i.ytimg.com/vi/SgSX3gOrj60/maxresdefault.jpg'
+    )
+
+    rocket_league_image2 = GameMedia(
+        url = 'https://vapor-bucket.s3.us-east-2.amazonaws.com/Rocket_League/RL-2.jpeg',
+        game=rocket_league
+    )
+    rocket_league_image3 = GameMedia(
+        url = 'https://vapor-bucket.s3.us-east-2.amazonaws.com/Rocket_League/RL-3.jpeg',
+        game=rocket_league
+    )
+    rocket_league_image4 = GameMedia(
+        url = 'https://vapor-bucket.s3.us-east-2.amazonaws.com/Rocket_League/RL-4.jpeg',
+        game=rocket_league
+    )
+    rocket_league_image5 = GameMedia(
+        url = 'https://vapor-bucket.s3.us-east-2.amazonaws.com/Rocket_League/RL-5.jpeg',
+        game=rocket_league
+    )
+
+    # ------ Stardew Valley ------ #
+
+    stardew_valley = Game(
+        systems=[windows, mac, vapor_os],
+        genres=[farming_sim, rpg],
+        title='Stardew Valley',
+        cover_image='https://vapor-bucket.s3.us-east-2.amazonaws.com/Stardew_Valley/SV-1.jpg',
+        developer_id=4,
+        producer='ConcernedApe',
+        publisher='ConcernedApe',
+        release_date=date(2016, 2, 26),
+        rating='E10+',
+        price=14.99,
+        description="You've inherited your grandfather's old farm plot in Stardew Valley. Armed with hand-me-down tools and a few coins, you set out to begin your new life. Can you learn to live off the land and turn these overgrown fields into a thriving home?",
+        about=stardew_valley_about
+    )
+
+    stardew_valley_video1 = GameMedia(
+        url = 'https://cdn.akamai.steamstatic.com/steam/apps/256660296/movie480.webm?t=1454099186',
+        game=stardew_valley,
+        is_video=True,
+        thumbnail_url = 'https://i.ytimg.com/vi/8A7A1X1TVNc/maxresdefault.jpg'
+    )
+
+    stardew_valley_image2 = GameMedia(
+        url = 'https://vapor-bucket.s3.us-east-2.amazonaws.com/Stardew_Valley/SV-2.jpg',
+        game=stardew_valley
+    )
+    stardew_valley_image3 = GameMedia(
+        url = 'https://vapor-bucket.s3.us-east-2.amazonaws.com/Stardew_Valley/SV-3.jpg',
+        game=stardew_valley
+    )
+    stardew_valley_image4 = GameMedia(
+        url = 'https://vapor-bucket.s3.us-east-2.amazonaws.com/Stardew_Valley/SV-4.jpg',
+        game=stardew_valley
+    )
+    stardew_valley_image5 = GameMedia(
+        url = 'https://vapor-bucket.s3.us-east-2.amazonaws.com/Stardew_Valley/SV-5.jpg',
+        game=stardew_valley
+    )
+    stardew_valley_image6 = GameMedia(
+        url = 'https://vapor-bucket.s3.us-east-2.amazonaws.com/Stardew_Valley/SV-6.jpg',
+        game=stardew_valley
+    )
+
+    # ------ Star Wars: The Old Republic ------ #
+
+    sw_or = Game(
+        systems=[windows],
+        genres=[f2p, multiplayer, mmorpg, open_world],
+        title='Star Wars: The Old Republic',
+        cover_image='https://vapor-bucket.s3.us-east-2.amazonaws.com/StarWars_The_Old_Republic/SW-1.jpg',
+        developer_id=4,
+        producer='BioWare',
+        publisher='Electronic Arts',
+        release_date=date(2011, 12, 20),
+        rating='T',
+        price=0,
+        description="STAR WARS™: The Old Republic™ is a free-to-play MMORPG that puts you at the center of your own story-driven saga. Play as a Jedi, Sith, Bounty Hunter, or one of many other iconic STAR WARS roles in the galaxy far, far away over three thousand years before the classic films.",
+        about=sw_or_about
+    )
+
+    sw_or_video1 = GameMedia(
+        url = 'https://cdn.akamai.steamstatic.com/steam/apps/256792746/movie480_vp9.webm?t=1644940963',
+        game=sw_or,
+        is_video=True,
+        thumbnail_url = 'https://i.ytimg.com/vi/hWFzfQs7vmk/maxresdefault.jpg'
+    )
+    sw_or_video2 = GameMedia(
+        url = 'https://cdn.akamai.steamstatic.com/steam/apps/256874175/movie480_vp9.webm?t=1645030435',
+        game=sw_or,
+        is_video=True,
+        thumbnail_url = 'https://i.ytimg.com/vi/qCn1VDYPFqE/maxresdefault.jpg'
+    )
+
+    sw_or_image2 = GameMedia(
+        url = 'https://vapor-bucket.s3.us-east-2.amazonaws.com/StarWars_The_Old_Republic/SW-2.jpg',
+        game=sw_or
+    )
+    sw_or_image4 = GameMedia(
+        url = 'https://vapor-bucket.s3.us-east-2.amazonaws.com/StarWars_The_Old_Republic/SW-4.jpg',
+        game=sw_or
+    )
+    sw_or_image5 = GameMedia(
+        url = 'https://vapor-bucket.s3.us-east-2.amazonaws.com/StarWars_The_Old_Republic/SW-5.jpg',
+        game=sw_or
+    )
+
+    # ------ Star Wars: The Old Republic ------ #
+
+    ufc_4 = Game(
+        systems=[vapor_os],
+        genres=[fighting, multiplayer, sports],
+        title='UFC 4',
+        cover_image='https://vapor-bucket.s3.us-east-2.amazonaws.com/UFC_4/ufc-4.jpg',
+        developer_id=4,
+        producer='Electronic Arts',
+        publisher='Electronic Arts',
+        release_date=date(2020, 8, 14),
+        rating='T',
+        price=59.99,
+        description="""Shape Your Legend in EA SPORTS™ UFC® 4.
+
+        In EA SPORTS UFC 4 the fighter you become is shaped by your fight style, your achievements, and your personality. No matter how or where `you` play EA SPORTS UFC 4 puts you at the center of every fight.""",
+        about=ufc_4_about
+    )
+
+    ufc_4_image2 = GameMedia(
+        url = 'https://vapor-bucket.s3.us-east-2.amazonaws.com/UFC_4/ufc-1.jpg',
+        game=ufc_4
+    )
+    ufc_4_image4 = GameMedia(
+        url = 'https://vapor-bucket.s3.us-east-2.amazonaws.com/UFC_4/ufc-2.png',
+        game=ufc_4
+    )
+    ufc_4_image5 = GameMedia(
+        url = 'https://vapor-bucket.s3.us-east-2.amazonaws.com/UFC_4/ufc-5.jpg',
+        game=ufc_4
+    )
+
+
+    db.session.add_all([animal_crossing, apex_legends, brawlhalla, cod_mw2, dead_space, mass_effect, pac_man, rocket_league, stardew_valley, sw_or, ufc_4])
 
     # melegna = User.query.get(4)
 
@@ -535,7 +712,37 @@ PAC-MAN was awarded the Guinness World Record in 2005 for being the most success
 This latest port comes with scanline and sound settings, and the option to play with the Round 256 bug - perfect for PAC-MANiacs!
 Experience the masterpiece that charmed the planet!
 """
-# from datetime import date
+
+rocket_league_about="""Rocket League is a high-powered hybrid of arcade-style soccer and vehicular mayhem with easy-to-understand controls and fluid, physics-driven competition. Rocket League includes casual and competitive Online Matches, a fully-featured offline Season Mode, special “Mutators” that let you change the rules entirely, hockey and basketball-inspired Extra Modes, and more than 500 trillion possible cosmetic customization combinations.
+
+Winner or nominee of more than 150 “Game of the Year” awards, Rocket League is one of the most critically-acclaimed sports games of all time. Boasting a community of more than 57 million players, Rocket League features ongoing free and paid updates, including new DLCs, content packs, features, modes and arenas."""
+
+stardew_valley_about="""You've inherited your grandfather's old farm plot in Stardew Valley. Armed with hand-me-down tools and a few coins, you set out to begin your new life. Can you learn to live off the land and turn these overgrown fields into a thriving home? It won't be easy. Ever since Joja Corporation came to town, the old ways of life have all but disappeared. The community center, once the town's most vibrant hub of activity, now lies in shambles. But the valley seems full of opportunity. With a little dedication, you might just be the one to restore Stardew Valley to greatness!"""
+
+sw_or_about="""STAR WARS™: The Old Republic™ is the only massively multiplayer online game with a Free-to-Play option that puts you at the center of your own story-driven STAR WARS™ saga. Play as a Jedi, a Sith, a Bounty Hunter, or as one of many other iconic STAR WARS roles and explore the galaxy far, far away over three thousand years before the classic films. With 6 narrative expansions, become the hero of your own STAR WARS adventure as you choose your path down the Light or Dark side of the Force™.
+
+Create your legacy. Make meaningful choices throughout your journey and become the hero of your personal STAR WARS saga. The game includes an interactive storyline with cinematic dialogue and full voiceover for all in-game characters.
+
+A growing world awaits. For more than 10 years, players have been able to live out their own STAR WARS stories. With the most recent Onslaught expansion, STAR WARS: The Old Republic continues to deliver ongoing content through regular updates.
+
+8 Unique Stories, 16 Combat Styles. Do you prefer the elegance of a lightsaber or the reliability of a good blaster by your side? Choose from one of 8 iconic, unique storylines, allowing you to create your own personal STAR WARS story. The Legacy of the Sith Expansion also introduces Combat Styles! Players can now separate their Class Story from gameplay style for an even greater customization experience. This frees up Advanced Class options as characters can choose any Advanced Class within the Tech or Force playstyle! Play as a Trooper wielding a Sniper Rifle, or a Sith Inquisitor with a lightsaber in each hand, or even secretly use Dark Side powers while posing as a member of the Jedi Order."""
+
+ufc_4_about="""
+NEW VENUES
+Bang it out in the backyard or surround yourself in the storied tradition of the Kumite — both are possible in the all new locations of UFC 4. Plus, fight at UFC Apex and Action Avenue. Whether you’re inspired by backyard brawlers or underground warriors, your fighting style will be shaped by these all new, immersive environments.
+
+BLITZ BATTLES
+This fast-paced mode pits you against other fighters online, competing in a round-based rapid-fire tournament. A constant rotation of rulesets keeps the experience fresh and the competition hot.
+
+FLUID FLINCH CONTROLS
+UFC 4 introduces Real Player Motion Technology (RPM Tech) into the art of the ‘clinch’, creating a fluid experience driven by positioning and physical context.
+
+TAKEDOWN OVERHAUL
+UFC 4 introduces RPM Tech into takedown gameplay as well. With a multitude of new takedown animations, players will feel a larger spectrum of outcomes, driven by user control and fighter attributes.
+
+DEVASTATING GROUD AND POUND
+With the ground and pound overhaul, UFC 4 puts you in more control of postured-up scenarios, giving the striker more tools to aim and pick their spots and the defender access to more tools, like head movement and well-timed counter transitions.
+"""
 # from app.models import db, Genre, System, Game, GameMedia, User, environment, SCHEMA, game
 
 
