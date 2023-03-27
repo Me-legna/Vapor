@@ -121,7 +121,7 @@ function AllGames() {
 										{/* <GenresList genres={game.genres}/> */}
 									</Container>
 									<Container className="preview-images-list-ctn">
-									{game.media.filter(media => media.is_video === false).slice(0,4).map(media => (
+									{game.media.filter(media => media.is_video === false).map(media => (
 										<div className="preview-image-ctn">
 											<Image className="library-list-image" src={media.url}/>
 										</div>
