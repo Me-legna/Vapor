@@ -51,7 +51,7 @@ function BuyGameBanner() {
 						{singleGame.price === 0 ? "Play" : "Buy"} {singleGame.title}
 					</h1>
 					<div className="d-flex align-items-center add-to-btn-ctn">
-						<div className="game-price">${singleGame.price}</div>
+						<div className="game-price">{singleGame.price === 0 ?'Free' : `$${singleGame.price}`}</div>
 						<div>
 							<Button
 								className={

@@ -27,7 +27,7 @@ function GameSummary() {
 			</div>
 			<p className="description-ctn">
 				{singleGame.description}
-				
+
 			</p>
 			<div className="game-table-ctn">
 				<Table borderless className="game-detail-table">
@@ -50,6 +50,14 @@ function GameSummary() {
 							<td>
 								{singleGame.developer
 									? singleGame.developer
+									: "Anonymous Studios"}
+							</td>
+						</tr>
+						<tr>
+							<th>PUBLISHER:</th>
+							<td>
+								{singleGame.publisher
+									? singleGame.publisher
 									: "Anonymous Studios"}
 							</td>
 						</tr>
