@@ -2,8 +2,12 @@
 body{
     margin: 0px;
     background: #1b2838;
+    overscroll-behavior: none;
+    /* background: #171a21; */
+
     /* background-image: url('./images/vapor-background.png'); */
 }
+
 .text-white{
     color:white
 }

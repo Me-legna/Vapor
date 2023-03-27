@@ -9,6 +9,7 @@ import { loadOneOrder } from "../../store/orders";
 import Issues from "./Issues";
 import OrderDetails from "./OrderDetails";
 import "./SingleOrder.css";
+import OrderHeader from "./OrderHeader";
 
 function SingleOrder() {
 	const user = useSelector((state) => state.session.user);
@@ -27,27 +28,11 @@ function SingleOrder() {
 	// if((!user || !order.id) && user.id !== order.customer_id) return null
 	return (
 		loaded && (
-			<div className="main">
-				<Container>
-					<Row>
-						<Col lg className="text-white p-3">
-							Vapor Support
-						</Col>
-					</Row>
-					<Row>
-						<Col>
-							{/* <Button className="text-white btn-link">Home</Button>
-						{" > "}
-						<Button className="btn-link">Recent Purchases</Button> */}
-							<p style={{ color: "#8f98a0" }}>
-								{"Home  >  Account  >  Purchase History"}
-							</p>
-						</Col>
-					</Row>
+				<>
+					<OrderHeader/>
 					<OrderDetails />
 					<Issues />
-				</Container>
-			</div>
+				</>
 		)
 	);
 }

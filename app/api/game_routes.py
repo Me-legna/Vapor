@@ -2,7 +2,7 @@ from datetime import date
 from platform import release
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
-from app.models import Game, GameImage, System, Genre, db
+from app.models import Game, GameMedia, System, Genre, db
 from app.forms import GameForm
 from .auth_routes import validation_errors_to_error_messages
 
@@ -21,11 +21,11 @@ def get_all_games():
 
         systems = [system.name for system in game.systems]
         genres = [genre.name for genre in game.genres]
-        developer = game.developer.developer_alias
+        # developer = game.developer.developer_alias
 
         game_dict['systems'] = systems
         game_dict['genres'] = genres
-        game_dict['developer'] = developer
+        # game_dict['developer'] = developer
 
         games_list.append(game_dict)
 
@@ -47,10 +47,10 @@ def get_single_game(game_id):
     game_dict = game.to_dict()
     systems = [system.name for system in game.systems]
     genres = [genre.name for genre in game.genres]
-    developer = game.developer.developer_alias
+    # developer = game.developer.developer_alias
     game_dict['systems'] = systems
     game_dict['genres'] = genres
-    game_dict['developer'] = developer
+    # game_dict['developer'] = developer
 
     return jsonify(game_dict)
 

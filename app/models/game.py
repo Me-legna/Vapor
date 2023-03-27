@@ -58,8 +58,8 @@ class System(db.Model):
         }
 
 
-class GameImage(db.Model):
-    __tablename__ = 'game_images'
+class GameMedia(db.Model):
+    __tablename__ = 'game_media'
 
     if environment == "production":
         __table_args__ = {'schema': SCHEMA}
@@ -67,7 +67,8 @@ class GameImage(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     game_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("games.id")), nullable=False)
     url = db.Column(db.String, nullable=False)
-    # is_preview = db.Column(db.Boolean, default=False)
+    is_video = db.Column(db.Boolean, default=False)
+    thumbnail_url = db.Column(db.String)
 
     game = db.relationship('Game', back_populates='media',foreign_keys=[game_id])
 
@@ -75,6 +76,8 @@ class GameImage(db.Model):
         return {
             'id': self.id,
             'url': self.url,
+            'is_video': self.is_video,
+            'thumbnail_url': self.thumbnail_url
         }
 
 
@@ -88,18 +91,20 @@ class Game(db.Model):
     title = db.Column(db.String(200), nullable=False)
     cover_image = db.Column(db.String, nullable=False)
     is_in_store = db.Column(db.Boolean, nullable=False, default=True)
+    producer = db.Column(db.String(200), nullable=False)
+    publisher = db.Column(db.String(200), nullable=False)
     developer_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")), nullable=False)
     release_date = db.Column(db.Date, nullable=False) # default=datetime.now().strftime("%m/%d/Y")
     price = db.Column(db.Float, nullable=False)
     description = db.Column(db.Text, nullable=False)
     about = db.Column(db.Text, nullable=False)
-    rating = db.Column(db.Enum('E', 'T', 'M', name='esrb_ratings', create_type=False), nullable=False)
+    rating = db.Column(db.Enum('E','E10+', 'T', 'M', name='esrb_ratings', create_type=False), nullable=False)
     # discount_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("discounts.id")), nullable=True)
 
     developer = db.relationship('User', back_populates='games_developed',foreign_keys=[developer_id])
     genres = db.relationship('Genre', back_populates='games', secondary=game_genres)
     systems = db.relationship('System', back_populates='games', secondary=system_availability)
-    media = db.relationship('GameImage', back_populates='game', cascade='all, delete')
+    media = db.relationship('GameMedia', back_populates='game', cascade='all, delete')
 
     @property
     def formatted_release_date(self):
@@ -117,6 +122,8 @@ class Game(db.Model):
             'cover': self.cover_image,
             'is_in_store': self.is_in_store,
             'developer_id': self.developer_id,
+            'developer': self.producer,
+            'publisher': self.publisher,
             'release_date': self.formatted_release_date,
             'price': self.price,
             'description': self.description,
@@ -133,7 +140,7 @@ class Game(db.Model):
             'preview': self.cover_image,
             'systems': [system.name for system in self.systems]
         }
-        
+
     def to_order_dict(self):
         return {
             'id': self.id,

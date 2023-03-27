@@ -21,6 +21,7 @@ function OwnedGames() {
 	};
 
 	const monthsAbbreviations = [
+        "",
 		"Jan",
 		"Feb",
 		"Mar",
@@ -35,7 +36,7 @@ function OwnedGames() {
 		"Dec",
 	];
     const random100 = () => Math.ceil(Math.random() * 100);
-	const randomMax = (max) => Math.floor(Math.random() * max);
+	const randomMax = (max) => Math.ceil(Math.random() * max);
     async function handleClick(gameId) {
 			await dispatch(load_one_game(gameId)).then(() =>
 				history.push(`/games/${gameId}`)

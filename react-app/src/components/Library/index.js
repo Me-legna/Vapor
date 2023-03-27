@@ -7,13 +7,11 @@ function Library() {
 	const user = useSelector(state => state.session.user)
 
 	return (
-		<div className="main">
-			<Container className="text-white">
+			<Container className="p-0 pt-3 text-white">
 				<p style={{ color: "#8f98a0" }}>{`${user.username} > Library`}</p>
 				<h1>Library</h1>
 				<OwnedGames/>
 			</Container>
-		</div>
 	);
 }
 
