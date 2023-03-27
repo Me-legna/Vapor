@@ -323,7 +323,7 @@ input[type="checkbox" i] {
 	width: 100%;
 }
 .description-ctn {
-	max-height: 7rem;
+	max-height: 8rem;
 	overflow: auto;
 	padding-right: 2%;
 	color: white;
@@ -398,6 +398,8 @@ input[type="checkbox" i] {
 	border-radius: 4px;
 	height: 2rem;
 	overflow: hidden;
+	line-height: 12px;
+    font-size: 12px;
 	background-color: #21a321;
 	border-color: #21a321;
 	color: rgba(255, 255, 255, 0.774);
@@ -410,6 +412,8 @@ input[type="checkbox" i] {
 .add-to-library-btn {
 	border-radius: 4px;
 	height: 2rem;
+	line-height: 12px;
+    font-size: 12px;
 	overflow: hidden;
 	color: rgba(255, 255, 255, 0.774);
 }

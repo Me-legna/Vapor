@@ -114,11 +114,11 @@ function AllGames() {
 								<div style={{display: isHovering === game.id ? 'flex' : 'none'}} className="preview-item">
 									<h2>{game.title}</h2>
 									<Container className="reviews-preview">
-										<Row>Overall User Reviews:</Row>
-										<Row>Very Positive(numReviews)</Row>
+										{/* <Row>Overall User Reviews:</Row>
+										<Row>Very Positive(numReviews)</Row> */}
 									</Container>
 									<Container className="preview-genres">
-										<GenresList genres={game.genres}/>
+										{/* <GenresList genres={game.genres}/> */}
 									</Container>
 									<Container className="preview-images-list-ctn">
 									{game.media.filter(media => media.is_video === false).slice(0,4).map(media => (

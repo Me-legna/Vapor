@@ -18,6 +18,18 @@ def seed_games():
     db.session.add_all([mac, windows, vapor_os])
 
     # ------ Genres ------ #
+    f2p = Genre(
+        name='Free to Play'
+    )
+    multiplayer = Genre(
+        name='Multiplayer'
+    )
+    shooter = Genre(
+        name='Shooter'
+    )
+    battle_royale = Genre(
+        name='Battle Royale'
+    )
     jrpg = Genre(
         name='J-RPG'
     )
@@ -29,17 +41,7 @@ def seed_games():
 
 
 
-    # ------ Games ------ #
-    game_1 = Game(
-        title='Pac-Man',
-        cover_image='https://vapor-bucket.s3.us-east-2.amazonaws.com/Pac-Man/pacman_cover_1600x960.jpeg',
-        developer_id=1,
-        release_date=date(2022, 11, 7),
-        price=59.99,
-        description='This game is straight savage!',
-        about='This game is straight savage!',
-        rating='E'
-    )
+    # ----------------------------------- Games ----------------------------------- #
 
     # ------ Animal Crossing ------ #
     animal_crossing = Game(
@@ -77,16 +79,70 @@ def seed_games():
         game=animal_crossing
     )
 
-    db.session.add_all([animal_crossing_image1,animal_crossing_image2, animal_crossing_image3, animal_crossing_image4, animal_crossing_image5])
+    db.session.add(animal_crossing)
+    # db.session.add_all([animal_crossing_image1,animal_crossing_image2, animal_crossing_image3, animal_crossing_image4, animal_crossing_image5])
 
+    # ------ Apex Legends ------ #
 
+    apex_legends = Game(
+        systems=[windows],
+        genres=[f2p, multiplayer, shooter, battle_royale],
+        title='Apex Legends',
+        cover_image='https://vapor-bucket.s3.us-east-2.amazonaws.com/Apex_Legends/apex-1.jpeg',
+        developer_id=4,
+        producer='Respawn Entertainment',
+        release_date=date(2019, 2, 19),
+        rating='T',
+        price=0,
+        description='Apex Legends is the award-winning, free-to-play Hero Shooter from Respawn Entertainment. Master an ever-growing roster of legendary characters with powerful abilities, and experience strategic squad play and innovative gameplay in the next evolution of Hero Shooter and Battle Royale.',
+        about=al_about
+    )
 
+    apex_legends_video1 = GameMedia(
+        url = 'https://cdn.akamai.steamstatic.com/steam/apps/256930469/movie480_vp9.webm?t=1676397705',
+        game=apex_legends,
+        is_video=True,
+        thumbnail_url = 'https://i.ytimg.com/vi/xjLycEuBC_s/maxresdefault.jpg'
+    )
+    apex_legends_video2 = GameMedia(
+        url = 'https://cdn.akamai.steamstatic.com/steam/apps/256930468/movie480_vp9.webm?t=1676397711',
+        game=apex_legends,
+        is_video=True,
+        thumbnail_url = 'https://i.ytimg.com/vi/vgRpFAeEAn4/maxresdefault.jpg'
+    )
+    apex_legends_video3 = GameMedia(
+        url = 'https://cdn.akamai.steamstatic.com/steam/apps/256930465/movie480_vp9.webm?t=1676397716',
+        game=apex_legends,
+        is_video=True,
+        thumbnail_url = 'https://i.ytimg.com/vi/X8dG4k1wEmI/maxresdefault.jpg'
+    )
 
+    apex_legends_image1 = GameMedia(
+        url = 'https://vapor-bucket.s3.us-east-2.amazonaws.com/Apex_Legends/apex-2.jpeg',
+        game=apex_legends
+    )
+    apex_legends_image2 = GameMedia(
+        url = 'https://vapor-bucket.s3.us-east-2.amazonaws.com/Apex_Legends/apex-3.jpeg',
+        game=apex_legends
+    )
+    apex_legends_image3 = GameMedia(
+        url = 'https://vapor-bucket.s3.us-east-2.amazonaws.com/Apex_Legends/apex-4.jpeg',
+        game=apex_legends
+    )
+    apex_legends_image4 = GameMedia(
+        url = 'https://vapor-bucket.s3.us-east-2.amazonaws.com/Apex_Legends/apex-5.jpeg',
+        game=apex_legends
+    )
+    apex_legends_image5 = GameMedia(
+        url = 'https://vapor-bucket.s3.us-east-2.amazonaws.com/Apex_Legends/apex-6.jpeg',
+        game=apex_legends
+    )
 
+    db.session.add(apex_legends)
 
-    melegna = User.query.get(4)
+    # melegna = User.query.get(4)
 
-    melegna.games_owned.extend([animal_crossing])
+    # melegna.games_owned.extend([animal_crossing, apex_legends])
 
     db.session.commit()
 
@@ -131,6 +187,12 @@ ac_about="""Your island getaway has a wealth of natural resources that can be us
         Get to know the island residents, garden, fish, decorate, hunt for fossils, and more!
 
         Show off your paradise – play on the same system with a total of 4 people***, or play together online** or over local wireless*** for fun with up to 8 players"""
+
+
+al_about="""Conquer with character in Apex Legends, a free-to-play* Hero shooter where legendary characters with powerful abilities team up to battle for fame & fortune on the fringes of the Frontier.
+
+Master an ever-growing roster of diverse Legends, deep-tactical squad play, and bold, new innovations that go beyond the Battle Royale experience — all within a rugged world where anything goes. Welcome to the next evolution of Hero Shooter.
+"""
 
 # from datetime import date
 # from app.models import db, Genre, System, Game, GameMedia, User, environment, SCHEMA, game

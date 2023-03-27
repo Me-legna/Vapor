@@ -21,11 +21,11 @@ def get_all_games():
 
         systems = [system.name for system in game.systems]
         genres = [genre.name for genre in game.genres]
-        developer = game.developer.developer_alias
+        # developer = game.developer.developer_alias
 
         game_dict['systems'] = systems
         game_dict['genres'] = genres
-        game_dict['developer'] = developer
+        # game_dict['developer'] = developer
 
         games_list.append(game_dict)
 
