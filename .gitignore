@@ -161,5 +161,3 @@ cython_debug/
 .DS_Store
 .vscode/
 dev.db
-images
-image

@@ -39,7 +39,7 @@
 }
 
 .cart-games-list-container {
-    background-image: url('../../images/vapor-background.png');
+    /* background-image: url('../../images/vapor-background.png'); */
     width: 70%;
 }
 
@@ -60,7 +60,7 @@
 }
 
 .cart-container {
-    background-image: url('../../images/vapor-background.png');
+    /* background-image: url('../../images/vapor-background.png'); */
     height: 100vh;
 }
 

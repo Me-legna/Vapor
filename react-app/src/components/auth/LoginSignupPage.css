@@ -2,7 +2,7 @@
 } */
 
 .login-page {
-    background-image: url('../../images/vapor-background.png');
+    /* background-image: url('../../images/vapor-background.png'); */
     background-repeat: no-repeat;
     /* background-color: #5865f2; */
     background-size: 100%;
@@ -125,7 +125,7 @@
 }
 
 .signup-page {
-    background-image: url('../../images/vapor-background.png');
+    /* background-image: url('../../images/vapor-background.png'); */
     background-repeat: no-repeat;
     background-size: 100%;
     width: 100vw;

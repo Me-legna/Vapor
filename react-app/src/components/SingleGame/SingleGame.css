@@ -12,7 +12,7 @@
 }
 
 .media-comp-container {
-	background-image: url("../../images/vapor-background.png");
+	/* background-image: url("../../images/vapor-background.png"); */
 	display: flex;
 	justify-content: center;
 }
@@ -169,7 +169,7 @@ fieldset {
 	justify-content: center;
 	flex-direction: column;
 	align-items: center;
-	background-image: url("../../images/vapor-background.png");
+	/* background-image: url("../../images/vapor-background.png"); */
 }
 
 /* input::-webkit-outer-spin-button,
@@ -186,7 +186,7 @@ input[type="checkbox" i] {
 	display: flex;
 	justify-content: space-around;
 	padding-right: 15%;
-	background-image: url("../../images/vapor-background.png");
+	/* background-image: url("../../images/vapor-background.png"); */
 }
 
 .system-reqs-container {
@@ -199,7 +199,7 @@ input[type="checkbox" i] {
 }
 
 .main-cart {
-	background-image: url("../../images/vapor-background.png");
+	/* background-image: url("../../images/vapor-background.png"); */
 	color: white;
 	/* height: 50vh; */
 }
