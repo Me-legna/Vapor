@@ -1,61 +1,126 @@
 .game-list-image {
-    width: 100%;
-    height: 100%
+	width: 100%;
+	height: 100%;
 }
 
-.game-list-image-container {
-    width: 20%;
-    height: 80px;
+.game-list-img-ctn {
+	position: relative;
+    width: 25%;
+    height: 100%;
 }
-
-.games-list-container {
-    background-image: url('../../images/vapor-background.png');
-    height: 100vh;
-}
-
-.indiv-game {
-    background-color: #202d39;
-    height: 40%;
-    width: 60%;
-    color: white;
-    display: flex;
-    margin: 0px auto 5px auto;
-    align-items: center;
-}
-.indiv-game:hover {
-    background-color: #07b5ef9c;
-}
-
-.indiv-game-nav {
-    color: white;
-}
-
-.game-list-info-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+.games-list-ctn{
     width: 70%;
 }
 
-.game-list-left-info {}
+.game-info {
+	height: 75%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+}
+.indiv-game h4{
+    padding-left: 0px;
+    color: white;
+    margin: 0;
+}
+.game-info-price-ctn {
+	height: 100%;
+	padding: 0px 1rem;
+	width: 70%;
+	display: flex;
+	align-items: center;
+}
+
+.indiv-game {
+    width: 100%;
+    height: 6rem;
+    color: #b7b7b7;
+    /* color: white; */
+    display: flex;
+}
+.indiv-game:hover{
+	cursor: pointer;
+}
+
+.indiv-game-nav {
+	color: white;
+}
+
+.game-list-info-container {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 70%;
+}
+
+.genres-ctn {
+	padding: 0;
+}
 
 .system-icon {
-    margin-left: 10px;
+	margin-right: 10px;
 }
 
 .system-icon-container {
-    display: flex;
-    align-items: center;
-    padding-top: 4px;
+	display: flex;
+	align-items: center;
+	padding-top: 4px;
 }
 
 .game-list-title {
-    margin: 8px 10px 0px;
+	margin: 8px 10px 0px;
 }
 
 .logo {
-    height: 14px;
-    width: 16px;
-    position: relative;
-    top: 50%;
+	height: 14px;
+	width: 16px;
+}
+
+.preview-section{
+    /* background-color: #09a9edcc; */
+    width:30%
+}
+.preview-ctn{
+    background-color: #09a9edcc;
+    /* background-color: #95bcd3; */
+    height: 100%;
+    margin-left: 7%;
+    justify-content: center;
+    display: flex;
+}
+
+.preview-item{
+    flex-direction: column;
+    align-items: center;
+    padding: 10%;
+}
+.reviews-preview{
+    display: flex;
+    flex-direction: column;
+    color: #b7b7b7;
+    /* color: white; */
+    align-items: center;
+    background-color: rgb(0 0 0 / 60%);
+}
+.preview-genres{
+    background-color: rgb(0 0 0 / 60%);
+    color: #b7b7b7;
+    width: 32%;
+    margin: 10px 0px 0 0;
+    display: flex;
+    align-self: start;
+    justify-content: center;
+}
+.preview-images-list-ctn{
+    width: 100%;
+    margin-top: 5%;
+    padding: 0;
+}
+.preview-image-ctn{
+    width: 100%;
+    height: 25%;
+    margin-top: 1%;
+}
+.preview-image{
+    width: 100%;
 }

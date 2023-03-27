@@ -34,7 +34,7 @@ const NaviBar = () => {
 				</NavBar.Brand>
 				<NavBar.Toggle />
 				<NavBar.Collapse className="jc-sb">
-					<Nav className="m-auto">
+					<Nav style={{paddingRight:'5%'}} className="m-auto">
 						{/*
                   <Nav.Link href="/library" className="text-white">
                      Doesn't use react-router-dom
