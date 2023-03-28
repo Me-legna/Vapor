@@ -24,7 +24,7 @@ function BuyGameBanner() {
 		e.preventDefault();
 		if (user) {
 			await dispatch(addToCart(gameId));
-			await dispatch(authenticate());
+			// await dispatch(authenticate());
 			if (singleGame.price === 0) {
 				setModalContent(<AddedToLibrary />);
 			} else {

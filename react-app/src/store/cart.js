@@ -1,3 +1,5 @@
+import { authenticate } from "./session";
+
 //constants
 const LOAD = 'cart/LOAD';
 const ADD = 'cart/ADD'
@@ -52,6 +54,7 @@ export const addToCart = (item_id) => async (dispatch) => {
     if (response.ok) {
         const data = await response.json();
         dispatch(add(data))
+        await dispatch(authenticate());
         return data;
 
     } else if (response.status < 500) {
@@ -74,7 +77,8 @@ export const removeFromCart = (item_id) => async (dispatch) => {
     });
     if (response.ok) {
         const data = await response.json();
-        dispatch(remove(data))
+        dispatch(remove(data));
+        await dispatch(authenticate());
         return data;
 
     } else if (response.status < 500) {
@@ -98,6 +102,7 @@ export const deleteCart = (checkout) => async (dispatch) => {
     if (response.ok) {
         const data = await response.json();
         dispatch(reset(data))
+        await dispatch(authenticate())
         return data;
 
     } else if (response.status < 500) {

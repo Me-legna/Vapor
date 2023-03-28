@@ -25,7 +25,7 @@ function SingleGame() {
 	useEffect(() => {
 		dispatch(load_one_game(gameId));
 		if (!user) {
-			dispatch(authenticate());
+			// dispatch(authenticate());
 		}
 		// if (!Object.keys(game).length) {
 		//     if (gameId) {

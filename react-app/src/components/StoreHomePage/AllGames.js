@@ -61,8 +61,8 @@ function AllGames() {
 									alt="game-img"
 								></img>
 								{/* <div class="p-1 overlay">View store page</div> */}
-								<div class="p-1 overlay">
-									<div class="hover-text">View store page</div>
+								<div className="p-1 overlay">
+									<div className="hover-text">View store page</div>
 								</div>
 							</div>
 							<div className="game-info-price-ctn">
