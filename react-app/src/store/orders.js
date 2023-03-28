@@ -1,3 +1,5 @@
+import { authenticate } from "./session";
+
 //constants
 const LOAD_ALL = "order/LOAD_ALL";
 const LOAD_ONE = "order/LOAD_ONE";
@@ -65,6 +67,7 @@ export const refundOrder = (orderId, itemId) => async (dispatch) => {
 		// 	return data.error;
 		// }
 		dispatch(update(data));
+		await dispatch(authenticate())
 		return null;
 	} else if (response.status < 500) {
 		const data = await response.json();
