@@ -4,7 +4,7 @@ from flask_login import current_user, login_required
 from app.s3_helpers import (
     upload_file_to_s3, allowed_file, get_unique_filename)
 
-media_routes = Blueprint("images", __name__)
+media_routes = Blueprint("media", __name__)
 
 
 @media_routes.route("", methods=["POST"])
