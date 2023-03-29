@@ -109,9 +109,9 @@ function AllGames() {
 					))}
 				</div>
 				<div className="pb-2 preview-section">
-					<div className="mt-2 preview-ctn">
+					<div style={{backgroundColor: isHovering ? '#09a9edcc' : ''}} className="mt-2 preview-ctn">
 							{allGamesArr.map(game => (
-								<div style={{display: isHovering === game.id ? 'flex' : 'none'}} className="preview-item">
+								<div key={game.id} style={{opacity: isHovering === game.id ? '1' : '0'}} className="preview-item">
 									<h2>{game.title}</h2>
 									<Container className="reviews-preview">
 										{/* <Row>Overall User Reviews:</Row>
@@ -122,7 +122,7 @@ function AllGames() {
 									</Container>
 									<Container className="preview-images-list-ctn">
 									{game.media.filter(media => media.is_video === false).map(media => (
-										<div className="preview-image-ctn">
+										<div key={`media ${media.id}`} className="preview-image-ctn">
 											<Image className="library-list-image" src={media.url}/>
 										</div>
 									))}
