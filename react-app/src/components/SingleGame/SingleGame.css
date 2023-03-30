@@ -369,9 +369,7 @@ input[type="checkbox" i] {
 /*------Add to Cart/Library------*/
 .add-to-ctn {
 	position: relative;
-	padding: 16px;
-	height: 5rem;
-	padding-bottom: 28px;
+	padding: 16px 16px 11px;
 	background-color: #445468;
 	border-radius: 4px;
 	box-shadow: 0 8px 10px rgba(0, 0, 0, 0.7);
@@ -380,7 +378,7 @@ input[type="checkbox" i] {
 	float: right;
 }
 .game-price {
-	width: 50%;
+	width: 55%;
 	text-align: center;
 	font-size: 14px;
 }
@@ -390,7 +388,7 @@ input[type="checkbox" i] {
 	bottom: -17px;
 	border-radius: 3px;
 	background-color: black;
-	width: 35%;
+	width: 30%;
 	padding: 2px 2px 2px 0px;
 	justify-content: space-between;
 }

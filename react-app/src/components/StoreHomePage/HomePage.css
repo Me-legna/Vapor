@@ -39,6 +39,7 @@
     display: flex;
 }
 .indiv-game:hover{
+    transition: .3s;
 	cursor: pointer;
 }
 
@@ -87,14 +88,16 @@
     height: 100%;
     margin-left: 7%;
     justify-content: center;
+    position: relative;
     display: flex;
 }
 
 .preview-item{
-    background-color: #09a9edcc;
     flex-direction: column;
     align-items: center;
     padding: 10%;
+    position: absolute;
+    transition: opacity 1s;
 }
 .reviews-preview{
     display: flex;
