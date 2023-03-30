@@ -3,6 +3,7 @@ from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
 from app.models import Cart, Game, Order, User, db
 from app.forms import GameForm
+from app.models.order import OrderItem
 from .auth_routes import validation_errors_to_error_messages
 
 cart_routes = Blueprint('cart', __name__)
@@ -36,7 +37,7 @@ def add_to_cart():
         if game.price == 0:
             new_order =  Order(
             customer=current_user,
-            order_detail=[game],
+            order_detail=[OrderItem(game=game, amount=game.price)],
             type='Purchase',
             total=0
             )
@@ -84,7 +85,7 @@ def reset_cart():
     if checkout:
         new_order = Order(
         customer=current_user,
-        order_detail=cart.items,
+        order_detail=[OrderItem(game=item, amount=item.price) for item in cart.items],
         type='Purchase',
         total=cart.total
         )

@@ -13,7 +13,7 @@ function CartItems(){
     async function removeGame(e, gameId) {
         e.preventDefault()
         await dispatch(removeFromCart(gameId))
-        await dispatch(authenticate())
+        // await dispatch(authenticate())
 
     }
     const addDefaultSrc = (e) => {
